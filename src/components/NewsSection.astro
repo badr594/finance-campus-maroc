@@ -52,7 +52,10 @@
 
       const containerMaroc = document.getElementById('news-maroc');
       if (containerMaroc && dataMaroc.items && dataMaroc.items.length > 0) {
-        containerMaroc.innerHTML = dataMaroc.items.slice(0, 4).map((item: any) => `
+        // Tri décroissant par date (du plus récent au plus ancien)
+        const sortedMaroc = dataMaroc.items.sort((a: any, b: any) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
+        containerMaroc.innerHTML = sortedMaroc.slice(0, 4).map((item: any) => `
           <article class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition">
             <span class="text-[10px] text-emerald-400 font-semibold block mb-1">
               ${new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
@@ -76,7 +79,10 @@
 
       const containerInt = document.getElementById('news-international');
       if (containerInt && dataInt.items && dataInt.items.length > 0) {
-        containerInt.innerHTML = dataInt.items.slice(0, 4).map((item: any) => `
+        // Tri décroissant par date (du plus récent au plus ancien)
+        const sortedInt = dataInt.items.sort((a: any, b: any) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
+        containerInt.innerHTML = sortedInt.slice(0, 4).map((item: any) => `
           <article class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition">
             <span class="text-[10px] text-emerald-400 font-semibold block mb-1">
               ${new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
