@@ -1,64 +1,101 @@
 ---
-const news = [
-  {
-    title: "Bourse de Casablanca : Tendances et perspectives du MASI",
-    category: "Marchés Financiers",
-    date: "1 Nov 2026",
-    summary: "Analyse des récentes performances de l'indice phare marocain et des secteurs clés tirant la croissance.",
-    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-  },
-  {
-    title: "Taux Directeurs & Politique Monétaire : Décision de Bank Al-Maghrib",
-    category: "Macroéconomie",
-    date: "28 Oct 2026",
-    summary: "Décryptage des orientations de Bank Al-Maghrib et de leur impact sur l'économie et le secteur bancaire.",
-    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20"
-  },
-  {
-    title: "Les Obligations Vertes (Green Bonds) en Afrique du Nord",
-    category: "Finance Durable",
-    date: "20 Oct 2026",
-    summary: "Comment la finance verte et les émissions d'obligations durables transforment le financement des projets d'infrastructure.",
-    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20"
-  }
-];
 ---
 
-<section class="py-16 bg-slate-900 border-t border-slate-800/80">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-      <div>
-        <h2 class="text-3xl font-bold text-white mb-2">Actualités & Analyses</h2>
-        <p class="text-slate-400 text-sm">Restez informés des dernières tendances économiques et financières au Maroc.</p>
+<section class="max-w-7xl mx-auto px-6 py-12">
+  <div class="text-center mb-10">
+    <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
+      Flux Financiers
+    </span>
+    <h2 class="text-2xl md:text-3xl font-extrabold text-white">Actualités des Marchés</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {/* Volet National (Maroc) */}
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/30 transition">
+      <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
+        <h3 class="text-lg font-bold text-white">
+          Marché National (Maroc)
+        </h3>
+        <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 font-medium">
+          En direct
+        </span>
       </div>
-      <a href="/actualites" class="mt-4 md:mt-0 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
-        Voir toutes les actualités &rarr;
-      </a>
+      <div id="news-maroc" class="space-y-4">
+        <p class="text-slate-400 text-xs animate-pulse">Chargement des actualités nationales...</p>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {news.map((item) => (
-        <article class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/40 transition duration-300 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class={`px-2.5 py-1 rounded-full text-[11px] font-medium border ${item.tagColor}`}>
-                {item.category}
-              </span>
-              <span class="text-xs text-slate-500">{item.date}</span>
-            </div>
-            <h3 class="text-lg font-semibold text-white mb-3 hover:text-emerald-400 transition cursor-pointer line-clamp-2">
-              {item.title}
-            </h3>
-            <p class="text-slate-400 text-xs leading-relaxed line-clamp-3">
-              {item.summary}
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-700/40 flex justify-between items-center text-xs">
-            <span class="text-slate-400 font-medium">Club Finance ENCGT</span>
-            <span class="text-emerald-400 font-semibold cursor-pointer hover:underline">Lire la suite</span>
-          </div>
-        </article>
-      ))}
+    {/* Volet International */}
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/30 transition">
+      <div class="flex items-center justify-between mb-6 border-b border-slate-700/50 pb-4">
+        <h3 class="text-lg font-bold text-white">
+          Marché International
+        </h3>
+        <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20 font-medium">
+          En direct
+        </span>
+      </div>
+      <div id="news-international" class="space-y-4">
+        <p class="text-slate-400 text-xs animate-pulse">Chargement des actualités internationales...</p>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  async function fetchLiveNews() {
+    try {
+      // 1. Chargement des actualités Maroc
+      const urlMaroc = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=economie+finance+maroc&hl=fr&gl=MA&ceid=MA:fr');
+      const resMaroc = await fetch(urlMaroc);
+      const dataMaroc = await resMaroc.json();
+
+      const containerMaroc = document.getElementById('news-maroc');
+      if (containerMaroc && dataMaroc.items && dataMaroc.items.length > 0) {
+        containerMaroc.innerHTML = dataMaroc.items.slice(0, 4).map((item: any) => `
+          <article class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition">
+            <span class="text-[10px] text-emerald-400 font-semibold block mb-1">
+              ${new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
+            </span>
+            <h4 class="text-white font-semibold text-sm mb-2 leading-snug">
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">
+                ${item.title}
+              </a>
+            </h4>
+            <p class="text-slate-400 text-xs text-justify line-clamp-2">
+              ${item.description.replace(/<[^>]*>?/gm, '')}
+            </p>
+          </article>
+        `).join('');
+      }
+
+      // 2. Chargement des actualités Internationales
+      const urlInt = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=marches+financiers+economie+bourse&hl=fr&gl=FR&ceid=FR:fr');
+      const resInt = await fetch(urlInt);
+      const dataInt = await resInt.json();
+
+      const containerInt = document.getElementById('news-international');
+      if (containerInt && dataInt.items && dataInt.items.length > 0) {
+        containerInt.innerHTML = dataInt.items.slice(0, 4).map((item: any) => `
+          <article class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition">
+            <span class="text-[10px] text-emerald-400 font-semibold block mb-1">
+              ${new Date(item.pubDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}
+            </span>
+            <h4 class="text-white font-semibold text-sm mb-2 leading-snug">
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">
+                ${item.title}
+              </a>
+            </h4>
+            <p class="text-slate-400 text-xs text-justify line-clamp-2">
+              ${item.description.replace(/<[^>]*>?/gm, '')}
+            </p>
+          </article>
+        `).join('');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des flux d actualités:', error);
+    }
+  }
+
+  fetchLiveNews();
+</script>
