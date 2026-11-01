@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import dictionnaireData from '../data/dictionnaire.json';
+---
+
+<Layout title="Dictionnaire Financier - Club Finance ENCG Tanger">
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
+        Dictionnaire Financier Interactif
+      </span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+        Les Concepts Clés de la Finance
+      </h1>
+      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
+        Accédez aux 50 définitions essentielles en finance d'entreprise, marchés des capitaux, finance islamique et analyse financière.
+      </p>
+
+      {/* Barre de recherche dynamique */}
+      <div class="relative max-w-xl mx-auto">
+        <input
+          type="text"
+          id="dict-search-page"
+          placeholder="Filtrer un terme (ex: WACC, Sukuk, VAN, EBITDA)..."
+          class="w-full px-5 py-3.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/80 transition text-sm shadow-inner"
+        />
+      </div>
+    </div>
+
+    {/* Grille complète des 50 termes */}
+    <div id="full-dictionary-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {dictionnaireData.map((item) => (
+        <div class="dict-page-card p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <h3 class="dict-page-title text-lg font-bold text-white mb-2">{item.terme}</h3>
+            <p class="dict-page-def text-slate-300 text-xs leading-relaxed text-justify">{item.definition}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const pageSearchInput = document.getElementById('dict-search-page') as HTMLInputElement;
+  const pageCards = document.querySelectorAll('.dict-page-card');
+
+  if (pageSearchInput) {
+    pageSearchInput.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
+
+      pageCards.forEach((card) => {
+        const title = card.querySelector('.dict-page-title')?.textContent?.toLowerCase() || '';
+        const def = card.querySelector('.dict-page-def')?.textContent?.toLowerCase() || '';
+
+        if (title.includes(query) || def.includes(query)) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  }
+</script>
