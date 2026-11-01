@@ -31,7 +31,6 @@ const archivesInt = [
 ---
 
 <section class="max-w-7xl mx-auto px-6 py-12">
-  {/* Titre Principal */}
   <div class="text-center mb-10">
     <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
       Actualités & Flux Financiers
@@ -39,7 +38,7 @@ const archivesInt = [
     <h2 class="text-2xl md:text-3xl font-extrabold text-white">Actualités des Marchés</h2>
   </div>
 
-  {/* PARTIE 1 : Flux en direct */}
+  {/* Flux en direct */}
   <div class="mb-16">
     <h3 class="text-xl font-bold text-emerald-400 mb-6 border-b border-slate-800 pb-2">
       En Direct — Dernières Informations
@@ -69,7 +68,7 @@ const archivesInt = [
     </div>
   </div>
 
-  {/* PARTIE 2 : Archives depuis Septembre */}
+  {/* Archives depuis Septembre */}
   <div>
     <h3 class="text-xl font-bold text-emerald-400 mb-6 border-b border-slate-800 pb-2">
       Archives & Faits Marquants (Depuis Septembre)
@@ -113,7 +112,6 @@ const archivesInt = [
 <script>
   async function fetchLiveNews() {
     try {
-      // 1. Flux Maroc
       const urlMaroc = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=economie+finance+maroc&hl=fr&gl=MA&ceid=MA:fr');
       const resMaroc = await fetch(urlMaroc);
       const dataMaroc = await resMaroc.json();
@@ -138,7 +136,6 @@ const archivesInt = [
         `).join('');
       }
 
-      // 2. Flux International
       const urlInt = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=marches+financiers+economie+bourse&hl=fr&gl=FR&ceid=FR:fr');
       const resInt = await fetch(urlInt);
       const dataInt = await resInt.json();
