@@ -1,0 +1,202 @@
+[
+  {
+    "terme": "Action",
+    "definition": "Titre de propriété représentatif d'une fraction du capital social d'une entreprise. L'actionnaire perçoit des dividendes et dispose d'un droit de vote lors des assemblées générales."
+  },
+  {
+    "terme": "Obligation",
+    "definition": "Titre de créance émis par une entreprise ou un État pour emprunter des capitaux sur les marchés. L'émetteur s'engage à verser un intérêt régulier (le coupon) et à rembourser le capital à l'échéance."
+  },
+  {
+    "terme": "VAN (Valeur Actuelle Nette)",
+    "definition": "Indicateur de rentabilité d'un investissement mesurant la différence entre les flux de trésorerie futurs actualisés et le montant du capital investi initialement. Une VAN positive indique un projet créateur de valeur."
+  },
+  {
+    "terme": "TRI (Taux Rendement Interne)",
+    "definition": "Taux d'actualisation qui annule la Valeur Actuelle Nette (VAN) d'un projet d'investissement. Il représente le taux de rentabilité implicite de l'investissement."
+  },
+  {
+    "terme": "WACC / CMPC (Coût Moyen Pondéré du Capital)",
+    "definition": "Taux de rentabilité minimal exigé par l'ensemble des apporteurs de capitaux (actionnaires et créanciers) pour financer l'activité de l'entreprise."
+  },
+  {
+    "terme": "EBITDA / EBE",
+    "definition": "Indicateur financier mesurant la rentabilité brute de l'exploitation d'une entreprise, indépendamment de ses décisions de financement, de politique d'amortissement et de fiscalité."
+  },
+  {
+    "terme": "Effet de Levier Financier",
+    "definition": "Utilisation de l'endettement pour augmenter la rentabilité des capitaux propres de l'entreprise, à condition que le coût de la dette soit inférieur à la rentabilité économique."
+  },
+  {
+    "terme": "BFR (Besoin en Fonds de Roulement)",
+    "definition": "Montant nécessaire pour financer le décalage de trésorerie issu de l'activité courante de l'entreprise (différence entre les créances clients + stocks et les dettes fournisseurs)."
+  },
+  {
+    "terme": "FRNG (Fonds de Roulement Net Global)",
+    "definition": "Excédent des ressources stables sur les emplois stables d'une entreprise. Il indique si la structure financière à long terme parvient à financer les actifs immobilisés."
+  },
+  {
+    "terme": "Flux de Trésorerie Libres (Free Cash Flow)",
+    "definition": "Trésorerie générée par l'exploitation après financement des investissements nécessaires au maintien ou au développement de l'outil de production."
+  },
+  {
+    "terme": "PER (Price Earnings Ratio)",
+    "definition": "Ratio boursier mesurant le rapport entre le cours d'une action et le bénéfice net par action. Il indique combien de fois les investisseurs sont prêts à payer le bénéfice."
+  },
+  {
+    "terme": "ROIC (Return on Invested Capital)",
+    "definition": "Ratio mesurant la rentabilité des capitaux investis dans l'activité opérationnelle par les actionnaires et les créanciers."
+  },
+  {
+    "terme": "ROE (Return on Equity)",
+    "definition": "Ratio mesurant la rentabilité des capitaux propres apportés par les actionnaires d'une entreprise."
+  },
+  {
+    "terme": "Gouvernance d'Entreprise",
+    "definition": "Ensemble des règles, processus et structures par lesquels une entreprise est dirigée et contrôlée, visant à équilibrer les intérêts des actionnaires, dirigeants et parties prenantes."
+  },
+  {
+    "terme": "Titrisation",
+    "definition": "Technique financière consistant à transformer des créances illiquides (ex: prêts bancaires) en titres négociables sur les marchés financiers."
+  },
+  {
+    "terme": "Bourse des Valeurs de Casablanca (BVC)",
+    "definition": "Marché officiel des actions et obligations au Maroc, régulé par l'AMMC, permettant aux entreprises de lever des capitaux et aux investisseurs de négocier des titres."
+  },
+  {
+    "terme": "AMMC (Autorité Marocaine du Marché des Capitaux)",
+    "definition": "Organisme public de régulation veillant à la protection de l'épargne investie en instruments financiers et au bon fonctionnement des marchés financiers au Maroc."
+  },
+  {
+    "terme": "Sukuk",
+    "definition": "Certificats d'investissement conformes aux principes de la finance islamique, adossés à des actifs réels, procurant des rendements issus de l'exploitation ou de la location de ces actifs."
+  },
+  {
+    "terme": "Ijarah",
+    "definition": "Contrat de crédit-bail en finance islamique par lequel une institution financière achète un bien pour le louer à un client sur une période déterminée avec option d'achat à l'échéance."
+  },
+  {
+    "terme": "Murabaha",
+    "definition": "Mode de financement en finance islamique reposant sur un contrat d'achat et de revente d'un bien avec une marge bénéficiaire convenue à l'avance entre la banque et le client."
+  },
+  {
+    "terme": "Mudaraba",
+    "definition": "Partenariat financier dans lequel un apporteur de capitaux (Rab al-Mal) fournit les fonds et un entrepreneur (Mudarib) apporte son expertise pour gérer un projet, avec partage des profits."
+  },
+  {
+    "terme": "Musharaka",
+    "definition": "Contrat d'association dans lequel deux ou plusieurs parties apportent du capital et participent aux profits et aux pertes au prorata de leurs apports respectifs."
+  },
+  {
+    "terme": "OPCVM",
+    "definition": "Organisme de Placement Collectif en Valeurs Mobilières permettant de collecter de l'épargne auprès d'investisseurs pour la placer dans un portefeuille diversifié d'actions ou d'obligations."
+  },
+  {
+    "terme": "Marché Monétaire",
+    "definition": "Marché financier de court terme sur lequel les banques, institutions financières et entreprises s'échangent des liquidités et des titres de créances négociables (TCN)."
+  },
+  {
+    "terme": "Marché Primaire vs Secondaire",
+    "definition": "Le marché primaire est le marché sur lequel les nouveaux titres sont émis pour la première fois. Le marché secondaire est le marché de la revente d'occasion de ces titres."
+  },
+  {
+    "terme": "Capital-Risque (Venture Capital)",
+    "definition": "Forme d'investissement consistant à apporter du capital propre à de jeunes entreprises innovantes à fort potentiel de croissance en contrepartie d'une participation au capital."
+  },
+  {
+    "terme": "Capital-Développement",
+    "definition": "Investissement en fonds propres destiné à financer la croissance, la diversification ou l'expansion internationale d'entreprises ayant déjà atteint leur rentabilité."
+  },
+  {
+    "terme": "LBO (Leveraged Buy-Out)",
+    "definition": "Rachat d'une entreprise financé majoritairement par de la dette, remboursée grâce aux flux de trésorerie futurs générés par la société acquise."
+  },
+  {
+    "terme": "Hedging (Couverture des risques)",
+    "definition": "Stratégie financière visant à se protéger contre les variations défavorables des cours sur les marchés (taux d'intérêt, devises, matières premières)."
+  },
+  {
+    "terme": "Option d'Achat (Call) / Option de Vente (Put)",
+    "definition": "Un Call donne le droit (non l'obligation) d'acheter un actif sous-jacent à un prix fixé à l'avance. Un Put donne le droit de le vendre sous les mêmes conditions."
+  },
+  {
+    "terme": "Swaps de Taux d'Intérêt",
+    "definition": "Contrat financier dérivé par lequel deux parties s'échangent des flux d'intérêts (généralement un taux fixe contre un taux variable) sur un montant nominal donné."
+  },
+  {
+    "terme": "Bêta",
+    "definition": "Coefficient mesurant la sensibilité du rendement d'un titre par rapport aux variations globales de l'ensemble du marché financier."
+  },
+  {
+    "terme": "Capitalisation Boursière",
+    "definition": "Valeur totale de l'ensemble des actions en circulation d'une société cotée en Bourse (nombre d'actions multiplié par le cours boursier)."
+  },
+  {
+    "terme": "Flottant (Free Float)",
+    "definition": "Part des actions d'une société cotée qui est effectivement disponible à la négociation sur le marché pour le grand public."
+  },
+  {
+    "terme": "Gearing (Ratio d'Endettement)",
+    "definition": "Ratio mesurant le niveau d'endettement financier net d'une entreprise par rapport à ses capitaux propres."
+  },
+  {
+    "terme": "CAF (Capacité d'Autofinancement)",
+    "definition": "Ressource interne générée par l'activité opérationnelle de l'entreprise, disponible pour financer ses investissements ou rembourser ses dettes."
+  },
+  {
+    "terme": "Goodwill (Écart d'Acquisition)",
+    "definition": "Différence positive entre le prix d'achat d'une entreprise et la valeur nette comptable de ses actifs identifiables."
+  },
+  {
+    "terme": "MEDAF / CAPM",
+    "definition": "Modèle d'Évaluation des Actifs Financiers permettant d'estimer le taux de rentabilité exigé pour un actif en fonction de son risque systématique."
+  },
+  {
+    "terme": "Taux Directeur",
+    "definition": "Taux d'intérêt fixé par une banque centrale (ex: Bank Al-Maghrib) pour réguler l'offre de monnaie, le crédit et l'inflation dans l'économie."
+  },
+  {
+    "terme": "Inflation",
+    "definition": "Hausse générale et durable des prix des biens et services, entraînant une perte de pouvoir d'achat de la monnaie."
+  },
+  {
+    "terme": "Déflation",
+    "definition": "Baisse continue et généralisée du niveau moyen des prix dans une économie, souvent accompagnée d'un ralentissement économique."
+  },
+  {
+    "terme": "Stagflation",
+    "definition": "Situation économique rare caractérisée par une faible croissance ou récession combinée à un taux d'inflation élevé."
+  },
+  {
+    "terme": "Ratios de Solvabilité (LCR / NSFR)",
+    "definition": "Indicateurs prudentiels imposés aux banques pour s'assurer qu'elles disposent d'assez de liquidités pour faire face à leurs engagements à court et long terme."
+  },
+  {
+    "terme": "Dette Subordonnée",
+    "definition": "Dette dont le remboursement n'intervient qu'après le désintéressement complet de tous les créanciers séniors en cas de liquidation de l'entreprise."
+  },
+  {
+    "terme": "Rating / Notation Financière",
+    "definition": "Évaluation de la solvabilité financière d'un émetteur de dette attribuée par des agences de notation (S&P, Moody's, Fitch)."
+  },
+  {
+    "terme": "Provisons pour Risques et Charges",
+    "definition": "Passifs comptables destinés à couvrir des risques ou des charges probables que des événements en cours rendent très probables."
+  },
+  {
+    "terme": "Amortissement comptable",
+    "definition": "Constatation comptable de la perte de valeur progressive des immobilisations dues à l'usure ou à l'obsolescence."
+  },
+  {
+    "terme": "Valeur Nominale",
+    "definition": "Valeur faciale d'une action ou d'une obligation fixée lors de son émission initiale et figurant dans les statuts de la société."
+  },
+  {
+    "terme": "Bénéfice Net Par Action (BNA)",
+    "definition": "Ratio calculé en divisant le bénéfice net total d'une entreprise par le nombre total d'actions composant son capital social."
+  },
+  {
+    "terme": "Dividend Yield (Rendement du Dividend)",
+    "definition": "Ratio mesurant le rapport entre le montant du dividende annuel versé par action et le cours actuel de l'action en bourse."
+  }
+]
