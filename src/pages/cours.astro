@@ -1,150 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const glossaire = [
+const categories = [
   {
-    terme: "BFR (Besoin en Fonds de Roulement)",
-    definition: "Somme d'argent dont une entreprise a besoin pour financer son cycle d'exploitation courant (décalage entre les décaissements et les encaissements). Formule : Actif circulant d'exploitation - Passif circulant d'exploitation.",
-    categorie: "Finance d'Entreprise",
-    niveau: "S5 / Master",
-    lienCours: "#"
+    title: "Finance d'Entreprise",
+    description: "Choix d'investissement, structure de capital, évaluation d'entreprises et gestion de trésorerie.",
+    icon: "💼",
+    count: "4 Modules"
   },
   {
-    terme: "Seuil de Rentabilité",
-    definition: "Chiffre d'affaires pour lequel l'entreprise ne réalise ni perte ni bénéfice (résultat net égal à zéro). Il se calcule en divisant les charges fixes par le taux de marge sur coût variable.",
-    categorie: "Analyse Financière",
-    niveau: "S5",
-    lienCours: "#"
+    title: "Marchés Financiers & Capitaux",
+    description: "Instruments financiers, gestion de portefeuille, bourse et marchés obligataires.",
+    icon: "📈",
+    count: "5 Modules"
   },
   {
-    terme: "VAN (Valeur Actuelle Nette)",
-    definition: "Somme des flux de trésorerie futurs actualisés générés par un investissement, diminuée de la dépense initiale. Un projet est rentable si sa VAN est positive.",
-    categorie: "Finance d'Entreprise",
-    niveau: "S6",
-    lienCours: "#"
+    title: "Analyse Financière & Diagnostic",
+    description: "Étude des états financiers, ratios de rentabilité, solvabilité et flux de trésorerie.",
+    icon: "📊",
+    count: "3 Modules"
   },
   {
-    terme: "CAF (Capacité d'Autofinancement)",
-    definition: "Flux net de trésorerie potentiel généré par l'activité de l'entreprise au cours d'un exercice, avant toute affectation du résultat. C'est une ressource interne de financement.",
-    categorie: "Analyse Financière",
-    niveau: "S5",
-    lienCours: "#"
+    title: "Finance Islamique & Alternative",
+    description: "Principes de la finance participative, contrats Sukuk, Murabaha et Ijarah.",
+    icon: "🏛️",
+    count: "3 Modules"
+  }
+];
+
+const courses = [
+  {
+    title: "Gestion Financière à Long Terme",
+    category: "Finance d'Entreprise",
+    description: "Méthodes VAN, TRI, délai de récupération et choix de financement des investissements.",
   },
   {
-    terme: "TRI (Taux de Rentabilité Interne)",
-    definition: "Taux d'actualisation pour lequel la Valeur Actuelle Nette (VAN) d'un projet d'investissement est nulle. Il sert à mesurer la rentabilité intrinsèque d'un projet.",
-    categorie: "Finance d'Entreprise",
-    niveau: "S6",
-    lienCours: "#"
+    title: "Analyse des États Financiers",
+    category: "Analyse Financière",
+    description: "Restructuration du bilan, SIG, capacité d'autofinancement (CAF) et analyse par les ratios.",
   },
   {
-    terme: "Effet de Levier",
-    definition: "Impact du recours à l'endettement financier sur la rentabilité des capitaux propres de l'entreprise. Il est positif lorsque la rentabilité économique est supérieure au taux d'intérêt de la dette.",
-    categorie: "Finance d'Entreprise",
-    niveau: "Master",
-    lienCours: "#"
+    title: "Marchés d'Actions et d'Obligations",
+    category: "Marchés Financiers",
+    description: "Fonctionnement de la Bourse de Casablanca, évaluation des titres et gestion du risque.",
+  },
+  {
+    title: "Introduction aux Instruments de la Finance Participative",
+    category: "Finance Islamique",
+    description: "Fondements juridiques et économiques des produits bancaires participatifs au Maroc.",
   }
 ];
 ---
 
-<Layout title="Cours, Dictionnaire & Ressources - Finance Campus Maroc">
+<Layout title="Cours & Ressources - Finance Campus Maroc">
   <main class="max-w-7xl mx-auto px-6 py-16">
-    {/* En-tête */}
     <div class="mb-12">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-4">
-        Espace Pédagogique & Dictionnaire
+        Espace Pédagogique
       </span>
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
-        Dictionnaire Financier & <span class="text-emerald-500">Cours</span>
+        Cours & <span class="text-emerald-500">Ressources Académiques</span>
       </h1>
       <p class="text-slate-400 text-base max-w-2xl">
-        Recherchez un terme technique (BFR, Seuil de rentabilité, VAN...), consultez sa définition et accédez aux supports de cours associés.
+        Consultez et téléchargez les modules de formation, résumés et supports de cours en finance.
       </p>
     </div>
 
-    {/* Barre de Recherche Interactive */}
-    <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 mb-12 shadow-xl">
-      <label for="searchInput" class="block text-sm font-semibold text-white mb-3">
-        🔍 Rechercher un concept ou une notion financière :
-      </label>
-      <div class="relative">
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Ex: BFR, Seuil de rentabilité, VAN, CAF..." 
-          class="w-full bg-slate-900 border border-slate-700 rounded-xl px-5 py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
-        />
-      </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {categories.map((cat) => (
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 hover:border-emerald-500/40 transition duration-300">
+          <div class="text-3xl mb-4">{cat.icon}</div>
+          <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+            {cat.count}
+          </span>
+          <h3 class="text-lg font-bold text-white mt-4 mb-2">{cat.title}</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">{cat.description}</p>
+        </div>
+      ))}
     </div>
 
-    {/* Résultats de la recherche (Dictionnaire) */}
-    <div class="mb-16">
-      <h2 class="text-2xl font-bold text-white mb-6">Notions & Définitions</h2>
-      
-      <div id="glossaryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {glossaire.map((item) => (
-          <div class="glossary-card bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300" data-term={item.terme.toLowerCase()} data-definition={item.definition.toLowerCase()}>
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
-                  {item.categorie}
-                </span>
-                <span class="text-xs text-slate-400 font-semibold">
-                  {item.niveau}
-                </span>
-              </div>
-              <h3 class="text-xl font-bold text-white mb-2">{item.terme}</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-6">{item.definition}</p>
-            </div>
+    <div class="mb-8 flex justify-between items-center">
+      <h2 class="text-2xl font-bold text-white">Supports de Cours Disponibles</h2>
+    </div>
 
-            <div class="pt-4 border-t border-slate-700/40 flex justify-between items-center">
-              <span class="text-xs text-slate-500">Support disponible</span>
-              <a href={item.lienCours} class="px-4 py-2 text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl transition flex items-center gap-1">
-                📄 Télécharger le Cours / PDF
-              </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {courses.map((course) => (
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-600 transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-medium text-slate-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
+                {course.category}
+              </span>
             </div>
+            <h3 class="text-xl font-bold text-white mb-2">{course.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">{course.description}</p>
           </div>
-        ))}
-      </div>
 
-      {/* Message si aucun résultat trouvé */}
-      <div id="noResult" class="hidden text-center py-12 text-slate-400">
-        Aucun résultat trouvé pour votre recherche. Essayez un autre terme (ex: BFR, VAN...).
-      </div>
+          <div class="pt-4 border-t border-slate-700/40 flex justify-between items-center">
+            <span class="text-xs text-slate-500">Document PDF</span>
+            <button class="px-4 py-2 text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl transition">
+              Accéder au cours
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   </main>
 </Layout>
-
-{/* Script de recherche dynamique en temps réel */}
-<script>
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-  const cards = document.querySelectorAll('.glossary-card');
-  const noResult = document.getElementById('noResult');
-
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-      let visibleCount = 0;
-
-      cards.forEach((card) => {
-        const term = card.getAttribute('data-term') || '';
-        const definition = card.getAttribute('data-definition') || '';
-
-        if (term.includes(query) || definition.includes(query)) {
-          (card as HTMLElement).style.display = 'flex';
-          visibleCount++;
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
-      });
-
-      if (noResult) {
-        if (visibleCount === 0) {
-          noResult.classList.remove('hidden');
-        } else {
-          noResult.classList.add('hidden');
-        }
-      }
-    });
-  }
-</script>

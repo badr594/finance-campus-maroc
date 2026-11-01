@@ -1,12 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NewsSection from '../components/NewsSection.astro';
+
+const glossaire = [
+  {
+    terme: "BFR (Besoin en Fonds de Roulement)",
+    definition: "Somme d'argent dont une entreprise a besoin pour financer son cycle d'exploitation courant (décalage entre les décaissements et les encaissements). Formule : Actif circulant d'exploitation - Passif circulant d'exploitation.",
+    categorie: "Finance d'Entreprise",
+    lienCours: "/cours"
+  },
+  {
+    terme: "Seuil de Rentabilité",
+    definition: "Chiffre d'affaires pour lequel l'entreprise ne réalise ni perte ni bénéfice (résultat net égal à zéro). Il se calcule en divisant les charges fixes par le taux de marge sur coût variable.",
+    categorie: "Analyse Financière",
+    lienCours: "/cours"
+  },
+  {
+    terme: "VAN (Valeur Actuelle Nette)",
+    definition: "Somme des flux de trésorerie futurs actualisés générés par un investissement, diminuée de la dépense initiale. Un projet est rentable si sa VAN est positive.",
+    categorie: "Finance d'Entreprise",
+    lienCours: "/cours"
+  },
+  {
+    terme: "CAF (Capacité d'Autofinancement)",
+    definition: "Flux net de trésorerie potentiel généré par l'activité de l'entreprise au cours d'un exercice, avant toute affectation du résultat. C'est une ressource interne de financement.",
+    categorie: "Analyse Financière",
+    lienCours: "/cours"
+  },
+  {
+    terme: "TRI (Taux de Rentabilité Interne)",
+    definition: "Taux d'actualisation pour lequel la Valeur Actuelle Nette (VAN) d'un projet d'investissement est nulle. Il sert à mesurer la rentabilité intrinsèque d'un projet.",
+    categorie: "Finance d'Entreprise",
+    lienCours: "/cours"
+  },
+  {
+    terme: "Effet de Levier",
+    definition: "Impact du recours à l'endettement financier sur la rentabilité des capitaux propres de l'entreprise. Il est positif lorsque la rentabilité économique est supérieure au taux d'intérêt de la dette.",
+    categorie: "Finance d'Entreprise",
+    lienCours: "/cours"
+  }
+];
 ---
 
 <Layout title="Finance Campus Maroc - ENCG Tanger">
   <main>
-    {/* Section Héro */}
-    <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+    {/* Section Hero */}
+    <section class="max-w-7xl mx-auto px-6 pt-16 pb-12 text-center">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-6">
         Club Finance — ENCG Tanger
       </span>
@@ -15,13 +54,26 @@ import NewsSection from '../components/NewsSection.astro';
         La plateforme éducative de la <span class="text-emerald-500">Finance au Maroc</span>
       </h1>
       
-      <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">
-        Accédez aux cours, ressources d'analyse financière et actualités des marchés pour réussir votre parcours académique et professionnel.
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-8">
+        Accédez aux cours, ressources d'analyse financière, dictionnaire des concepts et actualités des marchés.
       </p>
+
+      {/* Barre de Recherche Dictionnaire */}
+      <div class="max-w-2xl mx-auto mb-10 text-left">
+        <label for="searchInput" class="block text-xs font-semibold text-emerald-400 mb-2 text-center">
+          🔍 Dictionnaire financier : recherchez un terme (ex: BFR, VAN, CAF, Seuil de rentabilité...)
+        </label>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Taper un concept financier..." 
+          class="w-full bg-slate-900 border border-slate-700/80 rounded-2xl px-6 py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 shadow-xl transition"
+        />
+      </div>
 
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/cours" class="px-6 py-3 font-semibold bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl transition">
-          Découvrir les cours
+          Consulter tous les cours
         </a>
         <a href="/club" class="px-6 py-3 font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl transition">
           Le Club Finance
@@ -29,7 +81,71 @@ import NewsSection from '../components/NewsSection.astro';
       </div>
     </section>
 
+    {/* Section Dictionnaire / Résultats de la recherche sur la page d'accueil */}
+    <section class="max-w-7xl mx-auto px-6 pb-16">
+      <div id="glossaryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {glossaire.map((item) => (
+          <div class="glossary-card bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition duration-300" data-term={item.terme.toLowerCase()} data-definition={item.definition.toLowerCase()}>
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-lg border border-emerald-500/20">
+                  {item.categorie}
+                </span>
+                <span class="text-xs text-slate-500 font-medium">Concept Financier</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">{item.terme}</h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-6">{item.definition}</p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-700/40 flex justify-between items-center">
+              <span class="text-xs text-slate-500">Support de cours associé</span>
+              <a href={item.lienCours} class="px-4 py-2 text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 rounded-xl transition flex items-center gap-1">
+                📄 Découvrir le cours
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div id="noResult" class="hidden text-center py-12 text-slate-400">
+        Aucun concept trouvé pour votre recherche. Essayez un autre terme (ex: BFR, VAN...).
+      </div>
+    </section>
+
     {/* Section Actualités */}
     <NewsSection />
   </main>
 </Layout>
+
+<script>
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+  const cards = document.querySelectorAll('.glossary-card');
+  const noResult = document.getElementById('noResult');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const term = card.getAttribute('data-term') || '';
+        const definition = card.getAttribute('data-definition') || '';
+
+        if (term.includes(query) || definition.includes(query)) {
+          (card as HTMLElement).style.display = 'flex';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (noResult) {
+        if (visibleCount === 0) {
+          noResult.classList.remove('hidden');
+        } else {
+          noResult.classList.add('hidden');
+        }
+      }
+    });
+  }
+</script>
