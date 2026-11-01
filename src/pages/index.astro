@@ -1,28 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NewsSection from '../components/NewsSection.astro';
 ---
 
 <Layout title="Finance Campus Maroc - ENCG Tanger">
-  <main class="max-w-7xl mx-auto px-6 py-16 text-center">
-    <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-6">
-      Club Finance — ENCG Tanger
-    </span>
-    
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-      La plateforme éducative de la <span class="text-emerald-500">Finance au Maroc</span>
-    </h1>
-    
-    <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">
-      Accédez aux cours, ressources d'analyse financière et actualités des marchés pour réussir votre parcours académique et professionnel.
-    </p>
+  <main>
+    {/* Section Héro */}
+    <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-6">
+        Club Finance — ENCG Tanger
+      </span>
+      
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight max-w-4xl mx-auto">
+        La plateforme éducative de la <span class="text-emerald-500">Finance au Maroc</span>
+      </h1>
+      
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">
+        Accédez aux cours, ressources d'analyse financière et actualités des marchés pour réussir votre parcours académique et professionnel.
+      </p>
 
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href="/cours" class="px-6 py-3 font-semibold bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl transition">
-        Découvrir les cours
-      </a>
-      <a href="/club" class="px-6 py-3 font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl transition">
-        Le Club Finance
-      </a>
-    </div>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/cours" class="px-6 py-3 font-semibold bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl transition">
+          Découvrir les cours
+        </a>
+        <a href="/club" class="px-6 py-3 font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl transition">
+          Le Club Finance
+        </a>
+      </div>
+    </section>
+
+    {/* Section Actualités */}
+    <NewsSection />
   </main>
 </Layout>
