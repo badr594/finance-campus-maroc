@@ -14,7 +14,7 @@ import Layout from '../../layouts/Layout.astro';
         Apprendre à Investir : Cursus Complet
       </h1>
       <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
-        Parcours pédagogique progressif en quatre niveaux. Déroulez chaque niveau pour accéder aux cours, vidéos pédagogiques et supports d'étude institutionnels.
+        Parcours pédagogique progressif en quatre niveaux. Déroulez chaque niveau pour accéder aux cours, capsules vidéo et supports d'étude institutionnels.
       </p>
     </div>
 
@@ -36,18 +36,21 @@ import Layout from '../../layouts/Layout.astro';
             Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
           </p>
 
-          {/* Intégration Vidéo iFrame stable */}
-          <div>
-            <h3 class="text-sm font-bold text-white mb-3">Ressource Vidéo Pédagogique</h3>
-            <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900">
-              <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/S7o-s2M6Uq4" title="Introduction à l'investissement" allowfullscreen></iframe>
+          {/* Carte Vidéo Moderne (Sans Iframe) */}
+          <div class="relative group/vid overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-xl shrink-0 group-hover/vid:bg-emerald-500 group-hover/vid:text-slate-950 transition">
+                ▶
+              </div>
+              <div>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-400 block mb-1">Capsule Vidéo Officielle</span>
+                <h3 class="text-sm md:text-base font-bold text-white mb-1">Introduction à l'Épargne et l'Investissement</h3>
+                <p class="text-xs text-slate-400">Support pédagogique recommandé pour valider les bases.</p>
+              </div>
             </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-[11px] text-slate-400">Source : Éducation Financière</span>
-              <a href="https://www.youtube.com/watch?v=S7o-s2M6Uq4" target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 hover:underline">
-                Ouvrir sur YouTube &rarr;
-              </a>
-            </div>
+            <a href="https://www.youtube.com/watch?v=S7o-s2M6Uq4" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap shadow-lg shadow-emerald-500/20">
+              Lancer la vidéo &rarr;
+            </a>
           </div>
 
           {/* Support PDF / Lien AMMC */}
@@ -83,17 +86,20 @@ import Layout from '../../layouts/Layout.astro';
             Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille pour diluer le risque.
           </p>
 
-          <div>
-            <h3 class="text-sm font-bold text-white mb-3">Ressource Vidéo Pédagogique</h3>
-            <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900">
-              <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/5m35_W9d1Uw" title="Comprendre la Bourse" allowfullscreen></iframe>
+          <div class="relative group/vid overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-xl shrink-0 group-hover/vid:bg-emerald-500 group-hover/vid:text-slate-950 transition">
+                ▶
+              </div>
+              <div>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-400 block mb-1">Capsule Vidéo Officielle</span>
+                <h3 class="text-sm md:text-base font-bold text-white mb-1">Fonctionnement de la Bourse & Diversification</h3>
+                <p class="text-xs text-slate-400">Support de formation sur les marchés financiers.</p>
+              </div>
             </div>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-[11px] text-slate-400">Support de formation sur les marchés financiers</span>
-              <a href="https://www.youtube.com/watch?v=5m35_W9d1Uw" target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 hover:underline">
-                Ouvrir sur YouTube &rarr;
-              </a>
-            </div>
+            <a href="https://www.youtube.com/watch?v=5m35_W9d1Uw" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap shadow-lg shadow-emerald-500/20">
+              Lancer la vidéo &rarr;
+            </a>
           </div>
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
@@ -120,4 +126,33 @@ import Layout from '../../layouts/Layout.astro';
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
             <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
-            <p class="text-slate
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net par action.</p>
+          </div>
+        </div>
+      </details>
+
+      {/* NIVEAU 4 */}
+      <details class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
+        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
+          <div class="flex items-center gap-4">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 04</span>
+            <h2 class="text-lg md:text-xl font-bold text-white">Gestion de Portefeuille & Allocation d'Actifs</h2>
+          </div>
+          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+
+        <div class="p-8 border-t border-slate-700/60 space-y-8">
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+            Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques institutionnels et répartition stratégique des avoirs.
+          </p>
+
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'allocation d'actifs détermine plus de 90 % de la performance globale à long terme d'un portefeuille.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+</Layout>
