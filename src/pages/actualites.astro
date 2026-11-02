@@ -1,144 +1,40 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Académie Financière - Club Finance ENCG Tanger">
+<Layout title="Actualités Financières en Direct - Finance Campus Maroc">
   <section class="max-w-7xl mx-auto px-6 py-12">
     
-    {/* En-tête de l'Académie */}
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    {/* En-tête de la page */}
+    <div class="text-center max-w-3xl mx-auto mb-12">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
-        Académie Numérique & Certifiante
+        Fil d'Actualités Live
       </span>
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Apprendre à Investir : Cursus Complet
+        Actualités Financières en Direct
       </h1>
-      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
-        Parcours pédagogique progressif en quatre niveaux. Déroulez chaque niveau pour accéder aux cours, capsules vidéo et supports d'étude institutionnels.
+      <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+        Suivez en temps réel les dernières informations économiques, les marchés boursiers et les tendances financières mondiales.
       </p>
     </div>
 
-    {/* LISTE DES NIVEAUX (ACCORDÉONS HTML NATIFS) */}
-    <div class="space-y-6 max-w-4xl mx-auto">
-      
-      {/* NIVEAU 1 */}
-      <details open class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
-        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
-          <div class="flex items-center gap-4">
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 01</span>
-            <h2 class="text-lg md:text-xl font-bold text-white">Fondamentaux : Épargne & Investissement</h2>
-          </div>
-          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-
-        <div class="p-8 border-t border-slate-700/60 space-y-8">
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
-          </p>
-
-          {/* Lecteur Vidéo Local HTML5 (Autonome) */}
-          <div class="space-y-3">
-            <h3 class="text-sm font-bold text-white">Support Vidéo Pédagogique (Hébergement Direct)</h3>
-            <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-900">
-              <video 
-                controls 
-                preload="metadata" 
-                poster="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80"
-                class="w-full h-full object-cover"
-              >
-                <source src="/videos/introduction-investissement.mp4" type="video/mp4" />
-                Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
-              </video>
-            </div>
-            <p class="text-center text-[11px] text-slate-400">
-              Si la vidéo locale n'est pas encore ajoutée dans <code class="text-emerald-400">public/videos/</code>, placez simplement votre fichier MP4 dans ce dossier.
-            </p>
-          </div>
-
-          {/* Support PDF / AMMC */}
-          <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h4 class="text-xs font-bold text-emerald-400">Guide Officiel de l'Épargnant</h4>
-              <p class="text-[11px] text-slate-400">Document éducatif de l'Autorité Marocaine du Marché des Capitaux (AMMC).</p>
-            </div>
-            <a href="https://www.ammc.ma" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
-              Consulter le PDF &rarr;
-            </a>
-          </div>
-
-          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
-            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'inflation érode la valeur réelle de l'épargne non investie au fil du temps.</p>
-          </div>
-        </div>
-      </details>
-
-      {/* NIVEAU 2 */}
-      <details class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
-        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
-          <div class="flex items-center gap-4">
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 02</span>
-            <h2 class="text-lg md:text-xl font-bold text-white">Marchés Cotés : Bourse & Diversification</h2>
-          </div>
-          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-
-        <div class="p-8 border-t border-slate-700/60 space-y-8">
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille pour diluer le risque.
-          </p>
-
-          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
-            <p class="text-slate-300 text-xs leading-relaxed text-justify">La diversification permet de réduire la volatilité globale sans sacrifier l'espérance de rendement.</p>
-          </div>
-        </div>
-      </details>
-
-      {/* NIVEAU 3 */}
-      <details class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
-        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
-          <div class="flex items-center gap-4">
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 03</span>
-            <h2 class="text-lg md:text-xl font-bold text-white">Analyse Financière & Valorisation d'Entreprise</h2>
-          </div>
-          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-
-        <div class="p-8 border-t border-slate-700/60 space-y-8">
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées pour évaluer les opportunités d'investissement.
-          </p>
-
-          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
-            <p class="text-slate-300 text-xs leading-relaxed text-justify">Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net par action.</p>
-          </div>
-        </div>
-      </details>
-
-      {/* NIVEAU 4 */}
-      <details class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
-        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
-          <div class="flex items-center gap-4">
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 04</span>
-            <h2 class="text-lg md:text-xl font-bold text-white">Gestion de Portefeuille & Allocation d'Actifs</h2>
-          </div>
-          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
-        </summary>
-
-        <div class="p-8 border-t border-slate-700/60 space-y-8">
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques institutionnels et répartition stratégique des avoirs.
-          </p>
-
-          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
-            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'allocation d'actifs détermine plus de 90 % de la performance globale à long terme d'un portefeuille.</p>
-          </div>
-        </div>
-      </details>
-
+    {/* Widget TradingView News en Direct */}
+    <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 md:p-6 shadow-2xl overflow-hidden min-h-[650px]">
+      <div class="tradingview-widget-container h-full">
+        <div class="tradingview-widget-container__widget h-full"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        {
+          "feedMode": "all_symbols",
+          "isTransparent": true,
+          "displayMode": "regular",
+          "width": "100%",
+          "height": "650",
+          "colorTheme": "dark",
+          "locale": "fr"
+        }
+        </script>
+      </div>
     </div>
+
   </section>
 </Layout>
