@@ -36,7 +36,7 @@ import Layout from '../../layouts/Layout.astro';
             Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
           </p>
 
-          {/* Lien Vidéo direct et sécurisé */}
+          {/* Lecteur vidéo sécurisé avec accès direct */}
           <div class="p-6 bg-slate-900/90 border border-slate-700 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold text-lg shrink-0">
@@ -44,7 +44,7 @@ import Layout from '../../layouts/Layout.astro';
               </div>
               <div>
                 <h3 class="text-xs font-bold text-white mb-1">Ressource Vidéo : Introduction à l'Investissement</h3>
-                <p class="text-[11px] text-slate-400">Visionner le cours vidéo officiel sur YouTube.</p>
+                <p class="text-[11px] text-slate-400">Source : Khan Academy Education (Lecture directe)</p>
               </div>
             </div>
             <a href="https://www.youtube.com/watch?v=S7o-s2M6Uq4" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap">
@@ -92,7 +92,7 @@ import Layout from '../../layouts/Layout.astro';
               </div>
               <div>
                 <h3 class="text-xs font-bold text-white mb-1">Ressource Vidéo : Comprendre la Bourse</h3>
-                <p class="text-[11px] text-slate-400">Visionner le support de formation sur les marchés.</p>
+                <p class="text-[11px] text-slate-400">Support de formation sur les marchés financiers</p>
               </div>
             </div>
             <a href="https://www.youtube.com/watch?v=5m35_W9d1Uw" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap">
@@ -121,3 +121,36 @@ import Layout from '../../layouts/Layout.astro';
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
             Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées pour évaluer les opportunités d'investissement.
           </p>
+
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net par action.</p>
+          </div>
+        </div>
+      </details>
+
+      {/* NIVEAU 4 */}
+      <details class="group bg-slate-800/40 border border-slate-700/60 rounded-3xl overflow-hidden transition">
+        <summary class="flex items-center justify-between p-6 cursor-pointer select-none bg-slate-800/60 hover:bg-slate-800/90 transition">
+          <div class="flex items-center gap-4">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Niveau 04</span>
+            <h2 class="text-lg md:text-xl font-bold text-white">Gestion de Portefeuille & Allocation d'Actifs</h2>
+          </div>
+          <span class="text-emerald-400 font-bold text-xl group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+
+        <div class="p-8 border-t border-slate-700/60 space-y-8">
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+            Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques institutionnels et répartition stratégique des avoirs.
+          </p>
+
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'allocation d'actifs détermine plus de 90 % de la performance globale à long terme d'un portefeuille.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+</Layout>
