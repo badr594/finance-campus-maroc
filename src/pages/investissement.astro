@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Investissement et Marchés - Club Finance ENCG Tanger">
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
+        Marchés Financiers
+      </span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+        Investissement & Stratégies
+      </h1>
+      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify">
+        Bourse, actions, obligations et stratégies d’investissement appliquées pour appréhender les dynamiques des marchés financiers nationaux et internationaux.
+      </p>
+    </div>
+
+    {/* Grille des thématiques d'investissement */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      
+      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition">
+        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Actifs de Marché</span>
+        <h3 class="text-xl font-bold text-white mb-3">Bourse, Actions & Obligations</h3>
+        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+          Analyse du fonctionnement des marchés boursiers, introduction aux marchés cotés, valorisation des titres de propriété (actions) et des titres de créance (obligations), ainsi que l'étude des taux d'intérêt et des rendements souverains.
+        </p>
+      </div>
+
+      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition">
+        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Allocation & Gestion</span>
+        <h3 class="text-xl font-bold text-white mb-3">Théorie de Portefeuille & Risques</h3>
+        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+          Exploration des fondements de la gestion de portefeuille moderne (Modèle de Markowitz), diversification des risques, calcul de la volatilité et mise en place de stratégies d'investissement à long terme adaptées aux différents profils de risque.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</Layout>
