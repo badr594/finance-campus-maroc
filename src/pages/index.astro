@@ -4,6 +4,39 @@ import Hero from '../components/Hero.astro';
 ---
 
 <Layout title="Finance Campus Maroc - Club Finance ENCG Tanger">
-  {/* Section d'accueil principale avec barre de recherche uniquement */}
+  {/* Section principale (Hero) */}
   <Hero />
+
+  {/* Sections d'information et de contenu */}
+  <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      
+      {/* Bloc Formation financière */}
+      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between hover:border-emerald-500/40 transition">
+        <div>
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-4">
+            Pédagogie
+          </span>
+          <h3 class="text-xl font-extrabold text-white mb-3">Formation financière</h3>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+            Articles pédagogiques et ressources pour les étudiants de l'ENCG Tanger et de l'enseignement supérieur désireux de renforcer leurs compétences techniques.
+          </p>
+        </div>
+      </div>
+
+      {/* Bloc Investissement */}
+      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between hover:border-emerald-500/40 transition">
+        <div>
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-4">
+            Marchés Financiers
+          </span>
+          <h3 class="text-xl font-extrabold text-white mb-3">Investissement</h3>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
+            Bourse, actions, obligations et stratégies d’investissement appliquées pour appréhender les dynamiques des marchés financiers nationaux et internationaux.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </Layout>
