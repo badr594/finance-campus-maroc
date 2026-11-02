@@ -209,148 +209,166 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <script>
-  // Exécution sécurisée après le chargement du DOM Astro
-  document.addEventListener('DOMContentLoaded', initAcademy);
-  document.addEventListener('astro:page-load', initAcademy); // Pour le support de view transitions si activé
+  // Exécution directe immédiate sans attendre DOMContentLoaded (car Astro charge les scripts en modules)
+  const levelButtons = document.querySelectorAll('.lvl-btn');
+  levelButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetLevel = btn.getAttribute('data-level');
+      
+      document.querySelectorAll('.level-content').forEach(content => content.classList.add('hidden'));
+      levelButtons.forEach(b => {
+        b.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition';
+      });
 
-  function initAcademy() {
-    // 1. Gestion des onglets de niveaux
-    const levelButtons = document.querySelectorAll('.lvl-btn');
-    levelButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const targetLevel = btn.getAttribute('data-level');
+      const activeContent = document.getElementById(`content-lvl-${targetLevel}`);
+      if (activeContent) activeContent.classList.remove('hidden');
+      btn.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10';
+    });
+  });
+
+  // Suivi de progression
+  const completedLessons: Record<string, boolean> = { lvl1: false, lvl2: false, lvl3: false, lvl4: false };
+  const completeButtons = document.querySelectorAll('.complete-btn');
+
+  completeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lvlKey = btn.getAttribute('data-lesson');
+      if (lvlKey) {
+        completedLessons[lvlKey] = true;
+        btn.textContent = 'Validé';
+        btn.className = 'complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500 text-emerald-300';
         
-        // Masquer tous les contenus et réinitialiser les boutons
-        document.querySelectorAll('.level-content').forEach(content => content.classList.add('hidden'));
-        levelButtons.forEach(b => {
-          b.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition';
-        });
+        const total = 4;
+        const count = Object.values(completedLessons).filter(Boolean).length;
+        const percent = Math.round((count / total) * 100);
 
-        // Afficher le contenu cibler et activer le bouton
-        const activeContent = document.getElementById(`content-lvl-${targetLevel}`);
-        if (activeContent) activeContent.classList.remove('hidden');
-        btn.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10';
-      });
-    });
+        const bar = document.getElementById('global-progress-bar');
+        const txt = document.getElementById('global-progress-text');
+        const cnt = document.getElementById('completed-count');
 
-    // 2. Suivi de progression
-    const completedLessons: Record<string, boolean> = { lvl1: false, lvl2: false, lvl3: false, lvl4: false };
-    const completeButtons = document.querySelectorAll('.complete-btn');
-
-    completeButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lvlKey = btn.getAttribute('data-lesson');
-        if (lvlKey) {
-          completedLessons[lvlKey] = true;
-          btn.textContent = 'Validé';
-          btn.className = 'complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500 text-emerald-300';
-          
-          const total = 4;
-          const count = Object.values(completedLessons).filter(Boolean).length;
-          const percent = Math.round((count / total) * 100);
-
-          const bar = document.getElementById('global-progress-bar');
-          const txt = document.getElementById('global-progress-text');
-          const cnt = document.getElementById('completed-count');
-
-          if (bar) bar.style.width = percent + '%';
-          if (txt) txt.textContent = percent + '% complété';
-          if (cnt) cnt.textContent = count.toString();
-        }
-      });
-    });
-
-    // 3. Quiz interactif
-    const questions = [
-      {
-        q: "Quel est l'impact principal de l'inflation sur une épargne non investie ?",
-        options: [
-          "Elle augmente le pouvoir d'achat nominal",
-          "Elle érode la valeur réelle et le pouvoir d'achat de l'épargne",
-          "Elle garantit un rendement fixe supérieur au marché"
-        ],
-        correct: 1,
-        explanation: "L'inflation réduit la quantité de biens et services qu'une même somme d'argent permet d'acheter au fil du temps."
-      },
-      {
-        q: "Que mesure le ratio PER (Price Earning Ratio) en analyse financière ?",
-        options: [
-          "Le rapport entre le cours de l'action et le bénéfice net par action",
-          "Le niveau d'endettement global de l'entreprise",
-          "La rentabilité des capitaux propres (ROE)"
-        ],
-        correct: 0,
-        explanation: "Le PER évalue la cherté relative d'une action en comparant son prix de marché à son bénéfice net par action."
-      },
-      {
-        q: "Quel est l'intérêt fondamental de la diversification d'un portefeuille ?",
-        options: [
-          "Maximiser le risque sur un seul secteur",
-          "Diluer le risque spécifique en combinant des actifs décorrélés",
-          "Éliminer définitivement tout risque de perte"
-        ],
-        correct: 1,
-        explanation: "La diversification permet de réduire la volatilité globale du portefeuille en évitant de dépendre d'un seul actif."
+        if (bar) bar.style.width = percent + '%';
+        if (txt) txt.textContent = percent + '% complété';
+        if (cnt) cnt.textContent = count.toString();
       }
-    ];
+    });
+  });
 
-    let currentQ = 0;
-    let quizScore = 0;
+  // Quiz interactif
+  const questions = [
+    {
+      q: "Quel est l'impact principal de l'inflation sur une épargne non investie ?",
+      options: [
+        "Elle augmente le pouvoir d'achat nominal",
+        "Elle érode la valeur réelle et le pouvoir d'achat de l'épargne",
+        "Elle garantit un rendement fixe supérieur au marché"
+      ],
+      correct: 1,
+      explanation: "L'inflation réduit la quantité de biens et services qu'une même somme d'argent permet d'acheter au fil du temps."
+    },
+    {
+      q: "Que mesure le ratio PER (Price Earning Ratio) en analyse financière ?",
+      options: [
+        "Le rapport entre le cours de l'action et le bénéfice net par action",
+        "Le niveau d'endettement global de l'entreprise",
+        "La rentabilité des capitaux propres (ROE)"
+      ],
+      correct: 0,
+      explanation: "Le PER évalue la cherté relative d'une action en comparant son prix de marché à son bénéfice net par action."
+    },
+    {
+      q: "Quel est l'intérêt fondamental de la diversification d'un portefeuille ?",
+      options: [
+        "Maximiser le risque sur un seul secteur",
+        "Diluer le risque spécifique en combinant des actifs décorrélés",
+        "Éliminer définitivement tout risque de perte"
+      ],
+      correct: 1,
+      explanation: "La diversification permet de réduire la volatilité globale du portefeuille en évitant de dépendre d'un seul actif."
+    }
+  ];
 
-    const qTitle = document.getElementById('q-title');
-    const qOptions = document.getElementById('q-options');
-    const qCounter = document.getElementById('q-counter');
-    const qScoreDisp = document.getElementById('q-score');
-    const qFeedback = document.getElementById('q-feedback');
-    const qNext = document.getElementById('q-next');
-    const quizBox = document.getElementById('quiz-box');
-    const quizFinish = document.getElementById('quiz-finish');
-    const quizRestart = document.getElementById('quiz-restart');
+  let currentQ = 0;
+  let quizScore = 0;
 
-    function loadQuiz() {
-      if (!qTitle || !qOptions || !quizBox || !quizFinish) return;
+  const qTitle = document.getElementById('q-title');
+  const qOptions = document.getElementById('q-options');
+  const qCounter = document.getElementById('q-counter');
+  const qScoreDisp = document.getElementById('q-score');
+  const qFeedback = document.getElementById('q-feedback');
+  const qNext = document.getElementById('q-next');
+  const quizBox = document.getElementById('quiz-box');
+  const quizFinish = document.getElementById('quiz-finish');
+  const quizRestart = document.getElementById('quiz-restart');
 
-      quizBox.classList.remove('hidden');
-      quizFinish.classList.add('hidden');
-      if (qFeedback) qFeedback.classList.add('hidden');
-      if (qNext) qNext.classList.add('hidden');
+  function loadQuiz() {
+    if (!qTitle || !qOptions || !quizBox || !quizFinish) return;
 
-      const curr = questions[currentQ];
-      if (qCounter) qCounter.textContent = `Question ${currentQ + 1} sur ${questions.length}`;
+    quizBox.classList.remove('hidden');
+    quizFinish.classList.add('hidden');
+    if (qFeedback) qFeedback.classList.add('hidden');
+    if (qNext) qNext.classList.add('hidden');
+
+    const curr = questions[currentQ];
+    if (qCounter) qCounter.textContent = `Question ${currentQ + 1} sur ${questions.length}`;
+    if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
+    if (qTitle) qTitle.textContent = curr.q;
+
+    qOptions.innerHTML = '';
+    curr.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 hover:border-emerald-500 transition';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => answerQuiz(idx));
+      qOptions.appendChild(btn);
+    });
+  }
+
+  function answerQuiz(selectedIdx: number) {
+    const curr = questions[currentQ];
+    const buttons = qOptions?.querySelectorAll('button');
+
+    buttons?.forEach((btn, idx) => {
+      btn.setAttribute('disabled', 'true');
+      if (idx === curr.correct) {
+        btn.className = 'w-full text-left p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs text-emerald-300 font-semibold';
+      } else if (idx === selectedIdx) {
+        btn.className = 'w-full text-left p-3.5 rounded-xl bg-red-500/20 border border-red-500 text-xs text-red-300 font-semibold';
+      } else {
+        btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/40 border border-slate-700 text-xs text-slate-500';
+      }
+    });
+
+    if (selectedIdx === curr.correct) {
+      quizScore++;
       if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
-      if (qTitle) qTitle.textContent = curr.q;
-
-      qOptions.innerHTML = '';
-      curr.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 hover:border-emerald-500 transition';
-        btn.textContent = opt;
-        btn.addEventListener('click', () => answerQuiz(idx));
-        qOptions.appendChild(btn);
-      });
     }
 
-    function answerQuiz(selectedIdx: number) {
-      const curr = questions[currentQ];
-      const buttons = qOptions?.querySelectorAll('button');
+    if (qFeedback) {
+      qFeedback.textContent = curr.explanation;
+      qFeedback.className = `p-4 rounded-xl text-xs mb-6 ${selectedIdx === curr.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'}`;
+      qFeedback.classList.remove('hidden');
+    }
 
-      buttons?.forEach((btn, idx) => {
-        btn.setAttribute('disabled', 'true');
-        if (idx === curr.correct) {
-          btn.className = 'w-full text-left p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs text-emerald-300 font-semibold';
-        } else if (idx === selectedIdx) {
-          btn.className = 'w-full text-left p-3.5 rounded-xl bg-red-500/20 border border-red-500 text-xs text-red-300 font-semibold';
-        } else {
-          btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/40 border border-slate-700 text-xs text-slate-500';
-        }
-      });
+    if (qNext) qNext.classList.remove('hidden');
+  }
 
-      if (selectedIdx === curr.correct) {
-        quizScore++;
-        if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
-      }
+  qNext?.addEventListener('click', () => {
+    currentQ++;
+    if (currentQ < questions.length) {
+      loadQuiz();
+    } else {
+      if (quizBox) quizBox.classList.add('hidden');
+      if (quizFinish) quizFinish.classList.remove('hidden');
+      const finalMsg = document.getElementById('quiz-final-msg');
+      if (finalMsg) finalMsg.textContent = `Vous avez validé ${quizScore} sur ${questions.length} bonnes réponses à l'académie.`;
+    }
+  });
 
-      if (qFeedback) {
-        qFeedback.textContent = curr.explanation;
-        qFeedback.className = `p-4 rounded-xl text-xs mb-6 ${selectedIdx === curr.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'}`;
-        q
+  quizRestart?.addEventListener('click', () => {
+    currentQ = 0;
+    quizScore = 0;
+    loadQuiz();
+  });
+
+  loadQuiz();
+</script>
