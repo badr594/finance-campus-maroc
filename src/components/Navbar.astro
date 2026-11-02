@@ -1,17 +1,32 @@
 ---
 ---
 
-<header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-lg font-bold text-white tracking-wide hover:text-emerald-400 transition">
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    
+    {/* Logo / Nom du Club */}
+    <a href="/" class="text-white font-extrabold text-base tracking-tight hover:text-emerald-400 transition">
       Finance Campus <span class="text-emerald-400">Maroc</span>
     </a>
 
-    <nav class="flex items-center gap-6 text-sm font-medium text-slate-300">
+    {/* Liens de navigation */}
+    <div class="hidden md:flex items-center space-x-6 text-xs font-semibold text-slate-300">
       <a href="/" class="hover:text-emerald-400 transition">Accueil</a>
       <a href="/cours" class="hover:text-emerald-400 transition">Cours</a>
-      <a href="/actualites" class="hover:text-emerald-400 transition">Actualités</a>
+      <a href="/formation" class="hover:text-emerald-400 transition">Formation</a>
+      <a href="/investissement" class="hover:text-emerald-400 transition">Investissement</a>
       <a href="/dictionnaire" class="hover:text-emerald-400 transition">Dictionnaire</a>
-    </nav>
-  </div>
+      <a href="/actualites" class="hover:text-emerald-400 transition">Actualités</a>
+      <a href="/club" class="hover:text-emerald-400 transition">Le Club</a>
+      <a href="/contact" class="hover:text-emerald-400 transition">Contact</a>
+    </div>
+
+    {/* Bouton d'action rapide */}
+    <div>
+      <a href="/contact" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/10">
+        Rejoindre
+      </a>
+    </div>
+
+  </nav>
 </header>
