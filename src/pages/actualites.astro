@@ -66,52 +66,66 @@ import Layout from '../layouts/Layout.astro';
     const marocContainer = document.getElementById('maroc-news-feed');
     
     if (marocContainer) {
-      try {
-        // Utilisation de l'API rss2json pour un chargement propre et sécurisé sans blocage CORS
-        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Flematin.ma%2Frss%2Feconomie.xml');
-        const data = await response.json();
+      // Liste des flux RSS économiques marocains valides
+      const feeds = [
+        'https://lematin.ma/rssFeed/4',
+        'https://www.lavieeco.com/feed/'
+      ];
 
-        if (data.status === 'ok' && data.items && data.items.length > 0) {
-          marocContainer.innerHTML = '';
-          data.items.forEach((item) => {
-            const date = new Date(item.pubDate).toLocaleDateString('fr-FR', {
-              day: 'numeric',
-              month: 'short',
-              hour: '2-digit',
-              minute: '2-digit'
+      let loaded = false;
+
+      for (const feedUrl of feeds) {
+        if (loaded) break;
+        try {
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+
+          if (data.status === 'ok' && data.items && data.items.length > 0) {
+            marocContainer.innerHTML = '';
+            data.items.slice(0, 15).forEach((item) => {
+              const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'short',
+                hour: '2-digit',
+                minute: '2-digit'
+              }) : '';
+
+              const cleanDescription = item.description 
+                ? item.description.replace(/<[^>]*>?/gm, '').trim() 
+                : '';
+
+              const article = document.createElement('a');
+              article.href = item.link;
+              article.target = '_blank';
+              article.rel = 'noopener noreferrer';
+              article.className = 'block p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-emerald-500/40 hover:bg-slate-800/80 transition group';
+
+              article.innerHTML = `
+                <div class="flex items-center justify-between text-[11px] text-emerald-400 mb-1.5 font-semibold">
+                  <span>Économie Maroc</span>
+                  <span class="text-slate-500 font-normal">${date}</span>
+                </div>
+                <h3 class="text-sm font-bold text-white group-hover:text-emerald-300 transition line-clamp-2 leading-snug mb-1">
+                  ${item.title}
+                </h3>
+                ${cleanDescription ? `<p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${cleanDescription}</p>` : ''}
+              `;
+              marocContainer.appendChild(article);
             });
-
-            const cleanDescription = item.description ? item.description.replace(/<[^>]*>?/gm, '') : '';
-
-            const article = document.createElement('a');
-            article.href = item.link;
-            article.target = '_blank';
-            article.rel = 'noopener noreferrer';
-            article.className = 'block p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-emerald-500/40 hover:bg-slate-800/80 transition group';
-
-            article.innerHTML = `
-              <div class="flex items-center justify-between text-[11px] text-emerald-400 mb-1.5 font-semibold">
-                <span>Économie Maroc</span>
-                <span class="text-slate-500 font-normal">${date}</span>
-              </div>
-              <h3 class="text-sm font-bold text-white group-hover:text-emerald-300 transition line-clamp-2 leading-snug mb-1">
-                ${item.title}
-              </h3>
-              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
-                ${cleanDescription}
-              </p>
-            `;
-            marocContainer.appendChild(article);
-          });
-        } else {
-          marocContainer.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Aucune actualité disponible pour le moment.</div>';
+            loaded = true;
+          }
+        } catch (e) {
+          console.error("Erreur de chargement du flux:", feedUrl, e);
         }
-      } catch (err) {
-        marocContainer.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Erreur de chargement du flux marocain.</div>';
+      }
+
+      if (!loaded) {
+        marocContainer.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Impossible de charger les actualités marocaines. Veuillez rafraîchir.</div>';
       }
     }
 
-    // Flux International (TradingView)
+    // 2. Flux International (TradingView)
     const intlContainer = document.getElementById('tradingview-intl-container');
     if (intlContainer) {
       intlContainer.innerHTML = '';
