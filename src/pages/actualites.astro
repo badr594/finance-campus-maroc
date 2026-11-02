@@ -21,24 +21,26 @@ import Layout from '../layouts/Layout.astro';
     {/* GRILLE DIVISÉE EN 2 : MAROC & INTERNATIONAL */}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       
-      {/* 1. ACTUALITÉS MAROC (ÉCONOMIE, FINANCE, BOURSE) */}
-      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col">
+      {/* 1. ACTUALITÉS MAROC (FLUX EN DIRECT MEDIA MAROCAIN) */}
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col h-[680px]">
         <div class="mb-6 pb-4 border-b border-slate-800">
           <h2 class="text-lg font-bold text-white uppercase tracking-wider">Maroc : Économie, Finance & Bourse</h2>
-          <p class="text-xs text-slate-400 mt-1">Couverture des marchés financiers nationaux et des entreprises marocaines</p>
+          <p class="text-xs text-slate-400 mt-1">Dernières publications des médias financiers nationaux</p>
         </div>
 
-        <div id="tradingview-maroc-container" class="w-full h-[600px]"></div>
+        <div id="maroc-news-feed" class="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+          <div class="text-center text-slate-500 text-xs py-8">Chargement du flux d'actualités marocaines...</div>
+        </div>
       </div>
 
-      {/* 2. ACTUALITÉS INTERNATIONALES (ÉCONOMIE, FINANCE, BOURSE) */}
-      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col">
+      {/* 2. ACTUALITÉS INTERNATIONALES (TRADINGVIEW) */}
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col h-[680px]">
         <div class="mb-6 pb-4 border-b border-slate-800">
           <h2 class="text-lg font-bold text-white uppercase tracking-wider">Actualités Internationales</h2>
           <p class="text-xs text-slate-400 mt-1">Économie mondiale, marchés boursiers globaux et devises</p>
         </div>
 
-        <div id="tradingview-intl-container" class="w-full h-[600px]"></div>
+        <div id="tradingview-intl-container" class="w-full h-[580px]"></div>
       </div>
 
     </div>
@@ -46,30 +48,70 @@ import Layout from '../layouts/Layout.astro';
   </section>
 </Layout>
 
+<style>
+  /* Personnalisation de la barre de défilement pour la liste Maroc */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(51, 65, 85, 0.8);
+    border-radius: 9999px;
+  }
+</style>
+
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    // 1. Flux Maroc (Marché boursier et financier)
-    const marocContainer = document.getElementById('tradingview-maroc-container');
+  document.addEventListener('DOMContentLoaded', async () => {
+    
+    // 1. Chargement du flux RSS Actualités Économiques Marocaines
+    const marocContainer = document.getElementById('maroc-news-feed');
     if (marocContainer) {
-      marocContainer.innerHTML = '';
-      const scriptMaroc = document.createElement('script');
-      scriptMaroc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
-      scriptMaroc.async = true;
-      scriptMaroc.type = 'text/javascript';
-      scriptMaroc.innerHTML = JSON.stringify({
-        "feedMode": "market",
-        "market": "stock",
-        "isTransparent": true,
-        "displayMode": "regular",
-        "width": "100%",
-        "height": "600",
-        "colorTheme": "dark",
-        "locale": "fr"
-      });
-      marocContainer.appendChild(scriptMaroc);
+      try {
+        // Utilisation du service rss2json pour récupérer le flux RSS économique marocain en direct
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Flematin.ma%2Frss%2Feconomie.xml');
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items.length > 0) {
+          marocContainer.innerHTML = '';
+          data.items.slice(0, 12).forEach(item => {
+            const date = new Date(item.pubDate).toLocaleDateString('fr-FR', {
+              day: 'numeric',
+              month: 'short',
+              hour: '2-digit',
+              minute: '2-digit'
+            });
+
+            const article = document.createElement('a');
+            article.href = item.link;
+            article.target = '_blank';
+            article.rel = 'noopener noreferrer';
+            article.className = 'block p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-emerald-500/40 hover:bg-slate-800/80 transition group';
+
+            article.innerHTML = `
+              <div class="flex items-center justify-between text-[11px] text-emerald-400 mb-1.5 font-semibold">
+                <span>Économie Maroc</span>
+                <span class="text-slate-500 font-normal">${date}</span>
+              </div>
+              <h3 class="text-sm font-bold text-white group-hover:text-emerald-300 transition line-clamp-2 leading-snug mb-1">
+                ${item.title}
+              </h3>
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                ${item.description.replace(/<[^>]*>?/gm, '')}
+              </p>
+            `;
+            marocContainer.appendChild(article);
+          });
+        } else {
+          marocContainer.innerHTML = '<div class="text-slate-400 text-xs">Aucune actualité disponible pour le moment.</div>';
+        }
+      } catch (err) {
+        marocContainer.innerHTML = '<div class="text-slate-400 text-xs">Erreur lors de la récupération du flux d\'actualités marocaines.</div>';
+      }
     }
 
-    // 2. Flux International (Économie & Finance mondiale)
+    // 2. Flux International (TradingView)
     const intlContainer = document.getElementById('tradingview-intl-container');
     if (intlContainer) {
       intlContainer.innerHTML = '';
@@ -82,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
         "isTransparent": true,
         "displayMode": "regular",
         "width": "100%",
-        "height": "600",
+        "height": "580",
         "colorTheme": "dark",
         "locale": "fr"
       });
