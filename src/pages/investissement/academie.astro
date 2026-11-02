@@ -35,10 +35,10 @@ import Layout from '../../layouts/Layout.astro';
 
     {/* SÉLECTEUR DE NIVEAUX (ONGLETS) */}
     <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <button onclick="window.switchLevel(1)" id="btn-lvl-1" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10">Niveau 1 : Débutant</button>
-      <button onclick="window.switchLevel(2)" id="btn-lvl-2" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 2 : Intermédiaire</button>
-      <button onclick="window.switchLevel(3)" id="btn-lvl-3" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 3 : Avancé</button>
-      <button onclick="window.switchLevel(4)" id="btn-lvl-4" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 4 : Professionnel</button>
+      <button data-level="1" class="lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10">Niveau 1 : Débutant</button>
+      <button data-level="2" class="lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 2 : Intermédiaire</button>
+      <button data-level="3" class="lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 3 : Avancé</button>
+      <button data-level="4" class="lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition">Niveau 4 : Professionnel</button>
     </div>
 
 
@@ -52,29 +52,23 @@ import Layout from '../../layouts/Layout.astro';
             <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 01 - Fondamentaux</span>
             <h2 class="text-2xl font-bold text-white">Introduction à l'Épargne & l'Investissement</h2>
           </div>
-          <button onclick="window.completeLesson('lvl1')" id="check-lvl1" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
+          <button data-lesson="lvl1" class="complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
         </div>
 
         <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
           Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif de ce module est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
         </p>
 
-        {/* Vidéo pédagogique officielle intégrée */}
+        {/* Vidéo pédagogique */}
         <div class="mb-8">
           <h3 class="text-sm font-bold text-white mb-3">Ressource Vidéo Pédagogique</h3>
           <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900">
-            <iframe 
-              class="w-full h-full" 
-              src="https://www.youtube-nocookie.com/embed/S7o-s2M6Uq4" 
-              title="Introduction à l'investissement - Khan Academy" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/S7o-s2M6Uq4" title="Introduction à l'investissement" allowfullscreen></iframe>
           </div>
           <span class="block text-center text-[11px] text-slate-400 mt-2">Source officielle : Khan Academy Education</span>
         </div>
 
-        {/* Supports PDF institutionnels */}
+        {/* Supports PDF */}
         <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl mb-8">
           <h3 class="text-sm font-bold text-white mb-3">Support Pédagogique Officiel (PDF)</h3>
           <div class="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -88,11 +82,10 @@ import Layout from '../../layouts/Layout.astro';
           </div>
         </div>
 
-        {/* Résumé À retenir */}
         <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
           <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
           <p class="text-slate-300 text-xs leading-relaxed text-justify">
-            L'inflation érode la valeur nominale de l'épargne non investie. Pour préserver et accroître son capital, l'investisseur doit accepter une exposition mesurée au risque à travers un horizon de placement adapté.
+            L'inflation érode la valeur nominale de l'épargne non investie. Pour préserver et accroître son capital, l'investisseur doit accepter une exposition mesurée au risque.
           </p>
         </div>
       </div>
@@ -107,46 +100,25 @@ import Layout from '../../layouts/Layout.astro';
             <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 02 - Marchés Cotés</span>
             <h2 class="text-2xl font-bold text-white">Fonctionnement de la Bourse & Diversification</h2>
           </div>
-          <button onclick="window.completeLesson('lvl2')" id="check-lvl2" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
+          <button data-lesson="lvl2" class="complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
         </div>
 
         <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Exploration des marchés financiers organisés, distinction entre actions (titres de propriété) et obligations (titres de créance), perception des dividendes et application des règles de diversification de portefeuille pour diluer le risque spécifique.
+          Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille.
         </p>
 
-        {/* Vidéo pédagogique */}
         <div class="mb-8">
           <h3 class="text-sm font-bold text-white mb-3">Ressource Vidéo Pédagogique</h3>
           <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900">
-            <iframe 
-              class="w-full h-full" 
-              src="https://www.youtube-nocookie.com/embed/5m35_W9d1Uw" 
-              title="Comprendre la Bourse - AMF France" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/5m35_W9d1Uw" title="Comprendre la Bourse" allowfullscreen></iframe>
           </div>
-          <span class="block text-center text-[11px] text-slate-400 mt-2">Source officielle : AMF France (Éducatif)</span>
-        </div>
-
-        {/* Support PDF */}
-        <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl mb-8">
-          <h3 class="text-sm font-bold text-white mb-3">Support Pédagogique Officiel (PDF)</h3>
-          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h4 class="text-xs font-bold text-emerald-400">Comprendre la Bourse et les Marchés Financiers</h4>
-              <p class="text-[11px] text-slate-400">Guide pédagogique édité par l'Autorité des Marchés Financiers (AMF).</p>
-            </div>
-            <a href="https://www.amf-france.org" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap">
-              Consulter sur AMF-France.org
-            </a>
-          </div>
+          <span class="block text-center text-[11px] text-slate-400 mt-2">Source officielle : AMF France</span>
         </div>
 
         <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
           <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
           <p class="text-slate-300 text-xs leading-relaxed text-justify">
-            La diversification est le seul « repas gratuit » en finance : combiner des classes d'actifs décorrélées permet de réduire la volatilité globale sans sacrifier l'espérance de rendement.
+            La diversification permet de réduire la volatilité globale sans sacrifier l'espérance de rendement.
           </p>
         </div>
       </div>
@@ -161,31 +133,17 @@ import Layout from '../../layouts/Layout.astro';
             <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 03 - Analyse Technique & Fondamentale</span>
             <h2 class="text-2xl font-bold text-white">Analyse Financière & Valorisation d'Entreprise</h2>
           </div>
-          <button onclick="window.completeLesson('lvl3')" id="check-lvl3" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
+          <button data-lesson="lvl3" class="complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
         </div>
 
         <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Maîtrise de la lecture des états financiers (Bilan, Compte de Résultat), calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées pour identifier les opportunités d'investissement sur le marché marocain et international.
+          Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées.
         </p>
-
-        {/* Support PDF */}
-        <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl mb-8">
-          <h3 class="text-sm font-bold text-white mb-3">Support d'Étude & Analyse</h3>
-          <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h4 class="text-xs font-bold text-emerald-400">Guide de l'Analyse Financière des Sociétés Cotées</h4>
-              <p class="text-[11px] text-slate-400">Ressource technique éditée par le Club Finance ENCG Tanger.</p>
-            </div>
-            <span class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30">
-              Disponible en interne
-            </span>
-          </div>
-        </div>
 
         <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
           <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
           <p class="text-slate-300 text-xs leading-relaxed text-justify">
-            Le PER (Price Earning Ratio) indique le nombre d'années de bénéfices nécessaires pour amortir le cours boursier de l'action. Un PER élevé reflète de fortes attentes de croissance du marché.
+            Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net par action.
           </p>
         </div>
       </div>
@@ -200,17 +158,17 @@ import Layout from '../../layouts/Layout.astro';
             <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 04 - Gestion Institutionnelle</span>
             <h2 class="text-2xl font-bold text-white">Gestion de Portefeuille & Allocation d'Actifs</h2>
           </div>
-          <button onclick="window.completeLesson('lvl4')" id="check-lvl4" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
+          <button data-lesson="lvl4" class="complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300 hover:border-emerald-500 transition">Marquer comme terminé</button>
         </div>
 
         <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques souverains et institutionnels, et évaluation de la performance des fonds d'investissement.
+          Application des modèles de Markowitz, optimisation de la frontière efficiente et gestion des risques institutionnels.
         </p>
 
         <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
           <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
           <p class="text-slate-300 text-xs leading-relaxed text-justify">
-            L'allocation d'actifs stratégique détermine plus de 90 % de la performance à long terme d'un portefeuille institutionnel, surclassant la simple sélection des titres individuels (stock picking).
+            L'allocation d'actifs détermine plus de 90 % de la performance à long terme d'un portefeuille.
           </p>
         </div>
       </div>
@@ -241,7 +199,7 @@ import Layout from '../../layouts/Layout.astro';
       <div id="quiz-finish" class="text-center hidden">
         <h3 class="text-2xl font-bold text-white mb-3">Félicitations !</h3>
         <p id="quiz-final-msg" class="text-sm text-slate-300 mb-6"></p>
-        <button onclick="window.resetAcademyQuiz()" class="px-6 py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
+        <button id="quiz-restart" class="px-6 py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
           Recommencer le Quiz
         </button>
       </div>
@@ -251,103 +209,94 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <script>
-  declare global {
-    interface Window {
-      switchLevel: (levelNum: number) => void;
-      completeLesson: (lvlKey: string) => void;
-      resetAcademyQuiz: () => void;
-    }
-  }
+  // Exécution sécurisée après le chargement du DOM Astro
+  document.addEventListener('DOMContentLoaded', initAcademy);
+  document.addEventListener('astro:page-load', initAcademy); // Pour le support de view transitions si activé
 
-  // --- GESTION DES ONGLETS DE NIVEAU ---
-  window.switchLevel = function(levelNum: number) {
-    for (let i = 1; i <= 4; i++) {
-      const content = document.getElementById(`content-lvl-${i}`);
-      const btn = document.getElementById(`btn-lvl-${i}`);
-      if (content) content.classList.add('hidden');
-      if (btn) {
-        btn.className = 'px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition';
+  function initAcademy() {
+    // 1. Gestion des onglets de niveaux
+    const levelButtons = document.querySelectorAll('.lvl-btn');
+    levelButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetLevel = btn.getAttribute('data-level');
+        
+        // Masquer tous les contenus et réinitialiser les boutons
+        document.querySelectorAll('.level-content').forEach(content => content.classList.add('hidden'));
+        levelButtons.forEach(b => {
+          b.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500/50 transition';
+        });
+
+        // Afficher le contenu cibler et activer le bouton
+        const activeContent = document.getElementById(`content-lvl-${targetLevel}`);
+        if (activeContent) activeContent.classList.remove('hidden');
+        btn.className = 'lvl-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10';
+      });
+    });
+
+    // 2. Suivi de progression
+    const completedLessons: Record<string, boolean> = { lvl1: false, lvl2: false, lvl3: false, lvl4: false };
+    const completeButtons = document.querySelectorAll('.complete-btn');
+
+    completeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lvlKey = btn.getAttribute('data-lesson');
+        if (lvlKey) {
+          completedLessons[lvlKey] = true;
+          btn.textContent = 'Validé';
+          btn.className = 'complete-btn px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500 text-emerald-300';
+          
+          const total = 4;
+          const count = Object.values(completedLessons).filter(Boolean).length;
+          const percent = Math.round((count / total) * 100);
+
+          const bar = document.getElementById('global-progress-bar');
+          const txt = document.getElementById('global-progress-text');
+          const cnt = document.getElementById('completed-count');
+
+          if (bar) bar.style.width = percent + '%';
+          if (txt) txt.textContent = percent + '% complété';
+          if (cnt) cnt.textContent = count.toString();
+        }
+      });
+    });
+
+    // 3. Quiz interactif
+    const questions = [
+      {
+        q: "Quel est l'impact principal de l'inflation sur une épargne non investie ?",
+        options: [
+          "Elle augmente le pouvoir d'achat nominal",
+          "Elle érode la valeur réelle et le pouvoir d'achat de l'épargne",
+          "Elle garantit un rendement fixe supérieur au marché"
+        ],
+        correct: 1,
+        explanation: "L'inflation réduit la quantité de biens et services qu'une même somme d'argent permet d'acheter au fil du temps."
+      },
+      {
+        q: "Que mesure le ratio PER (Price Earning Ratio) en analyse financière ?",
+        options: [
+          "Le rapport entre le cours de l'action et le bénéfice net par action",
+          "Le niveau d'endettement global de l'entreprise",
+          "La rentabilité des capitaux propres (ROE)"
+        ],
+        correct: 0,
+        explanation: "Le PER évalue la cherté relative d'une action en comparant son prix de marché à son bénéfice net par action."
+      },
+      {
+        q: "Quel est l'intérêt fondamental de la diversification d'un portefeuille ?",
+        options: [
+          "Maximiser le risque sur un seul secteur",
+          "Diluer le risque spécifique en combinant des actifs décorrélés",
+          "Éliminer définitivement tout risque de perte"
+        ],
+        correct: 1,
+        explanation: "La diversification permet de réduire la volatilité globale du portefeuille en évitant de dépendre d'un seul actif."
       }
-    }
+    ];
 
-    const activeContent = document.getElementById(`content-lvl-${levelNum}`);
-    const activeBtn = document.getElementById(`btn-lvl-${levelNum}`);
-    if (activeContent) activeContent.classList.remove('hidden');
-    if (activeBtn) {
-      activeBtn.className = 'px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 transition shadow-lg shadow-emerald-500/10';
-    }
-  };
+    let currentQ = 0;
+    let quizScore = 0;
 
-  // --- SUIVI DE PROGRESSION ---
-  let completedLessons: Record<string, boolean> = {
-    lvl1: false,
-    lvl2: false,
-    lvl3: false,
-    lvl4: false
-  };
-
-  window.completeLesson = function(lvlKey: string) {
-    completedLessons[lvlKey] = true;
-    const btn = document.getElementById(`check-${lvlKey}`);
-    if (btn) {
-      btn.textContent = 'Validé';
-      btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500 text-emerald-300';
-    }
-    updateProgressDisplay();
-  };
-
-  function updateProgressDisplay() {
-    const total = 4;
-    const count = Object.values(completedLessons).filter(Boolean).length;
-    const percent = Math.round((count / total) * 100);
-
-    const bar = document.getElementById('global-progress-bar');
-    const txt = document.getElementById('global-progress-text');
-    const cnt = document.getElementById('completed-count');
-
-    if (bar) bar.style.width = percent + '%';
-    if (txt) txt.textContent = percent + '% complété';
-    if (cnt) cnt.textContent = count.toString();
-  }
-
-  // --- QUIZ INTERACTIF DE L'ACADEMIE ---
-  const questions = [
-    {
-      q: "Quel est l'impact principal de l'inflation sur une épargne non investie ?",
-      options: [
-        "Elle augmente le pouvoir d'achat nominal",
-        "Elle érode la valeur réelle et le pouvoir d'achat de l'épargne",
-        "Elle garantit un rendement fixe supérieur au marché"
-      ],
-      correct: 1,
-      explanation: "L'inflation réduit la quantité de biens et services qu'une même somme d'argent permet d'acheter au fil du temps."
-    },
-    {
-      q: "Que mesure le ratio PER (Price Earning Ratio) en analyse financière ?",
-      options: [
-        "Le rapport entre le cours de l'action et le bénéfice net par action",
-        "Le niveau d'endettement global de l'entreprise",
-        "La rentabilité des capitaux propres (ROE)"
-      ],
-      correct: 0,
-      explanation: "Le PER évalue la cherté relative d'une action en comparant son prix de marché à son bénéfice net par action."
-    },
-    {
-      q: "Quel est l'intérêt fondamental de la diversification d'un portefeuille ?",
-      options: [
-        "Maximiser le risque sur un seul secteur",
-        "Diluer le risque spécifique en combinant des actifs décorrélés",
-        "Éliminer définitivement tout risque de perte"
-      ],
-      correct: 1,
-      explanation: "La diversification permet de réduire la volatilité globale du portefeuille en évitant de dépendre d'un seul actif."
-    }
-  ];
-
-  let currentQ = 0;
-  let quizScore = 0;
-
-  function loadAcademyQuiz() {
     const qTitle = document.getElementById('q-title');
     const qOptions = document.getElementById('q-options');
     const qCounter = document.getElementById('q-counter');
@@ -356,79 +305,52 @@ import Layout from '../../layouts/Layout.astro';
     const qNext = document.getElementById('q-next');
     const quizBox = document.getElementById('quiz-box');
     const quizFinish = document.getElementById('quiz-finish');
+    const quizRestart = document.getElementById('quiz-restart');
 
-    if (!qTitle || !qOptions || !quizBox || !quizFinish) return;
+    function loadQuiz() {
+      if (!qTitle || !qOptions || !quizBox || !quizFinish) return;
 
-    quizBox.classList.remove('hidden');
-    quizFinish.classList.add('hidden');
-    qFeedback?.classList.add('hidden');
-    qNext?.classList.add('hidden');
+      quizBox.classList.remove('hidden');
+      quizFinish.classList.add('hidden');
+      if (qFeedback) qFeedback.classList.add('hidden');
+      if (qNext) qNext.classList.add('hidden');
 
-    const curr = questions[currentQ];
-    if (qCounter) qCounter.textContent = `Question ${currentQ + 1} sur ${questions.length}`;
-    if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
-    if (qTitle) qTitle.textContent = curr.q;
-
-    qOptions.innerHTML = '';
-    curr.options.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 hover:border-emerald-500 transition';
-      btn.textContent = opt;
-      btn.onclick = () => answerAcademyQuiz(idx);
-      qOptions.appendChild(btn);
-    });
-  }
-
-  function answerAcademyQuiz(selectedIdx: number) {
-    const curr = questions[currentQ];
-    const buttons = document.querySelectorAll('#q-options button');
-
-    buttons.forEach((btn, idx) => {
-      btn.setAttribute('disabled', 'true');
-      if (idx === curr.correct) {
-        btn.className = 'w-full text-left p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs text-emerald-300 font-semibold';
-      } else if (idx === selectedIdx) {
-        btn.className = 'w-full text-left p-3.5 rounded-xl bg-red-500/20 border border-red-500 text-xs text-red-300 font-semibold';
-      } else {
-        btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/40 border border-slate-700 text-xs text-slate-500';
-      }
-    });
-
-    if (selectedIdx === curr.correct) {
-      quizScore++;
-      const qScoreDisp = document.getElementById('q-score');
+      const curr = questions[currentQ];
+      if (qCounter) qCounter.textContent = `Question ${currentQ + 1} sur ${questions.length}`;
       if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
+      if (qTitle) qTitle.textContent = curr.q;
+
+      qOptions.innerHTML = '';
+      curr.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 hover:border-emerald-500 transition';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => answerQuiz(idx));
+        qOptions.appendChild(btn);
+      });
     }
 
-    const qFeedback = document.getElementById('q-feedback');
-    if (qFeedback) {
-      qFeedback.textContent = curr.explanation;
-      qFeedback.className = `p-4 rounded-xl text-xs mb-6 ${selectedIdx === curr.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'}`;
-      qFeedback.classList.remove('hidden');
-    }
+    function answerQuiz(selectedIdx: number) {
+      const curr = questions[currentQ];
+      const buttons = qOptions?.querySelectorAll('button');
 
-    const qNext = document.getElementById('q-next');
-    if (qNext) qNext.classList.remove('hidden');
-  }
+      buttons?.forEach((btn, idx) => {
+        btn.setAttribute('disabled', 'true');
+        if (idx === curr.correct) {
+          btn.className = 'w-full text-left p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs text-emerald-300 font-semibold';
+        } else if (idx === selectedIdx) {
+          btn.className = 'w-full text-left p-3.5 rounded-xl bg-red-500/20 border border-red-500 text-xs text-red-300 font-semibold';
+        } else {
+          btn.className = 'w-full text-left p-3.5 rounded-xl bg-slate-800/40 border border-slate-700 text-xs text-slate-500';
+        }
+      });
 
-  document.getElementById('q-next')?.addEventListener('click', () => {
-    currentQ++;
-    if (currentQ < questions.length) {
-      loadAcademyQuiz();
-    } else {
-      document.getElementById('quiz-box')?.classList.add('hidden');
-      const finish = document.getElementById('quiz-finish');
-      const finalMsg = document.getElementById('quiz-final-msg');
-      if (finish) finish.classList.remove('hidden');
-      if (finalMsg) finalMsg.textContent = `Vous avez validé ${quizScore} sur ${questions.length} bonnes réponses à l'académie.`;
-    }
-  });
+      if (selectedIdx === curr.correct) {
+        quizScore++;
+        if (qScoreDisp) qScoreDisp.textContent = `Score : ${quizScore}`;
+      }
 
-  window.resetAcademyQuiz = function() {
-    currentQ = 0;
-    quizScore = 0;
-    loadAcademyQuiz();
-  };
-
-  loadAcademyQuiz();
-</script>
+      if (qFeedback) {
+        qFeedback.textContent = curr.explanation;
+        qFeedback.className = `p-4 rounded-xl text-xs mb-6 ${selectedIdx === curr.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'}`;
+        q
