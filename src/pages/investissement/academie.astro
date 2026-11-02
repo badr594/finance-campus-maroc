@@ -36,20 +36,19 @@ import Layout from '../../layouts/Layout.astro';
             Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
           </p>
 
-          {/* Capsule Vidéo & Lien direct */}
-          <div class="p-6 bg-slate-900/90 border border-slate-700 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold text-lg shrink-0">
-                ▶
-              </div>
-              <div>
-                <h3 class="text-xs font-bold text-white mb-1">Vidéo : C'est quoi l'Investissement ?</h3>
-                <p class="text-[11px] text-slate-400">Cours d'initiation aux principes de l'investissement et de l'épargne.</p>
-              </div>
+          {/* Lecteur Vidéo HTML5 avec URL en ligne directe */}
+          <div class="space-y-3">
+            <h3 class="text-sm font-bold text-white">Support Vidéo Pédagogique (Lecteur HTML5)</h3>
+            <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-900">
+              <video 
+                controls 
+                preload="metadata" 
+                class="w-full h-full object-cover"
+              >
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+                Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+              </video>
             </div>
-            <a href="https://www.youtube.com/watch?v=g342qLAnu28" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap shadow-lg shadow-emerald-500/20">
-              Regarder sur YouTube &rarr;
-            </a>
           </div>
 
           {/* Support PDF / AMMC */}
@@ -84,21 +83,6 @@ import Layout from '../../layouts/Layout.astro';
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
             Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille pour diluer le risque.
           </p>
-
-          <div class="p-6 bg-slate-900/90 border border-slate-700 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold text-lg shrink-0">
-                ▶
-              </div>
-              <div>
-                <h3 class="text-xs font-bold text-white mb-1">Vidéo : Comment Fonctionne la Bourse ?</h3>
-                <p class="text-[11px] text-slate-400">Guide pédagogique complet sur les marchés d'actions et la diversification.</p>
-              </div>
-            </div>
-            <a href="https://www.youtube.com/watch?v=28aP9K6xJno" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition whitespace-nowrap shadow-lg shadow-emerald-500/20">
-              Regarder sur YouTube &rarr;
-            </a>
-          </div>
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
             <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
