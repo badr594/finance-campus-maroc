@@ -14,7 +14,7 @@ import Layout from '../../layouts/Layout.astro';
         Apprendre à Investir : Cursus Complet
       </h1>
       <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
-        Parcours pédagogique progressif en quatre niveaux. Déroulez chaque niveau pour accéder aux cours, capsules vidéo et supports d'étude institutionnels.
+        Parcours pédagogique progressif en quatre niveaux. Déroulez chaque niveau pour accéder aux cours, capsules vidéo et supports PDF institutionnels détaillés.
       </p>
     </div>
 
@@ -36,29 +36,24 @@ import Layout from '../../layouts/Layout.astro';
             Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque inhérent à chaque actif et l'impact destructeur de l'inflation sur le long terme.
           </p>
 
-          {/* Lecteur Vidéo HTML5 avec URL en ligne directe */}
           <div class="space-y-3">
-            <h3 class="text-sm font-bold text-white">Support Vidéo Pédagogique (Lecteur HTML5)</h3>
+            <h3 class="text-sm font-bold text-white">Support Vidéo Pédagogique</h3>
             <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-900">
-              <video 
-                controls 
-                preload="metadata" 
-                class="w-full h-full object-cover"
-              >
+              <video controls preload="metadata" class="w-full h-full object-cover">
                 <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
                 Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
               </video>
             </div>
           </div>
 
-          {/* Support PDF / AMMC */}
+          {/* Support PDF Spécifique Niveau 1 */}
           <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <h4 class="text-xs font-bold text-emerald-400">Guide Officiel de l'Épargnant</h4>
-              <p class="text-[11px] text-slate-400">Document éducatif de l'Autorité Marocaine du Marché des Capitaux (AMMC).</p>
+              <h4 class="text-xs font-bold text-emerald-400">Support de Cours - Niveau 01 : Fondamentaux</h4>
+              <p class="text-[11px] text-slate-400">Guide complet sur l'épargne, l'inflation et l'introduction aux marchés.</p>
             </div>
-            <a href="https://www.ammc.ma" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
-              Consulter le PDF &rarr;
+            <a href="/docs/niveau1-fondamentaux.pdf" download class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
+              Télécharger le PDF &darr;
             </a>
           </div>
 
@@ -81,8 +76,19 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="p-8 border-t border-slate-700/60 space-y-8">
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille pour diluer le risque.
+            Exploration des marchés financiers organisés, distinction entre actions et obligations, perception des dividendes et application des règles de diversification de portefeuille.
           </p>
+
+          {/* Support PDF Spécifique Niveau 2 */}
+          <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 class="text-xs font-bold text-emerald-400">Support de Cours - Niveau 02 : Marchés & Bourse</h4>
+              <p class="text-[11px] text-slate-400">Fonctionnement des marchés boursiers et techniques de diversification.</p>
+            </div>
+            <a href="/docs/niveau2-marches.pdf" download class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
+              Télécharger le PDF &darr;
+            </a>
+          </div>
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
             <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
@@ -103,8 +109,19 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="p-8 border-t border-slate-700/60 space-y-8">
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées pour évaluer les opportunités d'investissement.
+            Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées.
           </p>
+
+          {/* Support PDF Spécifique Niveau 3 */}
+          <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 class="text-xs font-bold text-emerald-400">Support de Cours - Niveau 03 : Analyse Financière</h4>
+              <p class="text-[11px] text-slate-400">Analyse des états financiers et méthodes de valorisation d'actifs.</p>
+            </div>
+            <a href="/docs/niveau3-analyse.pdf" download class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
+              Télécharger le PDF &darr;
+            </a>
+          </div>
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
             <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
@@ -125,8 +142,19 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="p-8 border-t border-slate-700/60 space-y-8">
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-            Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques institutionnels et répartition stratégique des avoirs.
+            Application des modèles de Markowitz, optimisation de la frontière efficiente, gestion des risques institutionnels et allocation stratégique.
           </p>
+
+          {/* Support PDF Spécifique Niveau 4 */}
+          <div class="p-6 bg-slate-900/80 border border-slate-700/80 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h4 class="text-xs font-bold text-emerald-400">Support de Cours - Niveau 04 : Gestion de Portefeuille</h4>
+              <p class="text-[11px] text-slate-400">Modèles de Markowitz, optimisation et gestion des risques de marché.</p>
+            </div>
+            <a href="/docs/niveau4-portefeuille.pdf" download class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-emerald-400 border border-emerald-500/30 hover:bg-slate-700 transition whitespace-nowrap">
+              Télécharger le PDF &darr;
+            </a>
+          </div>
 
           <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
             <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">À retenir</h3>
