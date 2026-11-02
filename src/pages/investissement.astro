@@ -2,39 +2,581 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Investissement et Marchés - Club Finance ENCG Tanger">
+<Layout title="Espace Investissement & Marchés - Club Finance ENCG Tanger">
   <section class="max-w-7xl mx-auto px-6 py-12">
+    
+    {/* En-tête de la section */}
     <div class="text-center max-w-3xl mx-auto mb-16">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
-        Marchés Financiers
+        Plateforme Éducative & Professionnelle
       </span>
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Investissement & Stratégies
+        Centre d'Investissement & Marchés Financiers
       </h1>
-      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify">
-        Bourse, actions, obligations et stratégies d’investissement appliquées pour appréhender les dynamiques des marchés financiers nationaux et internationaux.
+      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
+        Un espace complet dédié à la maîtrise des classes d'actifs, au parcours pédagogique progressif, à l'analyse du marché financier marocain, ainsi qu'à des outils de simulation et d'évaluation interactive.
       </p>
+
+      {/* Navigation interne rapide */}
+      <div class="flex flex-wrap justify-center gap-2 text-xs font-semibold">
+        <a href="#categories" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Catégories</a>
+        <a href="#parcours" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Parcours</a>
+        <a href="#maroc" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Marché Marocain</a>
+        <a href="#simulateurs" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Simulateurs</a>
+        <a href="#actualites" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Actualités</a>
+        <a href="#quiz" class="px-4 py-2 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition">Quiz</a>
+      </div>
     </div>
 
-    {/* Grille des thématiques d'investissement */}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Actifs de Marché</span>
-        <h3 class="text-xl font-bold text-white mb-3">Bourse, Actions & Obligations</h3>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-          Analyse du fonctionnement des marchés boursiers, introduction aux marchés cotés, valorisation des titres de propriété (actions) et des titres de créance (obligations), ainsi que l'étude des taux d'intérêt et des rendements souverains.
-        </p>
+    {/* 1. LES CATEGORIES D'INVESTISSEMENT */}
+    <div id="categories" class="mb-20 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">1. Les Catégories d'Investissement</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Panorama des classes d'actifs traditionnelles, alternatives et participatives.</p>
       </div>
 
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Allocation & Gestion</span>
-        <h3 class="text-xl font-bold text-white mb-3">Théorie de Portefeuille & Risques</h3>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify">
-          Exploration des fondements de la gestion de portefeuille moderne (Modèle de Markowitz), diversification des risques, calcul de la volatilité et mise en place de stratégies d'investissement à long terme adaptées aux différents profils de risque.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Actifs Cotés</span>
+            <h3 class="text-base font-bold text-white mb-2">Actions & Bourse</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Acquisition de parts de capital dans des sociétés cotées pour viser des plus-values et des dividendes.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Liquidité élevée</span>
+        </div>
 
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Revenu Fixe</span>
+            <h3 class="text-base font-bold text-white mb-2">Obligations</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Titres de créance émis par les États ou les entreprises offrant des coupons réguliers et prédictibles.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Risque modéré</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Gestion Collective</span>
+            <h3 class="text-base font-bold text-white mb-2">OPCVM & Fonds</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Portefeuilles collectifs gérés par des professionnels pour diversifier instantanément l'épargne.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Diversification instantanée</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Actifs Tangibles</span>
+            <h3 class="text-base font-bold text-white mb-2">Immobilier</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Investissement locatif, foncier ou parts de sociétés civiles de placement pour des revenus récurrents.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Protection inflation</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Valeurs Refuges</span>
+            <h3 class="text-base font-bold text-white mb-2">Or & Matières Premières</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">M métaux précieux, énergie et produits agricoles utilisés pour la couverture contre les crises systémiques.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Couverture macro</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Global</span>
+            <h3 class="text-base font-bold text-white mb-2">Marchés Internationaux</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Exposition aux places boursières mondiales majeures et diversification géographique des avoirs.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Portée globale</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Alternative</span>
+            <h3 class="text-base font-bold text-white mb-2">Finance Islamique</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Investissements éthiques conformes à la Sharia, sans riba (intérêt) et basés sur le partage des profits et pertes.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Éthique & Partage</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Non Coté</span>
+            <h3 class="text-base font-bold text-white mb-2">Startups & Private Equity</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Financement participatif et prises de participation dans des entreprises à fort potentiel de croissance.</p>
+          </div>
+          <span class="text-[11px] text-emerald-400 font-medium">Haut rendement potentiel</span>
+        </div>
+
+      </div>
     </div>
+
+
+    {/* 2. APPRENDRE A INVESTIR (PARCOURS) */}
+    <div id="parcours" class="mb-20 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">2. Apprendre à Investir : Parcours Pédagogique</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Un cursus structuré de l'initiation de l'épargne jusqu'à la gestion professionnelle de portefeuilles.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">Niveau 01</span>
+          <h3 class="text-lg font-bold text-white mb-2">Débutant</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">
+            Fondamentaux de l'épargne, distinction entre épargne et investissement, notion de rendement, prise en compte du risque et impact de l'inflation sur le pouvoir d'achat.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">Niveau 02</span>
+          <h3 class="text-lg font-bold text-white mb-2">Intermédiaire</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">
+            Fonctionnement des marchés boursiers, acquisition d'actions, perception des dividendes, techniques de diversification et gestion de la volatilité à moyen terme.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">Niveau 03</span>
+          <h3 class="text-lg font-bold text-white mb-2">Avancé</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">
+            Maîtrise de l'analyse fondamentale et technique, lecture des ratios clés (PER, ROE, EV/EBITDA) et modèles d'évaluation intrinsèque des entreprises.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">Niveau 04</span>
+          <h3 class="text-lg font-bold text-white mb-2">Professionnel</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">
+            Architecture de portefeuilles institutionnels, allocation d'actifs stratégique, gestion des risques et application de la Théorie Moderne du Portefeuille (Markowitz).
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    {/* 3. INVESTIR AU MAROC */}
+    <div id="maroc" class="mb-20 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">3. Investir au Maroc : Le Marché National</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Spécificités de l'écosystème financier marocain, de la Bourse de Casablanca aux instruments de placement.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <h3 class="text-base font-bold text-white mb-2">Bourse de Casablanca</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify">
+            Place financière centrale au Maroc, régulée par l'AMMC, offrant une exposition aux fleurons de l'économie nationale à travers les indices MASI et MADEX.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <h3 class="text-base font-bold text-white mb-2">Sociétés de Bourse & IPO</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify">
+            Intermédiation boursière assurée par des sociétés agréées et processus d'Introduction en Bourse (IPO) permettant aux entreprises de se financer sur le marché public.
+          </p>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl">
+          <h3 class="text-base font-bold text-white mb-2">OPCVM & Bons du Trésor</h3>
+          <p class="text-slate-300 text-xs leading-relaxed text-justify">
+            Large gamme de fonds d'investissement (actions, obligations, monétaires) et émissions souveraines garantissant la sécurité et le dynamisme de l'épargne locale.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    {/* 4. SIMULATEURS INTERACTIFS */}
+    <div id="simulateurs" class="mb-20 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">4. Simulateurs Financiers Interactifs</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Outils de calculs dynamiques pour projeter l'évolution de vos investissements et portefeuilles.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        {/* Simulateur 1 : Rendement simple */}
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-white mb-4">Simulateur de Rendement</h3>
+            
+            <div class="space-y-4 text-xs">
+              <div>
+                <label class="block text-slate-300 mb-1">Capital initial (DH)</label>
+                <input type="number" id="sim1-capital" value="10000" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Taux de rendement annuel (%)</label>
+                <input type="number" id="sim1-taux" value="7" step="0.1" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Durée (années)</label>
+                <input type="number" id="sim1-duree" value="5" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-700/60">
+            <div class="flex justify-between text-xs text-slate-400 mb-1">
+              <span>Capital final estimé :</span>
+              <span id="sim1-result" class="text-emerald-400 font-bold text-sm">14 025 DH</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Simulateur 2 : Intérêts composés */}
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-white mb-4">Intérêts Composés & Épargne</h3>
+            
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-slate-300 mb-1">Capital initial (DH)</label>
+                <input type="number" id="sim2-capital" value="5000" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Versement mensuel (DH)</label>
+                <input type="number" id="sim2-mensuel" value="1000" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Taux annuel (%)</label>
+                <input type="number" id="sim2-taux" value="8" step="0.1" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Durée (années)</label>
+                <input type="number" id="sim2-duree" value="10" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-emerald-500" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-700/60">
+            <div class="flex justify-between text-xs text-slate-400 mb-1">
+              <span>Valeur future totale :</span>
+              <span id="sim2-result" class="text-emerald-400 font-bold text-sm">184 170 DH</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Simulateur 3 : Portefeuille diversifié */}
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-bold text-white mb-4">Répartition de Portefeuille</h3>
+            
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-slate-300 mb-1">Actions (%)</label>
+                <input type="range" id="sim3-actions" min="0" max="100" value="50" class="w-full accent-emerald-500" />
+                <span id="val-actions" class="text-emerald-400 font-semibold">50%</span>
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Obligations (%)</label>
+                <input type="range" id="sim3-obligations" min="0" max="100" value="30" class="w-full accent-emerald-500" />
+                <span id="val-obligations" class="text-emerald-400 font-semibold">30%</span>
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Immobilier (%)</label>
+                <input type="range" id="sim3-immo" min="0" max="100" value="15" class="w-full accent-emerald-500" />
+                <span id="val-immo" class="text-emerald-400 font-semibold">15%</span>
+              </div>
+              <div>
+                <label class="block text-slate-300 mb-1">Liquidités (%)</label>
+                <input type="range" id="sim3-cash" min="0" max="100" value="5" class="w-full accent-emerald-500" />
+                <span id="val-cash" class="text-emerald-400 font-semibold">5%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-700/60">
+            <div class="flex justify-between text-xs text-slate-400">
+              <span>Validation allocation :</span>
+              <span id="sim3-status" class="text-emerald-400 font-bold">100% (Équilibré)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    {/* 5. ACTUALITES ET ANALYSES */}
+    <div id="actualites" class="mb-20 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">5. Actualités & Analyses Financières</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Veille économique, tendances de marché et notes de recherche publiées par le club.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Macroéconomie</span>
+            <h3 class="text-base font-bold text-white mb-2">Perspectives de Croissance et Inflation</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Analyse de l'impact des décisions de Bank Al-Maghrib sur le coût du crédit et l'orientation des investissements.</p>
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">Club Finance ENCGT</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Marché Boursier</span>
+            <h3 class="text-base font-bold text-white mb-2">Bilan Trimestriel de la Bourse de Casablanca</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Évolution des volumes échangés, performances sectorielles et focus sur les introductions en bourse récentes.</p>
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">Club Finance ENCGT</span>
+        </div>
+
+        <div class="p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider block mb-2">Stratégie</span>
+            <h3 class="text-base font-bold text-white mb-2">Diversification Internationale des Portefeuilles</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify mb-4">Comment les investisseurs institutionnels répartissent leurs actifs entre marchés frontières et marchés développés.</p>
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">Club Finance ENCGT</span>
+        </div>
+
+      </div>
+    </div>
+
+
+    {/* 6. QUIZ FINANCIER */}
+    <div id="quiz" class="mb-12 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white mb-2">6. Quiz Financier Interactif</h2>
+        <p class="text-slate-400 text-xs md:text-sm text-justify">Testez vos connaissances en investissement et validez vos acquis en temps réel.</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto p-8 bg-slate-900/90 border border-emerald-500/30 rounded-3xl shadow-xl">
+        <div id="quiz-container">
+          <div class="flex justify-between items-center mb-6">
+            <span id="quiz-progress" class="text-xs font-semibold text-emerald-400">Question 1 sur 3</span>
+            <span id="quiz-score-display" class="text-xs text-slate-400">Score actuel : 0</span>
+          </div>
+
+          <h3 id="quiz-question" class="text-lg font-bold text-white mb-6 text-justify"></h3>
+
+          <div id="quiz-options" class="space-y-3 mb-6"></div>
+
+          <div id="quiz-feedback" class="p-4 rounded-xl text-xs mb-6 hidden"></div>
+
+          <button id="quiz-next-btn" class="w-full py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition hidden">
+            Question Suivante
+          </button>
+        </div>
+
+        <div id="quiz-end" class="text-center hidden">
+          <h3 class="text-2xl font-bold text-white mb-3">Quiz Terminé</h3>
+          <p id="quiz-final-score" class="text-sm text-slate-300 mb-6"></p>
+          <button id="quiz-restart-btn" class="px-6 py-3 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
+            Recommencer le Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+
   </section>
 </Layout>
+
+<script>
+  // --- LOGIQUE DES SIMULATEURS ---
+
+  // 1. Simulateur de rendement
+  const s1Capital = document.getElementById('sim1-capital') as HTMLInputElement;
+  const s1Taux = document.getElementById('sim1-taux') as HTMLInputElement;
+  const s1Duree = document.getElementById('sim1-duree') as HTMLInputElement;
+  const s1Result = document.getElementById('sim1-result');
+
+  function updateSim1() {
+    if (!s1Capital || !s1Taux || !s1Duree || !s1Result) return;
+    const c = parseFloat(s1Capital.value) || 0;
+    const t = parseFloat(s1Taux.value) || 0;
+    const d = parseFloat(s1Duree.value) || 0;
+    const res = c * Math.pow(1 + t / 100, d);
+    s1Result.textContent = Math.round(res).toLocaleString() + ' DH';
+  }
+
+  [s1Capital, s1Taux, s1Duree].forEach(input => input?.addEventListener('input', updateSim1));
+  updateSim1();
+
+  // 2. Simulateur d'intérêts composés
+  const s2Capital = document.getElementById('sim2-capital') as HTMLInputElement;
+  const s2Mensuel = document.getElementById('sim2-mensuel') as HTMLInputElement;
+  const s2Taux = document.getElementById('sim2-taux') as HTMLInputElement;
+  const s2Duree = document.getElementById('sim2-duree') as HTMLInputElement;
+  const s2Result = document.getElementById('sim2-result');
+
+  function updateSim2() {
+    if (!s2Capital || !s2Mensuel || !s2Taux || !s2Duree || !s2Result) return;
+    const c = parseFloat(s2Capital.value) || 0;
+    const m = parseFloat(s2Mensuel.value) || 0;
+    const r = (parseFloat(s2Taux.value) || 0) / 100 / 12;
+    const n = (parseFloat(s2Duree.value) || 0) * 12;
+
+    let total = c;
+    for (let i = 0; i < n; i++) {
+      total = (total + m) * (1 + r);
+    }
+    s2Result.textContent = Math.round(total).toLocaleString() + ' DH';
+  }
+
+  [s2Capital, s2Mensuel, s2Taux, s2Duree].forEach(input => input?.addEventListener('input', updateSim2));
+  updateSim2();
+
+  // 3. Simulateur de portefeuille
+  const s3Actions = document.getElementById('sim3-actions') as HTMLInputElement;
+  const s3Obligations = document.getElementById('sim3-obligations') as HTMLInputElement;
+  const s3Immo = document.getElementById('sim3-immo') as HTMLInputElement;
+  const s3Cash = document.getElementById('sim3-cash') as HTMLInputElement;
+  const valActions = document.getElementById('val-actions');
+  const valObligations = document.getElementById('val-obligations');
+  const valImmo = document.getElementById('val-immo');
+  const valCash = document.getElementById('val-cash');
+  const sim3Status = document.getElementById('sim3-status');
+
+  function updateSim3() {
+    if (!s3Actions || !s3Obligations || !s3Immo || !s3Cash) return;
+    const a = parseInt(s3Actions.value) || 0;
+    const o = parseInt(s3Obligations.value) || 0;
+    const i = parseInt(s3Immo.value) || 0;
+    const c = parseInt(s3Cash.value) || 0;
+    const sum = a + o + i + c;
+
+    if (valActions) valActions.textContent = a + '%';
+    if (valObligations) valObligations.textContent = o + '%';
+    if (valImmo) valImmo.textContent = i + '%';
+    if (valCash) valCash.textContent = c + '%';
+
+    if (sim3Status) {
+      sim3Status.textContent = sum + '% ' + (sum === 100 ? '(Équilibré)' : '(Attention : total != 100%)');
+      sim3Status.className = sum === 100 ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold';
+    }
+  }
+
+  [s3Actions, s3Obligations, s3Immo, s3Cash].forEach(input => input?.addEventListener('input', updateSim3));
+  updateSim3();
+
+
+  // --- LOGIQUE DU QUIZ FINANCIER ---
+
+  const quizData = [
+    {
+      question: "Qu'est-ce que le PER (Price Earning Ratio) en analyse financière ?",
+      options: [
+        "Le rapport entre le cours de l'action et le bénéfice net par action",
+        "Le taux de rendement annuel garanti d'une obligation",
+        "La proportion de dividendes distribués aux actionnaires"
+      ],
+      correct: 0,
+      explanation: "Le PER mesure le nombre d'années de bénéfices nécessaires pour rembourser le prix d'achat de l'action."
+    },
+    {
+      question: "Quel est l'objectif principal de la diversification de portefeuille ?",
+      options: [
+        "Éliminer totalement le risque de marché",
+        "Réduire le risque global sans nécessairement sacrifier le rendement espéré",
+        "Garantir un rendement minimum fixe chaque mois"
+      ],
+      correct: 1,
+      explanation: "La diversification permet de diluer le risque spécifique en combinant des actifs décorrélés."
+    },
+    {
+      question: "Quel organisme régule la Bourse de Casablanca au Maroc ?",
+      options: [
+        "Bank Al-Maghrib (BAM)",
+        "L'Autorité Marocaine du Marché des Capitaux (AMMC)",
+        "Le Ministère de l'Économie et des Finances"
+      ],
+      correct: 1,
+      explanation: "L'AMMC est l'autorité publique chargée de la régulation du marché des capitaux au Maroc."
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  const qProgress = document.getElementById('quiz-progress');
+  const qScoreDisp = document.getElementById('quiz-score-display');
+  const qQuestion = document.getElementById('quiz-question');
+  const qOptions = document.getElementById('quiz-options');
+  const qFeedback = document.getElementById('quiz-feedback');
+  const qNextBtn = document.getElementById('quiz-next-btn') as HTMLButtonElement;
+  const quizContainer = document.getElementById('quiz-container');
+  const quizEnd = document.getElementById('quiz-end');
+  const quizFinalScore = document.getElementById('quiz-final-score');
+  const quizRestartBtn = document.getElementById('quiz-restart-btn');
+
+  function loadQuiz() {
+    if (!qQuestion || !qOptions || !qProgress || !quizContainer || !quizEnd) return;
+    quizContainer.classList.remove('hidden');
+    quizEnd.classList.add('hidden');
+    qFeedback?.classList.add('hidden');
+    qNextBtn?.classList.add('hidden');
+
+    const current = quizData[currentQuestion];
+    if (qProgress) qProgress.textContent = `Question ${currentQuestion + 1} sur ${quizData.length}`;
+    if (qScoreDisp) qScoreDisp.textContent = `Score actuel : ${score}`;
+    if (qQuestion) qQuestion.textContent = current.question;
+
+    qOptions.innerHTML = '';
+    current.options.forEach((opt, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'w-full text-left p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 hover:border-emerald-500 transition';
+      btn.textContent = opt;
+      btn.onclick = () => selectAnswer(index);
+      qOptions.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(selectedIndex: number) {
+    const current = quizData[currentQuestion];
+    const buttons = qOptions?.querySelectorAll('button');
+
+    buttons?.forEach((btn, idx) => {
+      btn.setAttribute('disabled', 'true');
+      if (idx === current.correct) {
+        btn.className = 'w-full text-left p-3 rounded-xl bg-emerald-500/20 border border-emerald-500 text-xs text-emerald-300 font-semibold';
+      } else if (idx === selectedIndex) {
+        btn.className = 'w-full text-left p-3 rounded-xl bg-red-500/20 border border-red-500 text-xs text-red-300 font-semibold';
+      } else {
+        btn.className = 'w-full text-left p-3 rounded-xl bg-slate-800/40 border border-slate-700 text-xs text-slate-500';
+      }
+    });
+
+    if (selectedIndex === current.correct) {
+      score++;
+      if (qScoreDisp) qScoreDisp.textContent = `Score actuel : ${score}`;
+    }
+
+    if (qFeedback) {
+      qFeedback.textContent = current.explanation;
+      qFeedback.className = `p-4 rounded-xl text-xs mb-6 ${selectedIndex === current.correct ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' : 'bg-amber-500/10 border border-amber-500/30 text-amber-300'}`;
+      qFeedback.classList.remove('hidden');
+    }
+
+    if (qNextBtn) qNextBtn.classList.remove('hidden');
+  }
+
+  qNextBtn?.addEventListener('click', () => {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+      loadQuiz();
+    } else {
+      if (quizContainer) quizContainer.classList.add('hidden');
+      if (quizEnd) quizEnd.classList.remove('hidden');
+      if (quizFinalScore) quizFinalScore.textContent = `Vous avez obtenu ${score} sur ${quizData.length} bonnes réponses.`;
+    }
+  });
+
+  quizRestartBtn?.addEventListener('click', () => {
+    currentQuestion = 0;
+    score = 0;
+    loadQuiz();
+  });
+
+  loadQuiz();
+</script>
