@@ -66,60 +66,73 @@ import Layout from '../layouts/Layout.astro';
 <script is:inline>
   document.addEventListener('DOMContentLoaded', async () => {
     
-    // Fonction utilitaire pour charger un flux RSS dans un conteneur donné
-    async function loadRSSFeed(feedUrl, containerId, categoryName) {
+    // Fonction robuste pour charger le flux RSS avec plusieurs liens de secours
+    async function loadFeedWithFallback(feedUrls, containerId, categoryName) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      try {
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+      let loaded = false;
 
-        if (data.status === 'ok' && data.items && data.items.length > 0) {
-          container.innerHTML = '';
-          data.items.slice(0, 15).forEach((item) => {
-            const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('fr-FR', {
-              day: 'numeric',
-              month: 'short',
-              hour: '2-digit',
-              minute: '2-digit'
-            }) : '';
+      for (const feedUrl of feedUrls) {
+        if (loaded) break;
+        try {
+          const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+          const response = await fetch(apiUrl);
+          const data = await response.json();
 
-            const cleanDescription = item.description 
-              ? item.description.replace(/<[^>]*>?/gm, '').trim() 
-              : '';
+          if (data.status === 'ok' && data.items && data.items.length > 0) {
+            container.innerHTML = '';
+            data.items.slice(0, 15).forEach((item) => {
+              const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'short',
+                hour: '2-digit',
+                minute: '2-digit'
+              }) : '';
 
-            const article = document.createElement('a');
-            article.href = item.link;
-            article.target = '_blank';
-            article.rel = 'noopener noreferrer';
-            article.className = 'block p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-emerald-500/40 hover:bg-slate-800/80 transition group';
+              const cleanDescription = item.description 
+                ? item.description.replace(/<[^>]*>?/gm, '').trim() 
+                : '';
 
-            article.innerHTML = `
-              <div class="flex items-center justify-between text-[11px] text-emerald-400 mb-1.5 font-semibold">
-                <span>${categoryName}</span>
-                <span class="text-slate-500 font-normal">${date}</span>
-              </div>
-              <h3 class="text-sm font-bold text-white group-hover:text-emerald-300 transition line-clamp-2 leading-snug mb-1">
-                ${item.title}
-              </h3>
-              ${cleanDescription ? `<p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${cleanDescription}</p>` : ''}
-            `;
-            container.appendChild(article);
-          });
-        } else {
-          container.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Aucune actualité disponible pour le moment.</div>';
+              const article = document.createElement('a');
+              article.href = item.link;
+              article.target = '_blank';
+              article.rel = 'noopener noreferrer';
+              article.className = 'block p-4 rounded-2xl bg-slate-800/40 border border-slate-700/50 hover:border-emerald-500/40 hover:bg-slate-800/80 transition group';
+
+              article.innerHTML = `
+                <div class="flex items-center justify-between text-[11px] text-emerald-400 mb-1.5 font-semibold">
+                  <span>${categoryName}</span>
+                  <span class="text-slate-500 font-normal">${date}</span>
+                </div>
+                <h3 class="text-sm font-bold text-white group-hover:text-emerald-300 transition line-clamp-2 leading-snug mb-1">
+                  ${item.title}
+                </h3>
+                ${cleanDescription ? `<p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${cleanDescription}</p>` : ''}
+              `;
+              container.appendChild(article);
+            });
+            loaded = true;
+          }
+        } catch (e) {
+          console.error("Erreur flux:", feedUrl);
         }
-      } catch (e) {
-        container.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Erreur de chargement du flux d\'actualités.</div>';
+      }
+
+      if (!loaded) {
+        container.innerHTML = '<div class="text-slate-400 text-xs text-center py-12">Aucune actualité disponible pour le moment.</div>';
       }
     }
 
-    // 1. Chargement du flux Maroc
-    loadRSSFeed('https://lematin.ma/rssFeed/4', 'maroc-news-feed', 'Économie Maroc');
+    // 1. Chargement du flux Maroc (avec plusieurs sources de secours)
+    loadFeedWithFallback([
+      'https://www.lavieeco.com/feed/',
+      'https://lematin.ma/rssFeed/4'
+    ], 'maroc-news-feed', 'Économie Maroc');
 
-    // 2. Chargement du flux International (Investing / Actualités Mondiales)
-    loadRSSFeed('https://fr.investing.com/rss/news_25.rss', 'intl-news-feed', 'Économie Internationale');
+    // 2. Chargement du flux International
+    loadFeedWithFallback([
+      'https://fr.investing.com/rss/news_25.rss'
+    ], 'intl-news-feed', 'Économie Internationale');
   });
 </script>
