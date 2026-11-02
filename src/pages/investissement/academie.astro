@@ -18,107 +18,109 @@ import Layout from '../../layouts/Layout.astro';
       </p>
     </div>
 
-    {/* SÉLECTEUR DE NIVEAUX PAR RADIO BUTTONS (CSS PUR - GARANTI SANS BUG) */}
-    <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <input type="radio" name="level-tab" id="tab-1" checked class="hidden peer/1">
-      <label for="tab-1" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/1:bg-emerald-500 peer-checked/1:text-slate-950 peer-checked/1:shadow-lg peer-checked/1:shadow-emerald-500/10">
-        Niveau 1 : Débutant
-      </label>
+    {/* SÉLECTEUR DE NIVEAUX ET CONTENUS EN CSS PUR */}
+    <div class="space-y-8">
+      
+      {/* 1. INPUTS RADIO */}
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        <input type="radio" name="level-tab" id="tab-1" checked class="hidden peer/1">
+        <label for="tab-1" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/1:bg-emerald-500 peer-checked/1:text-slate-950 peer-checked/1:shadow-lg peer-checked/1:shadow-emerald-500/10">
+          Niveau 1 : Débutant
+        </label>
 
-      <input type="radio" name="level-tab" id="tab-2" class="hidden peer/2">
-      <label for="tab-2" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/2:bg-emerald-500 peer-checked/2:text-slate-950 peer-checked/2:shadow-lg peer-checked/2:shadow-emerald-500/10">
-        Niveau 2 : Intermédiaire
-      </label>
+        <input type="radio" name="level-tab" id="tab-2" class="hidden peer/2">
+        <label for="tab-2" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/2:bg-emerald-500 peer-checked/2:text-slate-950 peer-checked/2:shadow-lg peer-checked/2:shadow-emerald-500/10">
+          Niveau 2 : Intermédiaire
+        </label>
 
-      <input type="radio" name="level-tab" id="tab-3" class="hidden peer/3">
-      <label for="tab-3" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/3:bg-emerald-500 peer-checked/3:text-slate-950 peer-checked/3:shadow-lg peer-checked/3:shadow-emerald-500/10">
-        Niveau 3 : Avancé
-      </label>
+        <input type="radio" name="level-tab" id="tab-3" class="hidden peer/3">
+        <label for="tab-3" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/3:bg-emerald-500 peer-checked/3:text-slate-950 peer-checked/3:shadow-lg peer-checked/3:shadow-emerald-500/10">
+          Niveau 3 : Avancé
+        </label>
 
-      <input type="radio" name="level-tab" id="tab-4" class="hidden peer/4">
-      <label for="tab-4" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/4:bg-emerald-500 peer-checked/4:text-slate-950 peer-checked/4:shadow-lg peer-checked/4:shadow-emerald-500/10">
-        Niveau 4 : Professionnel
-      </label>
-    </div>
+        <input type="radio" name="level-tab" id="tab-4" class="hidden peer/4">
+        <label for="tab-4" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer transition peer-checked/4:bg-emerald-500 peer-checked/4:text-slate-950 peer-checked/4:shadow-lg peer-checked/4:shadow-emerald-500/10">
+          Niveau 4 : Professionnel
+        </label>
+      </div>
 
 
-    {/* CONTENUS DES NIVEAUX */}
-
-    {/* NIVEAU 1 */}
-    <div id="content-1" class="hidden space-y-12">
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 01 - Fondamentaux</span>
-        <h2 class="text-2xl font-bold text-white mb-6">Introduction à l'Épargne & l'Investissement</h2>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque et l'impact destructeur de l'inflation.
-        </p>
-        <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 mb-6">
-          <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/S7o-s2M6Uq4" title="Introduction à l'investissement" allowfullscreen></iframe>
-        </div>
-        <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-          <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
-          <p class="text-slate-300 text-xs leading-relaxed text-justify">L'inflation érode la valeur nominale de l'épargne non investie.</p>
+      {/* 2. CONTENU NIVEAU 1 */}
+      <div id="content-1" class="academy-content hidden space-y-12">
+        <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
+          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 01 - Fondamentaux</span>
+          <h2 class="text-2xl font-bold text-white mb-6">Introduction à l'Épargne & l'Investissement</h2>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
+            Comprendre la différence fondamentale entre stocker son capital (épargne) et le faire fructifier (investissement). L'objectif est d'assimiler les notions de rendement, de risque et l'impact destructeur de l'inflation.
+          </p>
+          <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 mb-6">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/S7o-s2M6Uq4" title="Introduction à l'investissement" allowfullscreen></iframe>
+          </div>
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'inflation érode la valeur nominale de l'épargne non investie.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* NIVEAU 2 */}
-    <div id="content-2" class="hidden space-y-12">
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 02 - Marchés Cotés</span>
-        <h2 class="text-2xl font-bold text-white mb-6">Fonctionnement de la Bourse & Diversification</h2>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Exploration des marchés financiers organisés, distinction entre actions et obligations, et application des règles de diversification de portefeuille.
-        </p>
-        <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 mb-6">
-          <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/5m35_W9d1Uw" title="Comprendre la Bourse" allowfullscreen></iframe>
-        </div>
-        <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-          <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
-          <p class="text-slate-300 text-xs leading-relaxed text-justify">La diversification réduit la volatilité globale sans sacrifier l'espérance de rendement.</p>
-        </div>
-      </div>
-    </div>
-
-    {/* NIVEAU 3 */}
-    <div id="content-3" class="hidden space-y-12">
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 03 - Analyse Technique & Fondamentale</span>
-        <h2 class="text-2xl font-bold text-white mb-6">Analyse Financière & Valorisation d'Entreprise</h2>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées.
-        </p>
-        <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-          <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
-          <p class="text-slate-300 text-xs leading-relaxed text-justify">Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net.</p>
+      {/* 3. CONTENU NIVEAU 2 */}
+      <div id="content-2" class="academy-content hidden space-y-12">
+        <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
+          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 02 - Marchés Cotés</span>
+          <h2 class="text-2xl font-bold text-white mb-6">Fonctionnement de la Bourse & Diversification</h2>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
+            Exploration des marchés financiers organisés, distinction entre actions et obligations, et application des règles de diversification de portefeuille.
+          </p>
+          <div class="aspect-video max-w-3xl mx-auto rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 mb-6">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/5m35_W9d1Uw" title="Comprendre la Bourse" allowfullscreen></iframe>
+          </div>
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">La diversification réduit la volatilité globale sans sacrifier l'espérance de rendement.</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* NIVEAU 4 */}
-    <div id="content-4" class="hidden space-y-12">
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
-        <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 04 - Gestion Institutionnelle</span>
-        <h2 class="text-2xl font-bold text-white mb-6">Gestion de Portefeuille & Allocation d'Actifs</h2>
-        <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-          Application des modèles de Markowitz, optimisation de la frontière efficiente et gestion des risques institutionnels.
-        </p>
-        <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
-          <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
-          <p class="text-slate-300 text-xs leading-relaxed text-justify">L'allocation d'actifs détermine plus de 90 % de la performance à long terme d'un portefeuille.</p>
+      {/* 4. CONTENU NIVEAU 3 */}
+      <div id="content-3" class="academy-content hidden space-y-12">
+        <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
+          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 03 - Analyse Technique & Fondamentale</span>
+          <h2 class="text-2xl font-bold text-white mb-6">Analyse Financière & Valorisation d'Entreprise</h2>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
+            Maîtrise de la lecture des états financiers, calcul des ratios clés (PER, ROE, BPA) et valorisation intrinsèque des sociétés cotées.
+          </p>
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">Le PER évalue la cherté relative d'une action en comparant son cours à son bénéfice net.</p>
+          </div>
         </div>
       </div>
-    </div>
 
+      {/* 5. CONTENU NIVEAU 4 */}
+      <div id="content-4" class="academy-content hidden space-y-12">
+        <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-3xl">
+          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-1">Niveau 04 - Gestion Institutionnelle</span>
+          <h2 class="text-2xl font-bold text-white mb-6">Gestion de Portefeuille & Allocation d'Actifs</h2>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
+            Application des modèles de Markowitz, optimisation de la frontière efficiente et gestion des risques institutionnels.
+          </p>
+          <div class="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">À retenir</h3>
+            <p class="text-slate-300 text-xs leading-relaxed text-justify">L'allocation d'actifs détermine plus de 90 % de la performance à long terme d'un portefeuille.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </section>
 </Layout>
 
-{/* CSS PUR POUR AFFICHER LE CONTENU CORRESPONDANT AU BOUTON COCHÉ */}
+{/* CSS POUR AFFICHER LE CONTENU ACTIF */}
 <style>
-  #tab-1:checked ~ * #content-1,
-  #tab-2:checked ~ * #content-2,
-  #tab-3:checked ~ * #content-3,
-  #tab-4:checked ~ * #content-4 {
+  #tab-1:checked ~ #content-1,
+  #tab-2:checked ~ #content-2,
+  #tab-3:checked ~ #content-3,
+  #tab-4:checked ~ #content-4 {
     display: block !important;
   }
 </style>
