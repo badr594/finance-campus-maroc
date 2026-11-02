@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Actualités Financières en Direct - Finance Campus Maroc">
+<Layout title="Actualités Financières - Finance Campus Maroc">
   <section class="max-w-7xl mx-auto px-6 py-12">
     
     {/* En-tête de la page */}
@@ -14,38 +14,85 @@ import Layout from '../layouts/Layout.astro';
         Actualités Financières en Direct
       </h1>
       <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-        Suivez en temps réel les dernières informations économiques, les marchés boursiers et les tendances financières mondiales.
+        Suivez en temps réel l'évolution des marchés financiers marocains et internationaux.
       </p>
     </div>
 
-    {/* Conteneur du Widget TradingView */}
-    <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-4 md:p-6 shadow-2xl min-h-[650px]">
-      <div id="tradingview-news-container" class="w-full h-[650px]"></div>
+    {/* SECTIONS DIVISÉES EN 2 GRILLES (MAROC & INTERNATIONAL) */}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      {/* 1. ACTUALITÉS MAROC */}
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
+          <span class="text-2xl">🇲🇦</span>
+          <div>
+            <h2 class="text-lg font-bold text-white">Actualités & Marché Marocain</h2>
+            <p class="text-xs text-slate-400">Bourse de Casablanca & Économie Nationale</p>
+          </div>
+        </div>
+
+        <div id="tradingview-maroc-container" class="w-full h-[600px]"></div>
+      </div>
+
+      {/* 2. ACTUALITÉS INTERNATIONALES */}
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
+          <span class="text-2xl">🌍</span>
+          <div>
+            <h2 class="text-lg font-bold text-white">Actualités Internationales</h2>
+            <p class="text-xs text-slate-400">Marchés Mondiaux, Devises & Matières Premières</p>
+          </div>
+        </div>
+
+        <div id="tradingview-intl-container" class="w-full h-[600px]"></div>
+      </div>
+
     </div>
 
   </section>
 </Layout>
 
 <script is:inline>
-  // Injection dynamique du script TradingView au chargement
   document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('tradingview-news-container');
-    if (container) {
-      container.innerHTML = ''; // Nettoyage
-      const script = document.createElement('script');
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
-      script.async = true;
-      script.type = 'text/javascript';
-      script.innerHTML = JSON.stringify({
+    // 1. Widget Actualités Maroc (Symboles Bourse de Casablanca / MENA)
+    const marocContainer = document.getElementById('tradingview-maroc-container');
+    if (marocContainer) {
+      marocContainer.innerHTML = '';
+      const scriptMaroc = document.createElement('script');
+      scriptMaroc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+      scriptMaroc.async = true;
+      scriptMaroc.type = 'text/javascript';
+      scriptMaroc.innerHTML = JSON.stringify({
+        "feedMode": "market",
+        "market": "stock",
+        "isTransparent": true,
+        "displayMode": "regular",
+        "width": "100%",
+        "height": "600",
+        "colorTheme": "dark",
+        "locale": "fr"
+      });
+      marocContainer.appendChild(scriptMaroc);
+    }
+
+    // 2. Widget Actualités Internationales
+    const intlContainer = document.getElementById('tradingview-intl-container');
+    if (intlContainer) {
+      intlContainer.innerHTML = '';
+      const scriptIntl = document.createElement('script');
+      scriptIntl.src = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+      scriptIntl.async = true;
+      scriptIntl.type = 'text/javascript';
+      scriptIntl.innerHTML = JSON.stringify({
         "feedMode": "all_symbols",
         "isTransparent": true,
         "displayMode": "regular",
         "width": "100%",
-        "height": "650",
+        "height": "600",
         "colorTheme": "dark",
         "locale": "fr"
       });
-      container.appendChild(script);
+      intlContainer.appendChild(scriptIntl);
     }
   });
 </script>
