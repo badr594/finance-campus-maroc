@@ -1,140 +1,173 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import dictionnaireData from '../data/dictionnaire.json';
+
+// Liste de termes financiers par défaut à proposer
+const termesFinanciers = [
+  "Action (finance)",
+  "Obligation (finance)",
+  "OPCVM",
+  "Bourse des valeurs",
+  "Portefeuille (finance)",
+  "Analyse financière"
+];
 ---
 
-<Layout title="Dictionnaire Financier - Club Finance ENCG Tanger">
-  <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="text-center max-w-3xl mx-auto mb-12">
+<Layout title="Dictionnaire Financier - Club Finance">
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    
+    <div class="text-center max-w-2xl mx-auto mb-10">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
-        Dictionnaire Financier & Économique
+        Lexique & Définitions
       </span>
-      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Les Concepts Clés de la Finance
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+        Dictionnaire Financier Wikipédia
       </h1>
-      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify mb-8">
-        Consultez notre sélection de 50 définitions clés ou recherchez n'importe quel terme économique et financier dans la base de connaissances globale en ligne.
+      <p class="text-slate-400 text-sm">
+        Recherchez un terme financier pour afficher directement sa définition extraite de Wikipédia.
       </p>
+    </div>
 
-      {/* Barre de recherche dynamique */}
-      <div class="relative max-w-xl mx-auto">
-        <input
-          type="text"
-          id="dict-search-page"
-          placeholder="Rechercher un terme (ex: WACC, Stagflation, Sukuk, FinTech)..."
-          class="w-full px-5 py-3.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/80 focus:ring-1 focus:ring-emerald-500/80 transition text-sm shadow-inner"
+    {/* Barre de recherche */}
+    <div class="mb-8">
+      <div class="flex gap-3">
+        <input 
+          type="text" 
+          id="wiki-search-input" 
+          placeholder="Ex: Action, Inflation, Trader, Portefeuille..." 
+          class="w-full px-5 py-3.5 rounded-xl bg-slate-900/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition"
         />
+        <button 
+          id="wiki-search-btn"
+          class="px-6 py-3.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer"
+        >
+          Chercher
+        </button>
+      </div>
+      
+      {/* Suggestions rapides */}
+      <div class="flex flex-wrap gap-2 mt-4 items-center text-xs text-slate-400">
+        <span>Suggestions :</span>
+        {termesFinanciers.map(terme => (
+          <button 
+            class="tag-btn px-3 py-1 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition cursor-pointer"
+            data-term={terme}
+          >
+            {terme.replace(' (finance)', '')}
+          </button>
+        ))}
       </div>
     </div>
 
-    {/* Carte d'affichage des résultats externes (API Wikipédia) */}
-    <div id="external-result" class="max-w-3xl mx-auto mb-10 hidden">
-      <div class="p-6 bg-slate-800/80 border border-emerald-500/50 rounded-2xl shadow-xl">
-        <div class="flex items-center justify-between mb-3">
-          <span class="px-3 py-1 rounded-full text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-            Source : Encyclopédie en ligne (Wikipédia)
-          </span>
-          <span id="external-loading" class="text-xs text-slate-400 hidden">Recherche en cours...</span>
-        </div>
-        <h3 id="external-title" class="text-xl font-bold text-white mb-2"></h3>
-        <p id="external-def" class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-4"></p>
-        <a id="external-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs text-emerald-400 hover:underline font-medium inline-block">
-          Lire l'article complet sur Wikipédia
+    {/* Zone d'affichage du résultat Wikipédia */}
+    <div 
+      id="wiki-result-card" 
+      class="hidden bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm shadow-xl"
+    >
+      <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-700/50">
+        <h2 id="wiki-title" class="text-2xl font-bold text-emerald-400"></h2>
+        <span class="text-xs bg-slate-700 text-slate-300 px-3 py-1 rounded-full font-mono">Source : Wikipédia FR</span>
+      </div>
+
+      <div id="wiki-content" class="text-slate-300 text-sm leading-relaxed space-y-4">
+        {/* Le résumé s'affichera ici */}
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-700/50 flex justify-end">
+        <a 
+          id="wiki-link" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:underline"
+        >
+          Lire l'article complet sur Wikipédia &rarr;
         </a>
       </div>
     </div>
 
-    {/* Grille des 50 termes locaux */}
-    <div id="full-dictionary-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {dictionnaireData.map((item) => (
-        <div class="dict-page-card p-6 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
-          <div>
-            <h3 class="dict-page-title text-lg font-bold text-white mb-2">{item.terme}</h3>
-            <p class="dict-page-def text-slate-300 text-xs leading-relaxed text-justify">{item.definition}</p>
-          </div>
-        </div>
-      ))}
+    {/* Indication / Loader */}
+    <div id="wiki-status" class="text-center text-slate-500 text-sm py-12">
+      Entrez un mot-clé ou cliquez sur une suggestion pour afficher la définition Wikipédia.
     </div>
+
   </section>
 </Layout>
 
+{/* Script Client-side pour interroger l'API Wikipédia */}
 <script>
-  const pageSearchInput = document.getElementById('dict-search-page') as HTMLInputElement;
-  const pageCards = document.querySelectorAll('.dict-page-card');
-  const externalResult = document.getElementById('external-result');
-  const externalTitle = document.getElementById('external-title');
-  const externalDef = document.getElementById('external-def');
-  const externalLink = document.getElementById('external-link') as HTMLAnchorElement;
-  const externalLoading = document.getElementById('external-loading');
+  const searchInput = document.getElementById('wiki-search-input') as HTMLInputElement;
+  const searchBtn = document.getElementById('wiki-search-btn');
+  const resultCard = document.getElementById('wiki-result-card');
+  const wikiTitle = document.getElementById('wiki-title');
+  const wikiContent = document.getElementById('wiki-content');
+  const wikiLink = document.getElementById('wiki-link') as HTMLAnchorElement;
+  const wikiStatus = document.getElementById('wiki-status');
+  const tagBtns = document.querySelectorAll('.tag-btn');
 
-  let debounceTimer: ReturnType<typeof setTimeout>;
+  async function fetchWikipediaDefinition(term: string) {
+    if (!term.trim()) return;
 
-  if (pageSearchInput) {
-    pageSearchInput.addEventListener('input', (e) => {
-      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-      clearTimeout(debounceTimer);
+    if (wikiStatus) {
+      wikiStatus.textContent = "Recherche de la définition sur Wikipédia...";
+      wikiStatus.classList.remove('hidden');
+    }
+    if (resultCard) resultCard.classList.add('hidden');
 
-      if (query.length < 2) {
-        pageCards.forEach((card) => ((card as HTMLElement).style.display = 'flex'));
-        externalResult?.classList.add('hidden');
-        return;
+    try {
+      // API officielle REST de Wikipédia (Résumé / Extract)
+      const encodedTerm = encodeURIComponent(term.trim());
+      const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodedTerm}`);
+
+      if (!response.ok) {
+        throw new Error('Définition non trouvée');
       }
 
-      // 1. Filtrage local parmi les 50 termes
-      let hasLocalMatch = false;
-      pageCards.forEach((card) => {
-        const title = card.querySelector('.dict-page-title')?.textContent?.toLowerCase() || '';
-        const def = card.querySelector('.dict-page-def')?.textContent?.toLowerCase() || '';
+      const data = await response.json();
 
-        if (title.includes(query) || def.includes(query)) {
-          (card as HTMLElement).style.display = 'flex';
-          hasLocalMatch = true;
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
-      });
-
-      // 2. Si aucun résultat local, interrogation robuste de l'API Wikipédia
-      if (!hasLocalMatch) {
-        externalLoading?.classList.remove('hidden');
-
-        debounceTimer = setTimeout(async () => {
-          try {
-            // Utilisation de l'API de recherche opensearch pour trouver le bon article
-            const searchUrl = `https://fr.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=1&namespace=0&format=json&origin=*`;
-            const searchRes = await fetch(searchUrl);
-            
-            if (searchRes.ok) {
-              const searchData = await searchRes.json();
-              const titles = searchData[1];
-              const descriptions = searchData[2];
-              const urls = searchData[3];
-
-              if (titles && titles.length > 0 && titles[0]) {
-                const matchedTitle = titles[0];
-                const matchedSnippet = descriptions[0] || "Définition extraite de l'encyclopédie en ligne.";
-                const matchedUrl = urls[0];
-
-                if (externalTitle) externalTitle.textContent = matchedTitle;
-                if (externalDef) externalDef.textContent = matchedSnippet;
-                if (externalLink) externalLink.href = matchedUrl;
-
-                externalResult?.classList.remove('hidden');
-              } else {
-                externalResult?.classList.add('hidden');
-              }
-            } else {
-              externalResult?.classList.add('hidden');
-            }
-          } catch (err) {
-            externalResult?.classList.add('hidden');
-          } finally {
-            externalLoading?.classList.add('hidden');
-          }
-        }, 400);
+      if (data.type === 'disambiguation') {
+        // En cas d'ambiguïté de terme
+        if (wikiTitle) wikiTitle.textContent = data.title;
+        if (wikiContent) wikiContent.innerHTML = `<p>${data.extract}</p><p class="italic text-slate-400">Veuillez préciser votre recherche (ex: "${term} finance").</p>`;
       } else {
-        externalResult?.classList.add('hidden');
+        // Affichage direct de la définition
+        if (wikiTitle) wikiTitle.textContent = data.title;
+        if (wikiContent) {
+          wikiContent.innerHTML = `<p class="text-base">${data.extract_html || data.extract}</p>`;
+        }
       }
-    });
+
+      if (wikiLink) {
+        wikiLink.href = data.content_urls?.desktop?.page || `https://fr.wikipedia.org/wiki/${encodedTerm}`;
+      }
+
+      if (wikiStatus) wikiStatus.classList.add('hidden');
+      if (resultCard) resultCard.classList.remove('hidden');
+
+    } catch (error) {
+      if (wikiStatus) {
+        wikiStatus.textContent = `Impossible de trouver une définition directe pour "${term}". Essayez d'ajouter "finance" ou d'utiliser un terme plus spécifique.`;
+        wikiStatus.classList.remove('hidden');
+      }
+      if (resultCard) resultCard.classList.add('hidden');
+    }
   }
+
+  // Événements
+  searchBtn?.addEventListener('click', () => {
+    fetchWikipediaDefinition(searchInput.value);
+  });
+
+  searchInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      fetchWikipediaDefinition(searchInput.value);
+    }
+  });
+
+  tagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const term = btn.getAttribute('data-term') || '';
+      searchInput.value = term;
+      fetchWikipediaDefinition(term);
+    });
+  });
 </script>
