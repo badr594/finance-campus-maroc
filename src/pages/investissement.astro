@@ -14,44 +14,56 @@ import Layout from '../layouts/Layout.astro';
         Espace Investissement
       </h1>
       <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Découvrez les principes fondamentaux de l'investissement boursier, la gestion de portefeuille et l'analyse financière adaptée aux marchés.
+        Apprenez à investir pas à pas, de la découverte des fondamentaux jusqu'à la maîtrise des marchés financiers.
       </p>
     </div>
 
-    <!-- Section Contenu Pédagogique (Structure d'origine) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    <!-- Niveaux de compréhension (Structure d'origine restaurée) -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold text-white mb-8 text-center">Votre parcours d'apprentissage</h2>
       
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">01</div>
-        <h3 class="text-lg font-bold text-white mb-2">Actions & Sociétés</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Comprenez comment devenir actionnaire, percevoir des dividendes et analyser la valeur des entreprises cotées.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Niveau 1</div>
+          <h3 class="text-base font-bold text-white mb-2">Fondamentaux</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Comprenez l'épargne, l'inflation et les bases absolues pour faire fructifier votre argent en toute sécurité.
+          </p>
+        </div>
 
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">02</div>
-        <h3 class="text-lg font-bold text-white mb-2">OPCVM & Fonds</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Explorez la gestion collective à travers les SICAV et les FCP pour diversifier votre épargne en toute sécurité.
-        </p>
-      </div>
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Niveau 2</div>
+          <h3 class="text-base font-bold text-white mb-2">Marché Boursier</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Découvrez le fonctionnement de la Bourse, le rôle des actions et les indices phares comme le MASI.
+          </p>
+        </div>
 
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">03</div>
-        <h3 class="text-lg font-bold text-white mb-2">Gestion du Risque</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Maîtrisez l'allocation d'actifs, la diversification et les ratios clés pour optimiser le couple rendement/risque.
-        </p>
-      </div>
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Niveau 3</div>
+          <h3 class="text-base font-bold text-white mb-2">Analyse & Fonds</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Apprenez à analyser la santé d'une entreprise (PER, dividendes) et à investir via les OPCVM.
+          </p>
+        </div>
 
+        <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Niveau 4</div>
+          <h3 class="text-base font-bold text-white mb-2">Portefeuille Pro</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Maîtrisez la gestion du risque, la diversification avancée et l'optimisation à long terme.
+          </p>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Section Quiz Actualisé (Maintien de la structure d'origine avec nouvelles questions) -->
+    <!-- Section Quiz Actualisé (Questions renouvelées) -->
     <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-10 backdrop-blur-sm shadow-2xl max-w-3xl mx-auto">
       
       <div class="text-center mb-8">
-        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Testez vos acquis</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Auto-évaluation</span>
         <h2 class="text-2xl font-bold text-white mt-1">Quiz Interactif des Marchés</h2>
       </div>
 
@@ -106,14 +118,14 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  // Nouvelle banque de questions actualisées et diversifiées
+  // Banque de questions actualisées et diversifiées
   const questionBank = [
     {
       question: "Quel rôle joue l'AMMC (Autorité Marocaine du Marché des Capitaux) ?",
       options: [
         "Elle gère directement les comptes bancaires des particuliers",
         "Elle veille à la protection de l'épargne investie en instruments financiers",
-        "Elle fixe le taux directrice de la banque centrale",
+        "Elle fixe le taux directeur de la banque centrale",
         "Elle achète et vend des actions pour le compte de l'État"
       ],
       correct: 1,
@@ -159,7 +171,7 @@ import Layout from '../layouts/Layout.astro';
       explanation: "Le MASI (Moroccan All Shares Index) intègre l'ensemble des valeurs de type action cotées à la Bourse de Casablanca."
     },
     {
-      question: "Que signifie l'investissement à 'long terme' en bourse ?",
+      question: "Qu'signifie l'investissement à 'long terme' en bourse ?",
       options: [
         "Acheter et revendre un titre en moins de 5 minutes",
         "Placer son capital sur plusieurs années (souvent 5 ans et plus) pour lisser la volatilité",
@@ -199,7 +211,6 @@ import Layout from '../layouts/Layout.astro';
   const restartBtn = document.getElementById('restart-btn');
 
   function initQuiz() {
-    // Sélectionne 5 questions aléatoires de la banque
     activeQuestions = [...questionBank].sort(() => 0.5 - Math.random()).slice(0, 5);
     currentIndex = 0;
     score = 0;
@@ -295,7 +306,7 @@ import Layout from '../layouts/Layout.astro';
       const ratio = score / activeQuestions.length;
       if (ratio === 1) finalFeedback.textContent = "Exceptionnel ! Maîtrise parfaite des concepts d'investissement.";
       else if (ratio >= 0.6) finalFeedback.textContent = "Très bien ! Vos bases sur les marchés financiers sont solides.";
-      else finalFeedback.textContent = "Continuez vos efforts ! Révisez les modules de cours pour parfaire vos connaissances.";
+      else finalFeedback.textContent = "Continuez vos efforts ! Révisez les niveaux et le dictionnaire pour parfaire vos connaissances.";
     }
   }
 
