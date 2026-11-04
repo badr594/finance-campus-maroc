@@ -14,11 +14,11 @@ import Layout from '../layouts/Layout.astro';
         Espace Investissement
       </h1>
       <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Apprenez à investir pas à pas, de la découverte des fondamentaux jusqu'à la maîtrise des marchés financiers.
+        Apprenez à investir pas à pas, de la découverte des fondamentaux jusqu'à la simulation de vos placements financiers.
       </p>
     </div>
 
-    <!-- Niveaux de compréhension (Structure d'origine restaurée) -->
+    <!-- Niveaux de compréhension -->
     <div class="mb-16">
       <h2 class="text-2xl font-bold text-white mb-8 text-center">Votre parcours d'apprentissage</h2>
       
@@ -59,7 +59,47 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Section Quiz Actualisé (Questions renouvelées) -->
+    <!-- Section de la Calculatrice d'Investissement -->
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-10 backdrop-blur-sm shadow-2xl max-w-3xl mx-auto mb-16">
+      <div class="text-center mb-8">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Outil de Simulation</span>
+        <h2 class="text-2xl font-bold text-white mt-1">Calculatrice d'Intérêts Composés</h2>
+      </div>
+
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Capital initial (MAD)</label>
+            <input type="number" id="calc-initial" value="10000" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Épargne mensuelle (MAD)</label>
+            <input type="number" id="calc-monthly" value="1000" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Durée (années)</label>
+            <input type="number" id="calc-years" value="10" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Rendement annuel estimé (%)</label>
+          <input type="number" id="calc-rate" value="7" step="0.5" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500 transition" />
+        </div>
+
+        <button id="calc-btn" class="w-full py-4 rounded-xl text-sm font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition cursor-pointer shadow-lg shadow-emerald-500/20">
+          Calculer la projection
+        </button>
+
+        <div id="calc-result" class="hidden mt-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-700 text-center space-y-2">
+          <p class="text-xs text-slate-400 uppercase tracking-wider">Montant total estimé à terme</p>
+          <p id="calc-total-amount" class="text-3xl font-extrabold text-emerald-400"></p>
+          <p id="calc-details" class="text-xs text-slate-400"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Quiz Actualisé -->
     <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-10 backdrop-blur-sm shadow-2xl max-w-3xl mx-auto">
       
       <div class="text-center mb-8">
@@ -67,47 +107,35 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-2xl font-bold text-white mt-1">Quiz Interactif des Marchés</h2>
       </div>
 
-      {/* En-tête du Quiz */}
       <div id="quiz-header" class="flex justify-between items-center mb-6 pb-4 border-b border-slate-700/60">
         <span id="question-count" class="text-xs font-semibold text-emerald-400">Question 1 sur 5</span>
         <span id="score-tracker" class="text-xs font-semibold bg-slate-900 px-3 py-1.5 rounded-full text-slate-300 border border-slate-700">Score : 0</span>
       </div>
 
-      {/* Conteneur de Question */}
       <div id="quiz-box">
         <h3 id="question-text" class="text-lg font-bold text-white mb-6 leading-snug">
           Chargement...
         </h3>
 
-        <div id="options-container" class="space-y-3 mb-6">
-          {/* Options générées dynamiquement */}
-        </div>
+        <div id="options-container" class="space-y-3 mb-6"></div>
 
         <div id="explanation-box" class="hidden p-4 rounded-xl text-xs md:text-sm leading-relaxed mb-6 border"></div>
 
         <div class="flex justify-end">
-          <button 
-            id="next-btn" 
-            class="hidden px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer"
-          >
+          <button id="next-btn" class="hidden px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer">
             Question suivante &rarr;
           </button>
         </div>
       </div>
 
-      {/* Écran de fin */}
       <div id="results-box" class="hidden text-center py-6 space-y-4">
-        <div class="text-3xl mb-1">🎯</div>
-        <h3 class="text-xl font-bold text-white">Quiz Terminé !</h3>
+        <h3 class="text-xl font-bold text-white">Quiz Terminé</h3>
         <p id="final-score-text" class="text-slate-300 font-semibold"></p>
         <p id="final-feedback" class="text-slate-400 text-sm max-w-md mx-auto"></p>
         
         <div class="pt-2">
-          <button 
-            id="restart-btn" 
-            class="px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer shadow-lg shadow-emerald-500/20"
-          >
-            🔄 Relancer avec de nouvelles questions
+          <button id="restart-btn" class="px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer shadow-lg shadow-emerald-500/20">
+            Relancer avec de nouvelles questions
           </button>
         </div>
       </div>
@@ -118,6 +146,34 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  // Logique de la calculatrice
+  const calcBtn = document.getElementById('calc-btn');
+  calcBtn?.addEventListener('click', () => {
+    const initial = parseFloat((document.getElementById('calc-initial') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('calc-monthly') as HTMLInputElement).value) || 0;
+    const years = parseFloat((document.getElementById('calc-years') as HTMLInputElement).value) || 0;
+    const rate = (parseFloat((document.getElementById('calc-rate') as HTMLInputElement).value) || 0) / 100;
+
+    let total = initial;
+    const months = years * 12;
+    const monthlyRate = rate / 12;
+
+    for (let i = 0; i < months; i++) {
+      total = (total + monthly) * (1 + monthlyRate);
+    }
+
+    const totalInvested = initial + (monthly * months);
+    const gain = total - totalInvested;
+
+    const resultBox = document.getElementById('calc-result');
+    const totalAmountElem = document.getElementById('calc-total-amount');
+    const detailsElem = document.getElementById('calc-details');
+
+    if (totalAmountElem) totalAmountElem.textContent = `${Math.round(total).toLocaleString()} MAD`;
+    if (detailsElem) detailsElem.textContent = `Capital investi : ${Math.round(totalInvested).toLocaleString()} MAD | Intérêts générés : ${Math.round(gain).toLocaleString()} MAD`;
+    if (resultBox) resultBox.classList.remove('hidden');
+  });
+
   // Banque de questions actualisées et diversifiées
   const questionBank = [
     {
@@ -171,7 +227,7 @@ import Layout from '../layouts/Layout.astro';
       explanation: "Le MASI (Moroccan All Shares Index) intègre l'ensemble des valeurs de type action cotées à la Bourse de Casablanca."
     },
     {
-      question: "Qu'signifie l'investissement à 'long terme' en bourse ?",
+      question: "Que signifie l'investissement à 'long terme' en bourse ?",
       options: [
         "Acheter et revendre un titre en moins de 5 minutes",
         "Placer son capital sur plusieurs années (souvent 5 ans et plus) pour lisser la volatilité",
@@ -272,7 +328,7 @@ import Layout from '../layouts/Layout.astro';
       if (explanationBox) {
         explanationBox.classList.remove('hidden');
         explanationBox.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-300');
-        explanationBox.innerHTML = `<strong>Bonne réponse !</strong> ${explanation}`;
+        explanationBox.innerHTML = `<strong>Bonne réponse.</strong> ${explanation}`;
       }
     } else {
       if (explanationBox) {
@@ -284,7 +340,7 @@ import Layout from '../layouts/Layout.astro';
 
     if (nextBtn) {
       nextBtn.classList.remove('hidden');
-      nextBtn.textContent = currentIndex === activeQuestions.length - 1 ? "Voir les résultats 🏁" : "Question suivante →";
+      nextBtn.textContent = currentIndex === activeQuestions.length - 1 ? "Voir les résultats" : "Question suivante →";
     }
   }
 
@@ -304,9 +360,9 @@ import Layout from '../layouts/Layout.astro';
     if (finalScoreText) finalScoreText.textContent = `Votre score final : ${score} / ${activeQuestions.length}`;
     if (finalFeedback) {
       const ratio = score / activeQuestions.length;
-      if (ratio === 1) finalFeedback.textContent = "Exceptionnel ! Maîtrise parfaite des concepts d'investissement.";
-      else if (ratio >= 0.6) finalFeedback.textContent = "Très bien ! Vos bases sur les marchés financiers sont solides.";
-      else finalFeedback.textContent = "Continuez vos efforts ! Révisez les niveaux et le dictionnaire pour parfaire vos connaissances.";
+      if (ratio === 1) finalFeedback.textContent = "Exceptionnel. Maîtrise parfaite des concepts d'investissement.";
+      else if (ratio >= 0.6) finalFeedback.textContent = "Très bien. Vos bases sur les marchés financiers sont solides.";
+      else finalFeedback.textContent = "Continuez vos efforts. Révisez les niveaux et le dictionnaire pour parfaire vos connaissances.";
     }
   }
 
