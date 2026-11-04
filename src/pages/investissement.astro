@@ -2,50 +2,77 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Espace Investissement & Quiz - Finance Campus Maroc">
-  <section class="max-w-4xl mx-auto px-6 py-12">
+<Layout title="Investissement - Finance Campus Maroc">
+  <main class="max-w-6xl mx-auto px-6 py-12">
     
-    {/* En-tête */}
-    <div class="text-center max-w-2xl mx-auto mb-12">
+    <!-- En-tête de la page -->
+    <div class="mb-12 text-center">
       <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
-        Auto-Évaluation Interactive
+        Stratégie & Marchés
       </span>
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Quiz Investissement & Marchés
+        Espace Investissement
       </h1>
-      <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-        Testez et consolidez vos connaissances financières. Les questions changent à chaque nouvelle tentative !
+      <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Découvrez les principes fondamentaux de l'investissement boursier, la gestion de portefeuille et l'analyse financière adaptée aux marchés.
       </p>
     </div>
 
-    {/* Bloc de Quiz */}
-    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-10 backdrop-blur-sm shadow-2xl">
+    <!-- Section Contenu Pédagogique (Structure d'origine) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
       
-      {/* Barre de progression & Score */}
-      <div id="quiz-header" class="flex justify-between items-center mb-8 pb-4 border-b border-slate-700/60">
-        <span id="question-count" class="text-xs font-semibold uppercase tracking-wider text-emerald-400">
-          Question 1 sur 5
-        </span>
-        <span id="score-tracker" class="text-xs font-semibold bg-slate-900 px-3 py-1.5 rounded-full text-slate-300 border border-slate-700">
-          Score : 0
-        </span>
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">01</div>
+        <h3 class="text-lg font-bold text-white mb-2">Actions & Sociétés</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Comprenez comment devenir actionnaire, percevoir des dividendes et analyser la valeur des entreprises cotées.
+        </p>
+      </div>
+
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">02</div>
+        <h3 class="text-lg font-bold text-white mb-2">OPCVM & Fonds</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Explorez la gestion collective à travers les SICAV et les FCP pour diversifier votre épargne en toute sécurité.
+        </p>
+      </div>
+
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 backdrop-blur-sm">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold mb-4">03</div>
+        <h3 class="text-lg font-bold text-white mb-2">Gestion du Risque</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Maîtrisez l'allocation d'actifs, la diversification et les ratios clés pour optimiser le couple rendement/risque.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Section Quiz Actualisé (Maintien de la structure d'origine avec nouvelles questions) -->
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-10 backdrop-blur-sm shadow-2xl max-w-3xl mx-auto">
+      
+      <div class="text-center mb-8">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Testez vos acquis</span>
+        <h2 class="text-2xl font-bold text-white mt-1">Quiz Interactif des Marchés</h2>
+      </div>
+
+      {/* En-tête du Quiz */}
+      <div id="quiz-header" class="flex justify-between items-center mb-6 pb-4 border-b border-slate-700/60">
+        <span id="question-count" class="text-xs font-semibold text-emerald-400">Question 1 sur 5</span>
+        <span id="score-tracker" class="text-xs font-semibold bg-slate-900 px-3 py-1.5 rounded-full text-slate-300 border border-slate-700">Score : 0</span>
       </div>
 
       {/* Conteneur de Question */}
       <div id="quiz-box">
-        <h2 id="question-text" class="text-lg md:text-xl font-bold text-white mb-6 leading-snug">
-          Chargement des questions...
-        </h2>
+        <h3 id="question-text" class="text-lg font-bold text-white mb-6 leading-snug">
+          Chargement...
+        </h3>
 
-        {/* Options de réponse */}
         <div id="options-container" class="space-y-3 mb-6">
-          {/* Les boutons d'options sont générés dynamiquement via JS */}
+          {/* Options générées dynamiquement */}
         </div>
 
-        {/* Explication après réponse */}
         <div id="explanation-box" class="hidden p-4 rounded-xl text-xs md:text-sm leading-relaxed mb-6 border"></div>
 
-        {/* Bouton Suivant */}
         <div class="flex justify-end">
           <button 
             id="next-btn" 
@@ -56,123 +83,109 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      {/* Écran des Résultats Finaux */}
-      <div id="results-box" class="hidden text-center py-8 space-y-6">
-        <div class="inline-flex p-4 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-3xl mb-2">
-          🏆
-        </div>
-        <h2 class="text-2xl font-bold text-white">Quiz Terminé !</h2>
-        <p id="final-score-text" class="text-slate-300 text-lg"></p>
+      {/* Écran de fin */}
+      <div id="results-box" class="hidden text-center py-6 space-y-4">
+        <div class="text-3xl mb-1">🎯</div>
+        <h3 class="text-xl font-bold text-white">Quiz Terminé !</h3>
+        <p id="final-score-text" class="text-slate-300 font-semibold"></p>
         <p id="final-feedback" class="text-slate-400 text-sm max-w-md mx-auto"></p>
         
-        <div class="pt-4">
+        <div class="pt-2">
           <button 
             id="restart-btn" 
-            class="px-8 py-3.5 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20 cursor-pointer"
+            class="px-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm hover:bg-emerald-400 transition cursor-pointer shadow-lg shadow-emerald-500/20"
           >
-            🔄 Actualiser & Recommencer avec de nouvelles questions
+            🔄 Relancer avec de nouvelles questions
           </button>
         </div>
       </div>
 
     </div>
 
-  </section>
+  </main>
 </Layout>
 
 <script>
-  // Banque de questions actualisées et diversifiées
+  // Nouvelle banque de questions actualisées et diversifiées
   const questionBank = [
     {
-      question: "Quel est l'indice boursier de référence de la Bourse de Casablanca ?",
-      options: ["CAC 40", "MASI (Moroccan All Shares Index)", "S&P 500", "Dow Jones"],
-      correct: 1,
-      explanation: "Le MASI est l'indice global représentant toutes les actions cotées à la Bourse de Casablanca."
-    },
-    {
-      question: "Que représente le 'Dividend Yield' (Rendement du dividende) ?",
+      question: "Quel rôle joue l'AMMC (Autorité Marocaine du Marché des Capitaux) ?",
       options: [
-        "Le dividende annuel divisé par le prix de l'action",
-        "La plus-value réalisée lors de la revente d'une action",
-        "Le bénéfice net total réalisé par la société",
-        "Le taux d'intérêt fixé par la banque centrale"
-      ],
-      correct: 0,
-      explanation: "Le Dividend Yield mesure le pourcentage de retour en dividende par rapport au prix d'achat actuel de l'action."
-    },
-    {
-      question: "Que signifie l'acronyme OPCVM ?",
-      options: [
-        "Organisme de Placement Collectif en Valeurs Mobilières",
-        "Obligation Publique pour la Croissance et la Valorisation des Marchés",
-        "Opération de Portefeuille Commun Virtuel et Marchand",
-        "Organisation Personnelle de Contrôle des Valeurs Monétaires"
-      ],
-      correct: 0,
-      explanation: "Les OPCVM (SICAV et FCP) permettent aux épargnants de placer leur argent en commun géré par des professionnels."
-    },
-    {
-      question: "En analyse technique, que signale un motif en 'Double Fond' (Double Bottom) ?",
-      options: [
-        "Une continuation de la tendance baissière",
-        "Un retournement imminent de la baisse vers la hausse",
-        "Une baisse immédiate du volume de transaction",
-        "Une faillite de l'entreprise"
+        "Elle gère directement les comptes bancaires des particuliers",
+        "Elle veille à la protection de l'épargne investie en instruments financiers",
+        "Elle fixe le taux directrice de la banque centrale",
+        "Elle achète et vend des actions pour le compte de l'État"
       ],
       correct: 1,
-      explanation: "Le double fond est une figure chartiste classique de retournement haussier après une phase de baisse."
+      explanation: "L'AMMC est l'organisme de régulation qui veille au bon fonctionnement du marché financier et à la protection des investisseurs."
     },
     {
-      question: "Quelle est la principale différence entre une action et une obligation ?",
+      question: "Qu'est-ce qu'une 'obligation' par rapport à une 'action' ?",
       options: [
-        "L'action est un titre de créance, l'obligation est une part de capital",
-        "L'action est une part de capital (propriété), l'obligation est une créance (dette)",
-        "Les obligations n'existent pas sur le marché financier marocain",
-        "Une action garantit un remboursement du capital à 100%"
-      ],
-      correct: 1,
-      explanation: "L'actionnaire est copropriétaire de l'entreprise, tandis que l'obligataire est un créancier qui prête de l'argent contre des intérêts."
-    },
-    {
-      question: "Quelle institution assure la régulation et le contrôle du marché des capitaux au Maroc ?",
-      options: [
-        "BAM (Bank Al-Maghrib)",
-        "AMMC (Autorité Marocaine du Marché des Capitaux)",
-        "Ministère des Finances uniquement",
-        "La Bourse de Casablanca directement"
-      ],
-      correct: 1,
-      explanation: "L'AMMC est l'autorité publique chargée de veiller à la protection de l'épargne investie en instruments financiers."
-    },
-    {
-      question: "Qu'est-ce que le 'PER' (Price Earning Ratio) d'une action ?",
-      options: [
-        "Le cours de l'action divisé par le bénéfice net par action (BNPA)",
-        "Le prix de vente recommandé par les analystes",
-        "Le pourcentage de frais de courtage prélevé sur un ordre",
-        "Le rendement annuel du compte sur carnet"
+        "Une obligation est un titre de créance (prêt), tandis qu'une action est une part de capital (propriété)",
+        "Une obligation offre un rendement toujours inférieur au livret d'épargne",
+        "Une action ne comporte aucun risque de perte en capital",
+        "Il n'y a aucune différence juridique entre les deux"
       ],
       correct: 0,
-      explanation: "Le PER indique combien de fois le bénéfice annuel est payé à travers le cours de bourse."
+      explanation: "L'obligataire est un créancier de l'entreprise (qui perçoit des intérêts), alors que l'actionnaire en est copropriétaire."
     },
     {
-      question: "Que permet d'évaluer le ratio de Sharpe pour un portefeuille ?",
+      question: "Que mesure le ratio PER (Price Earning Ratio) ?",
       options: [
-        "Le rendement ajusté par rapport au risque pris",
-        "Le nombre total de titres contenus dans le portefeuille",
-        "Les frais de gestion annuels",
-        "La durée exacte d'immobilisation des fonds"
+        "Le nombre de parts d'OPCVM détenues dans un portefeuille",
+        "Le rapport entre le cours de l'action et le bénéfice net par action",
+        "Le montant des dividendes versés sur dix ans",
+        "La volatilité journalière d'un titre boursier"
+      ],
+      correct: 1,
+      explanation: "Le PER indique combien de fois le bénéfice annuel de l'entreprise est payé par l'investisseur à travers le cours de l'action."
+    },
+    {
+      question: "Qu'appelle-t-on la 'diversification' d'un portefeuille ?",
+      options: [
+        "Le fait d'investir l'intégralité de son capital sur une seule entreprise",
+        "Le fait de répartir ses investissements sur différents secteurs et actifs pour réduire le risque global",
+        "L'obligation légale de détenir des devises étrangères",
+        "La vente systématique des actions en période de baisse"
+      ],
+      correct: 1,
+      explanation: "La diversification permet de ne pas 'mettre tous ses œufs dans le même panier' afin de lisser les risques de marché."
+    },
+    {
+      question: "Quel est l'indice boursier principal de la place de Casablanca ?",
+      options: ["CAC 40", "MASI", "FTSE 100", "Nikkei 225"],
+      correct: 1,
+      explanation: "Le MASI (Moroccan All Shares Index) intègre l'ensemble des valeurs de type action cotées à la Bourse de Casablanca."
+    },
+    {
+      question: "Que signifie l'investissement à 'long terme' en bourse ?",
+      options: [
+        "Acheter et revendre un titre en moins de 5 minutes",
+        "Placer son capital sur plusieurs années (souvent 5 ans et plus) pour lisser la volatilité",
+        "Un placement bloqué par la loi sans possibilité de retrait",
+        "Une stratégie réservée exclusivement aux banques centrales"
+      ],
+      correct: 1,
+      explanation: "Le long terme permet de traverser les cycles économiques et de maximiser le potentiel de capitalisation et de rendement."
+    },
+    {
+      question: "Qu'est-ce qu'une SICAV au sein des OPCVM ?",
+      options: [
+        "Une Société d'Investissement à Capital Variable qui émet des actions",
+        "Un type de crédit bancaire immobilier",
+        "Une obligation d'État à taux fixe",
+        "Une taxe prélevée sur les plus-values boursières"
       ],
       correct: 0,
-      explanation: "Plus le ratio de Sharpe est élevé, plus le portefeuille rémunère efficacement le risque encouru."
+      explanation: "La SICAV est une forme d'OPCVM constituée sous forme de société anonyme où l'investisseur devient actionnaire."
     }
   ];
 
   let activeQuestions = [];
-  let currentQuestionIndex = 0;
+  let currentIndex = 0;
   let score = 0;
 
-  // Éléments du DOM
   const questionText = document.getElementById('question-text');
   const optionsContainer = document.getElementById('options-container');
   const explanationBox = document.getElementById('explanation-box');
@@ -184,36 +197,29 @@ import Layout from '../layouts/Layout.astro';
   const finalScoreText = document.getElementById('final-score-text');
   const finalFeedback = document.getElementById('final-feedback');
   const restartBtn = document.getElementById('restart-btn');
-  const quizHeader = document.getElementById('quiz-header');
 
-  // Sélectionne 5 questions au hasard
-  function getRandomQuestions() {
-    const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 5);
-  }
-
-  function startQuiz() {
-    activeQuestions = getRandomQuestions();
-    currentQuestionIndex = 0;
+  function initQuiz() {
+    // Sélectionne 5 questions aléatoires de la banque
+    activeQuestions = [...questionBank].sort(() => 0.5 - Math.random()).slice(0, 5);
+    currentIndex = 0;
     score = 0;
-    
+
     if (quizBox) quizBox.classList.remove('hidden');
-    if (quizHeader) quizHeader.classList.remove('hidden');
     if (resultsBox) resultsBox.classList.add('hidden');
-    
-    updateScoreUI();
+
+    updateUI();
     loadQuestion();
   }
 
-  function updateScoreUI() {
+  function updateUI() {
     if (scoreTracker) scoreTracker.textContent = `Score : ${score}/${activeQuestions.length}`;
   }
 
   function loadQuestion() {
-    const q = activeQuestions[currentQuestionIndex];
-    
-    if (questionCount) questionCount.textContent = `Question ${currentQuestionIndex + 1} sur ${activeQuestions.length}`;
+    const q = activeQuestions[currentIndex];
+    if (questionCount) questionCount.textContent = `Question ${currentIndex + 1} sur ${activeQuestions.length}`;
     if (questionText) questionText.textContent = q.question;
+    
     if (explanationBox) {
       explanationBox.classList.add('hidden');
       explanationBox.className = "hidden p-4 rounded-xl text-xs md:text-sm leading-relaxed mb-6 border";
@@ -226,37 +232,36 @@ import Layout from '../layouts/Layout.astro';
         const btn = document.createElement('button');
         btn.className = "w-full text-left p-4 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white text-sm font-medium hover:border-emerald-500/60 hover:bg-slate-900 transition flex items-center justify-between cursor-pointer";
         btn.innerHTML = `<span>${opt}</span><span class="text-xs text-slate-500 border border-slate-700 px-2 py-0.5 rounded">${String.fromCharCode(65 + idx)}</span>`;
-        btn.addEventListener('click', () => selectAnswer(idx, q.correct, q.explanation));
+        btn.addEventListener('click', () => handleAnswer(idx, q.correct, q.explanation));
         optionsContainer.appendChild(btn);
       });
     }
   }
 
-  function selectAnswer(selectedIdx, correctIdx, explanation) {
+  function handleAnswer(selected, correct, explanation) {
     const buttons = optionsContainer?.querySelectorAll('button');
     if (!buttons) return;
 
-    // Désactiver tous les boutons
     buttons.forEach((btn, idx) => {
       btn.disabled = true;
       btn.classList.remove('hover:border-emerald-500/60', 'cursor-pointer');
       
-      if (idx === correctIdx) {
+      if (idx === correct) {
         btn.classList.add('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-400');
-      } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+      } else if (idx === selected && selected !== correct) {
         btn.classList.add('border-red-500', 'bg-red-500/10', 'text-red-400');
       } else {
         btn.classList.add('opacity-40');
       }
     });
 
-    if (selectedIdx === correctIdx) {
+    if (selected === correct) {
       score++;
-      updateScoreUI();
+      updateUI();
       if (explanationBox) {
         explanationBox.classList.remove('hidden');
         explanationBox.classList.add('border-emerald-500/30', 'bg-emerald-500/10', 'text-emerald-300');
-        explanationBox.innerHTML = `<strong>Excellente réponse !</strong> ${explanation}`;
+        explanationBox.innerHTML = `<strong>Bonne réponse !</strong> ${explanation}`;
       }
     } else {
       if (explanationBox) {
@@ -268,17 +273,13 @@ import Layout from '../layouts/Layout.astro';
 
     if (nextBtn) {
       nextBtn.classList.remove('hidden');
-      if (currentQuestionIndex === activeQuestions.length - 1) {
-        nextBtn.textContent = "Voir les résultats 🏁";
-      } else {
-        nextBtn.textContent = "Question suivante →";
-      }
+      nextBtn.textContent = currentIndex === activeQuestions.length - 1 ? "Voir les résultats 🏁" : "Question suivante →";
     }
   }
 
   nextBtn?.addEventListener('click', () => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < activeQuestions.length) {
+    currentIndex++;
+    if (currentIndex < activeQuestions.length) {
       loadQuestion();
     } else {
       showResults();
@@ -287,27 +288,18 @@ import Layout from '../layouts/Layout.astro';
 
   function showResults() {
     if (quizBox) quizBox.classList.add('hidden');
-    if (quizHeader) quizHeader.classList.add('hidden');
     if (resultsBox) resultsBox.classList.remove('hidden');
 
-    if (finalScoreText) {
-      finalScoreText.textContent = `Votre score : ${score} / ${activeQuestions.length}`;
-    }
-
+    if (finalScoreText) finalScoreText.textContent = `Votre score final : ${score} / ${activeQuestions.length}`;
     if (finalFeedback) {
-      const percentage = (score / activeQuestions.length) * 100;
-      if (percentage === 100) {
-        finalFeedback.textContent = "Parfait ! Vous maîtrisez parfaitement les fondamentaux des marchés et de l'investissement.";
-      } else if (percentage >= 60) {
-        finalFeedback.textContent = "Bon travail ! Vos bases sont solides. Continuez à vous exercer pour atteindre le sans-faute.";
-      } else {
-        finalFeedback.textContent = "N'hésitez pas à relire les cours et le dictionnaire de l'académie pour consolider vos compétences !";
-      }
+      const ratio = score / activeQuestions.length;
+      if (ratio === 1) finalFeedback.textContent = "Exceptionnel ! Maîtrise parfaite des concepts d'investissement.";
+      else if (ratio >= 0.6) finalFeedback.textContent = "Très bien ! Vos bases sur les marchés financiers sont solides.";
+      else finalFeedback.textContent = "Continuez vos efforts ! Révisez les modules de cours pour parfaire vos connaissances.";
     }
   }
 
-  restartBtn?.addEventListener('click', startQuiz);
+  restartBtn?.addEventListener('click', initQuiz);
 
-  // Démarrage initial
-  startQuiz();
+  initQuiz();
 </script>
