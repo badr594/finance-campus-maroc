@@ -59,7 +59,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Section Graphique MASI en Direct (Bourse de Casablanca) -->
+    <!-- Section Graphique MASI en Direct (Version Iframe robuste mobile & PC) -->
     <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-2xl mb-16">
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-slate-700/60 gap-4">
         <div>
@@ -71,25 +71,14 @@ import Layout from '../layouts/Layout.astro';
         </span>
       </div>
 
-      <!-- Widget Graphique Interactif -->
-      <div class="tradingview-widget-container h-[400px] w-full rounded-2xl overflow-hidden">
-        <div id="tradingview_masi" class="h-full w-full"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-          new TradingView.widget({
-            "autosize": true,
-            "symbol": "BVC:MASI",
-            "interval": "D",
-            "timezone": "Africa/Casablanca",
-            "theme": "dark",
-            "style": "1",
-            "locale": "fr",
-            "toolbar_bg": "#0f172a",
-            "enable_publishing": false,
-            "allow_symbol_change": false,
-            "container_id": "tradingview_masi"
-          });
-        </script>
+      <!-- Widget Iframe Officiel TradingView (Compatible Mobile) -->
+      <div class="h-[400px] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50">
+        <iframe 
+          src="https://s.tradingview.com/widgetembed/?symbol=BVC%3AMASI&interval=D&hidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Africa%2FCasablanca&locale=fr" 
+          style="width: 100%; height: 100%; border: none;" 
+          allowtransparency="true" 
+          scrolling="no">
+        </iframe>
       </div>
     </div>
 
