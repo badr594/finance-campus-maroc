@@ -1,28 +1,44 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-
-interface Props {
-  title: string;
-}
-
+// src/layouts/Layout.astro
 const { title } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="fr" class="scroll-smooth">
+<!html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen">
-    <Navbar />
-    <div class="flex-grow">
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
+    
+    {/* Navigation */}
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <a href="/" class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+          Finance Campus <span class="text-emerald-400">Maroc</span>
+        </a>
+
+        {/* Liens de navigation adaptatifs */}
+        <nav class="flex flex-wrap justify-center gap-2 sm:gap-6 text-xs sm:text-sm font-medium text-slate-300">
+          <a href="/" class="hover:text-emerald-400 transition py-1 px-2">Accueil</a>
+          <a href="/cours" class="hover:text-emerald-400 transition py-1 px-2">Cours</a>
+          <a href="/investissement" class="hover:text-emerald-400 transition py-1 px-2">Investissement</a>
+          <a href="/dictionnaire" class="hover:text-emerald-400 transition py-1 px-2">Dictionnaire</a>
+          <a href="/contact" class="hover:text-emerald-400 transition py-1 px-2">Contact</a>
+        </nav>
+
+      </div>
+    </header>
+
+    <main class="flex-grow">
       <slot />
-    </div>
-    <Footer />
+    </main>
+
+    {/* Pied de page */}
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+      <p>Finance Campus Maroc • Club Finance ENCG Tanger</p>
+    </footer>
+
   </body>
 </html>
