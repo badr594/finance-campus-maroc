@@ -2,150 +2,129 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Accueil - Finance Campus Maroc">
-  <main class="max-w-6xl mx-auto px-6 py-12">
+<Layout title="Finance Campus Maroc - Académie & Club Finance ENCGT">
+  <main class="max-w-6xl mx-auto px-6 py-10">
     
-    {/* Section Hero / En-tête principal */}
-    <div class="text-center max-w-3xl mx-auto mb-12 pt-4">
-      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 inline-block mb-4">
-        Mandat 2026 / 2027 - ENCG Tanger
+    {/* Bandeau Ticker de Marché Défilant */}
+    <div class="mb-10 overflow-hidden bg-slate-900/90 border border-slate-800 rounded-2xl py-2.5 px-4 text-xs font-mono text-slate-400 flex items-center gap-6">
+      <span class="text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        MARCHÉ
+      </span>
+      <div class="flex gap-8 whitespace-nowrap overflow-x-auto no-scrollbar">
+        <span>MASI : <strong class="text-white">13 850 pts</strong> <span class="text-emerald-400">+0.45%</span></span>
+        <span class="text-slate-700">|</span>
+        <span>TAUX DIRECTEUR BAM : <strong class="text-white">2.75%</strong></span>
+        <span class="text-slate-700">|</span>
+        <span>OPCVM ACTIFS : <strong class="text-white">620 Mrd MAD</strong></span>
+        <span class="text-slate-700">|</span>
+        <span>ATTIJARIWAFA : <strong class="text-white">510 MAD</strong> <span class="text-emerald-400">+0.8%</span></span>
+      </div>
+    </div>
+
+    {/* Hero Section Institutionnel */}
+    <div class="text-center max-w-4xl mx-auto mb-16 pt-4">
+      <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-4">
+        ENCG Tanger • Club Finance
       </span>
       <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-        L'excellence académique au service des <span class="text-emerald-400">marchés financiers</span>
+        L'Académie de référence dédiée à la <span class="text-emerald-400">Finance de Marché & d'Entreprise</span>
       </h1>
-      <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-8">
-        La plateforme académique intégrée du Club Finance : formations spécialisées, outils de simulation d'investissement et dictionnaire financier.
+      <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+        Plateforme d'apprentissage intégrée : ressources académiques, analyses des marchés financiers marocains et outils pratiques de modélisation.
       </p>
       
       <div class="flex flex-wrap justify-center gap-4">
         <a href="/cours" class="px-8 py-4 rounded-xl font-bold text-sm bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20">
-          Accéder aux cours PDF &rarr;
+          Explorer la formation &rarr;
         </a>
         <a href="/investissement" class="px-8 py-4 rounded-xl font-bold text-sm bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 transition">
-          Tester le simulateur
+          Suivre l'indice MASI
         </a>
       </div>
     </div>
 
-    {/* Bandeau de Chiffres Clés / Impact */}
+    {/* Section Chiffres Clés / Impact */}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 bg-slate-800/30 border border-slate-700/50 rounded-3xl p-6 backdrop-blur-sm text-center">
       <div>
+        <div class="text-2xl md:text-3xl font-extrabold text-white">03</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Modules Majeurs</div>
+      </div>
+      <div>
         <div class="text-2xl md:text-3xl font-extrabold text-emerald-400">100%</div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Gratuit & Open Access</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Accès Académique</div>
       </div>
       <div>
-        <div class="text-2xl md:text-3xl font-extrabold text-white">3 Modules</div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Cours & Supports PDF</div>
+        <div class="text-2xl md:text-3xl font-extrabold text-white">MASI</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Cotation BVC</div>
       </div>
       <div>
-        <div class="text-2xl md:text-3xl font-extrabold text-emerald-400">MASI</div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Suivi du Marché</div>
-      </div>
-      <div>
-        <div class="text-2xl md:text-3xl font-extrabold text-white">ENCGT</div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Campus Tanger</div>
+        <div class="text-2xl md:text-3xl font-extrabold text-emerald-400">ENCGT</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Pole Excellence</div>
       </div>
     </div>
 
-    {/* Bloc de Synthèse du Marché Financier (Crédibilité & Expertise) */}
-    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm mb-16">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-700/50 mb-6">
-        <div>
-          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Aperçu Boursier</span>
-          <h2 class="text-xl font-bold text-white mt-1">Bourse de Casablanca & Indicateurs</h2>
-        </div>
-        <span class="text-xs text-slate-400 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full w-fit">
-          Source : Marché des Capitaux Marocain
-        </span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-        <div class="bg-slate-900/60 border border-slate-800 p-4 rounded-2xl">
-          <div class="text-xs text-slate-400 mb-1">Indice de Référence</div>
-          <div class="text-base font-bold text-white">MASI (Moroccan All Shares)</div>
-          <p class="text-xs text-slate-400 mt-2">Suivi global de la performance de toutes les valeurs actions cotées à Casablanca.</p>
-        </div>
-
-        <div class="bg-slate-900/60 border border-slate-800 p-4 rounded-2xl">
-          <div class="text-xs text-slate-400 mb-1">Gestion Collective</div>
-          <div class="text-base font-bold text-white">OPCVM & Fonds</div>
-          <p class="text-xs text-slate-400 mt-2">Analyse des Véhicules de Placement (SICAV / FCP) pour la gestion d'actifs au Maroc.</p>
-        </div>
-
-        <div class="bg-slate-900/60 border border-slate-800 p-4 rounded-2xl">
-          <div class="text-xs text-slate-400 mb-1">Régulation & Cadre</div>
-          <div class="text-base font-bold text-white">AMMC & BAM</div>
-          <p class="text-xs text-slate-400 mt-2">Veille sur le cadre réglementaire et les décisions relatives aux taux directeurs.</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Section Parcours Guidé par Profil */}
+    {/* Orientations par Métiers & Compétences */}
     <div class="mb-16">
       <div class="text-center mb-10">
-        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Orientation Rapide</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">Que souhaitez-vous faire aujourd'hui ?</h2>
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Parcours & Spécialisations</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1">Développez des compétences clés</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm flex flex-col justify-between hover:border-emerald-500/50 transition">
           <div>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Niveau Débutant</span>
-            <h3 class="text-lg font-bold text-white mt-2 mb-3">Comprendre les Définitions</h3>
+            <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Marchés Financiers</div>
+            <h3 class="text-xl font-bold text-white mb-3">Gestion de Portefeuille</h3>
             <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-6">
-              Recherchez n'importe quel terme boursier ou économique et consultez sa définition exacte directement extraite des bases de données.
+              Maîtrisez l'allocation d'actifs, le modèle MEDAF/CAPM et la mesure de performance via les ratios de Sharpe et Jensen.
             </p>
           </div>
-          <a href="/dictionnaire" class="text-xs font-bold text-emerald-400 hover:underline inline-flex items-center gap-1">
-            Consulter le lexique &rarr;
-          </a>
+          <a href="/cours" class="text-xs font-bold text-emerald-400 hover:underline">Consulter le cours &rarr;</a>
         </div>
 
         <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm flex flex-col justify-between hover:border-emerald-500/50 transition">
           <div>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Formation Académique</span>
-            <h3 class="text-lg font-bold text-white mt-2 mb-3">Télécharger les Cours</h3>
+            <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Analyse Quantinative</div>
+            <h3 class="text-xl font-bold text-white mb-3">Excel Financier</h3>
             <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-6">
-              Accédez aux 3 modules fondamentaux : Gestion de portefeuille, Excel appliqué à la finance et Marché des capitaux.
+              Modélisez des flux de trésorerie, calculez la VAN/TRI et construisez des tableaux de bord financiers professionnels.
             </p>
           </div>
-          <a href="/cours" class="text-xs font-bold text-emerald-400 hover:underline inline-flex items-center gap-1">
-            Voir les 3 cours PDF &rarr;
-          </a>
+          <a href="/cours" class="text-xs font-bold text-emerald-400 hover:underline">Consulter le cours &rarr;</a>
         </div>
 
         <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm flex flex-col justify-between hover:border-emerald-500/50 transition">
           <div>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Pratique & Outils</span>
-            <h3 class="text-lg font-bold text-white mt-2 mb-3">Calculer & S'évaluer</h3>
+            <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Financement & Titres</div>
+            <h3 class="text-xl font-bold text-white mb-3">Marché des Capitaux</h3>
             <p class="text-slate-400 text-xs md:text-sm leading-relaxed mb-6">
-              Utilisez la calculatrice d'intérêts composés et testez vos connaissances via le quiz dynamique actualisé.
+              Comprenez l'articulation entre le marché monétaire, obligataire et actions, supervisés par l'AMMC.
             </p>
           </div>
-          <a href="/investissement" class="text-xs font-bold text-emerald-400 hover:underline inline-flex items-center gap-1">
-            Lancer la simulation &rarr;
-          </a>
+          <a href="/cours" class="text-xs font-bold text-emerald-400 hover:underline">Consulter le cours &rarr;</a>
         </div>
 
       </div>
     </div>
 
-    {/* Section Agenda / Activités du Club */}
-    <div class="bg-gradient-to-r from-slate-800/60 to-slate-900/80 border border-slate-700/60 rounded-3xl p-8 md:p-12 backdrop-blur-sm flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="space-y-3 max-w-xl">
-        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Vie du Club & Secrétariat</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-white">Une question ou une proposition de partenariat ?</h2>
+    {/* Section Outils & Pratique en Direct */}
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 md:p-12 backdrop-blur-sm mb-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Laboratoire d'apprentissage</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white">Simulez vos stratégies & évaluez vos acquis</h2>
         <p class="text-slate-400 text-sm leading-relaxed">
-          Le bureau exécutif du Club Finance à l'ENCG Tanger est à votre disposition pour toute information relative aux formations et aux projets institutionnels.
+          Accédez à la calculatrice d'intérêts composés pour vos projections de rendement et testez vos connaissances boursières grâce au quiz dynamique renouvelé.
         </p>
+        <div class="pt-2">
+          <a href="/investissement" class="px-6 py-3.5 rounded-xl font-bold text-sm bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition inline-block">
+            Accéder à l'Espace Investissement
+          </a>
+        </div>
       </div>
-      <div>
-        <a href="/contact" class="px-8 py-4 rounded-xl text-sm font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition shadow-lg shadow-emerald-500/20 inline-block">
-          Contactez-nous
-        </a>
-      </div>
-    </div>
 
-  </main>
-</Layout>
+      <div class="bg-slate-900/80 border border-slate-700/80 rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+          <span class="text-xs text-slate-400 font-mono">Dictionnaire Financier</span>
+          <span class="
