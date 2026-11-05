@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
         Espace Investissement
       </h1>
       <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-        Apprenez à investir pas à pas, de la découverte des fondamentaux jusqu'à la simulation de vos placements financiers.
+        Apprenez à investir pas à pas, suivez le marché marocain en direct et simulez vos placements financiers.
       </p>
     </div>
 
@@ -56,6 +56,40 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Section Graphique MASI en Direct (Bourse de Casablanca) -->
+    <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-2xl mb-16">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-slate-700/60 gap-4">
+        <div>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Marché en Direct</span>
+          <h2 class="text-xl md:text-2xl font-bold text-white mt-1">Indice MASI (Bourse de Casablanca)</h2>
+        </div>
+        <span class="text-xs bg-slate-900 text-slate-400 px-3 py-1.5 rounded-full border border-slate-800 font-mono w-fit">
+          CASABLANCA:MASI
+        </span>
+      </div>
+
+      <!-- Widget Graphique Interactif -->
+      <div class="tradingview-widget-container h-[400px] w-full rounded-2xl overflow-hidden">
+        <div id="tradingview_masi" class="h-full w-full"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+          new TradingView.widget({
+            "autosize": true,
+            "symbol": "BVC:MASI",
+            "interval": "D",
+            "timezone": "Africa/Casablanca",
+            "theme": "dark",
+            "style": "1",
+            "locale": "fr",
+            "toolbar_bg": "#0f172a",
+            "enable_publishing": false,
+            "allow_symbol_change": false,
+            "container_id": "tradingview_masi"
+          });
+        </script>
       </div>
     </div>
 
