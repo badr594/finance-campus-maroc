@@ -3,39 +3,39 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Le Club - Finance Campus Maroc">
-  <div class="relative min-h-screen bg-slate-950 overflow-hidden">
+  <div class="relative min-h-screen bg-slate-950 overflow-hidden flex flex-col justify-center">
     
-    {/* Image de fond plus lumineuse et nette */}
+    {/* Image de fond claire et nette avec un dégradé élégant */}
     <div class="absolute inset-0 z-0">
       <img 
         src="/club-team.jpg" 
         alt="Équipe Club Finance" 
-        class="w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.05]"
+        class="w-full h-full object-cover object-center filter brightness-[0.85] contrast-[1.05]"
       />
-      {/* Voile sombre léger juste ce qu'il faut pour lire le texte */}
-      <div class="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px]"></div>
+      {/* Voile sombre progressif pour rendre le texte parfaitement lisible */}
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/60 to-slate-950/95"></div>
     </div>
 
     {/* Contenu principal de la page */}
-    <main class="relative z-10 max-w-6xl mx-auto px-6 py-12">
+    <main class="relative z-10 max-w-6xl mx-auto px-6 py-16 mt-8">
       
-      {/* En-tête principal */}
-      <div class="text-center max-w-3xl mx-auto mb-16 pt-6">
-        <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 inline-block mb-4 backdrop-blur-md">
+      {/* En-tête principal bien espacé */}
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 inline-block mb-4 backdrop-blur-md shadow-lg">
           Mandat 2026 / 2027 - ENCG Tanger
         </span>
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight drop-shadow-md">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight drop-shadow-lg">
           À propos du <span class="text-emerald-400">Club Finance</span>
         </h1>
-        <p class="text-slate-200 text-base md:text-lg leading-relaxed drop-shadow">
+        <p class="text-slate-200 text-base md:text-lg leading-relaxed drop-shadow-md">
           Le Club Finance de l'ENCG Tanger est une association estudiantine dynamique engagée dans la promotion de la culture financière, boursière et managériale.
         </p>
       </div>
 
-      {/* Cartes avec un fond semi-transparent pour bien détacher le texte */}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {/* Cartes Translucides */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         
-        <div class="bg-slate-950/80 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-md transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
+        <div class="bg-slate-950/85 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-md transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
           <div>
             <h2 class="text-2xl font-bold text-white mb-4">Notre Mission</h2>
             <p class="text-slate-300 text-sm leading-relaxed mb-4">
@@ -47,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
 
-        <div class="bg-slate-950/80 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-md transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
+        <div class="bg-slate-950/85 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-md transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
           <div>
             <h2 class="text-2xl font-bold text-white mb-4">Nos Activités</h2>
             <ul class="space-y-3 text-slate-300 text-sm">
