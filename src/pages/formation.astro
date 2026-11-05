@@ -1,57 +1,99 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const certificationsEnLigne = [
+  {
+    nom: "SAP Finance (FI/CO)",
+    organisme: "SAP Learning / OpenSAP",
+    description: "Maîtrisez le logiciel ERP le plus utilisé au monde pour la comptabilité financière, le contrôle de gestion et la consolidation.",
+    niveau: "Intermédiaire",
+    lien: "https://learning.sap.com"
+  },
+  {
+    nom: "Modélisation Financière & Valorisation (FMVA)",
+    organisme: "Corporate Finance Institute (CFI)",
+    description: "Certification internationale couvrant la modélisation sous Excel, la valorisation DCF, les LBO et les fusions-acquisitions.",
+    niveau: "Avancé",
+    lien: "https://corporatefinanceinstitute.com"
+  },
+  {
+    nom: "Financial Markets",
+    organisme: "Yale University (via Coursera)",
+    description: "Une introduction complète dispensée par le prix Nobel Robert Shiller sur le fonctionnement de la bourse, du risque et de la banque.",
+    niveau: "Débutant",
+    lien: "https://www.coursera.org"
+  },
+  {
+    nom: "Bloomberg Market Concepts (BMC)",
+    organisme: "Bloomberg for Education",
+    description: "Formation pratique sur les données de marché : devises, taux d'intérêt, actions et matières premières à travers le terminal Bloomberg.",
+    niveau: "Intermédiaire",
+    lien: "https://www.bloomberg.com/professional/product/bloomberg-market-concepts"
+  }
+];
 ---
 
-<Layout title="Formation Financière - Club Finance ENCG Tanger">
-  <section class="max-w-7xl mx-auto px-6 py-12">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-block mb-3">
-        Pédagogie & Académique
+<Layout title="Formations & Certifications - Finance Campus Maroc">
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    
+    {/* En-tête de la page */}
+    <div class="text-center max-w-3xl mx-auto mb-16 pt-6">
+      <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 inline-block mb-4">
+        Mandat 2026 / 2027 - ENCG Tanger
       </span>
-      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Formation Financière
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+        Formations & <span class="text-emerald-400">Certifications en Ligne</span>
       </h1>
-      <p class="text-slate-400 text-sm md:text-base leading-relaxed text-justify">
-        Articles pédagogiques, notes de synthèse et ressources méthodologiques conçues pour renforcer les compétences techniques des étudiants en finance et gestion d'entreprise.
+      <p class="text-slate-400 text-base md:text-lg leading-relaxed">
+        Développez des compétences pratiques à forte valeur ajoutée en combinant les modules du Club Finance avec les certifications internationales incontournables.
       </p>
     </div>
 
-    {/* Grille des modules de formation */}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
+    {/* Section ERP & Certifications en Ligne */}
+    <div class="mb-16">
+      <div class="flex items-center justify-between mb-8">
         <div>
-          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Module 01</span>
-          <h3 class="text-xl font-bold text-white mb-3">Analyse Financière Approfondie</h3>
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-            Maîtrise des équilibres financiers du bilan, lecture des soldes intermédiaires de gestion (SIG) et calcul de la capacité d'autofinancement (CAF) pour l'évaluation de la performance d'entreprise.
-          </p>
+          <h2 class="text-2xl font-bold text-white">Certifications recommandées</h2>
+          <p class="text-slate-400 text-xs mt-1">Sélection des meilleures formations en ligne pour valoriser votre CV</p>
         </div>
-        <a href="/cours" class="text-xs font-semibold text-emerald-400 hover:underline">Accéder aux supports -></a>
       </div>
 
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
-        <div>
-          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Module 02</span>
-          <h3 class="text-xl font-bold text-white mb-3">Finance d'Entreprise & Valuation</h3>
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-            Étude des méthodes d'évaluation des actifs, calcul du coût moyen pondéré du capital (WACC), flux de trésorerie actualisés (DCF) et modélisation financière sous Excel.
-          </p>
-        </div>
-        <a href="/cours" class="text-xs font-semibold text-emerald-400 hover:underline">Accéder aux supports -></a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {certificationsEnLigne.map((certif) => (
+          <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">{certif.organisme}</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-slate-900 border border-slate-700 text-slate-300 font-medium">
+                  {certif.niveau}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-3">{certif.nom}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">{certif.description}</p>
+            </div>
+            <a 
+              href={certif.lien} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="text-xs font-bold text-emerald-400 hover:underline flex items-center gap-1"
+            >
+              Découvrir la formation &rarr;
+            </a>
+          </div>
+        ))}
       </div>
-
-      <div class="p-8 bg-slate-800/40 border border-slate-700/60 rounded-2xl hover:border-emerald-500/40 transition flex flex-col justify-between">
-        <div>
-          <span class="text-emerald-400 text-xs font-semibold uppercase tracking-wider block mb-2">Module 03</span>
-          <h3 class="text-xl font-bold text-white mb-3">Économétrie & Méthodes Quantitatives</h3>
-          <p class="text-slate-300 text-xs md:text-sm leading-relaxed text-justify mb-6">
-            Application des modèles économétriques, optimisation par programmation linéaire, algorithme du simplexe et gestion quantitative des stocks et des flux logistiques.
-          </p>
-        </div>
-        <a href="/cours" class="text-xs font-semibold text-emerald-400 hover:underline">Accéder aux supports -></a>
-      </div>
-
     </div>
-  </section>
+
+    {/* Section complémentaire sur SAP */}
+    <div class="bg-gradient-to-r from-slate-900 to-slate-800/80 border border-slate-700/70 rounded-3xl p-8 md:p-12 backdrop-blur-sm mb-16">
+      <div class="max-w-2xl space-y-4">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Focus Compétence ERP</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white">Pourquoi apprendre SAP en finance ?</h2>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Le module SAP FI/CO est la référence dans les grandes entreprises au Maroc et à l'international. Comprendre son fonctionnement donne un avantage déterminant lors des entretiens en finance d'entreprise, audit et contrôle de gestion.
+        </p>
+      </div>
+    </div>
+
+  </main>
 </Layout>
