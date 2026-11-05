@@ -3,59 +3,77 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Le Club - Finance Campus Maroc">
-  <div style="position: relative; min-height: 100vh; background-color: #020617; color: white; overflow: hidden;">
+  <div class="relative min-h-screen bg-slate-950 overflow-hidden">
     
-    {/* Image en arrière-plan en CSS direct */}
-    <div style="position: absolute; inset: 0; z-index: 0;">
+    {/* Image d'arrière-plan positionnée pour bien montrer les visages */}
+    <div class="absolute inset-0 z-0">
       <img 
         src="/club-team.jpg" 
         alt="Équipe Club Finance" 
-        style="width: 100%; height: 100%; object-fit: cover; opacity: 0.5;"
+        class="w-full h-full object-cover object-[center_35%] filter brightness-[0.6] contrast-[1.1]"
       />
-      <div style="position: absolute; inset: 0; background: rgba(2, 6, 23, 0.75);"></div>
+      {/* Voile très léger pour garder l'image bien claire */}
+      <div class="absolute inset-0 bg-slate-950/40"></div>
     </div>
 
-    {/* Contenu */}
-    <main style="position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; padding: 48px 24px;">
+    {/* Contenu principal */}
+    <main class="relative z-10 max-w-6xl mx-auto px-6 py-12">
       
-      <div style="text-align: center; max-width: 700px; margin: 0 auto 64px auto;">
-        <span style="display: inline-block; padding: 6px 16px; border-radius: 9999px; font-size: 12px; font-weight: 600; background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); margin-bottom: 16px;">
+      {/* En-tête */}
+      <div class="text-center max-w-3xl mx-auto mb-12 pt-4">
+        <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 inline-block mb-3 backdrop-blur-md">
           Mandat 2026 / 2027 - ENCG Tanger
         </span>
-        <h1 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.025em;">
-          À propos du <span style="color: #34d399;">Club Finance</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight leading-tight drop-shadow-lg">
+          À propos du <span class="text-emerald-400">Club Finance</span>
         </h1>
-        <p style="color: #cbd5e1; font-size: 16px; line-height: 1.6;">
+        <p class="text-slate-200 text-sm md:text-base leading-relaxed drop-shadow">
           Le Club Finance de l'ENCG Tanger est une association estudiantine dynamique... activités et définitions boursiers réunis en seul espace.
         </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-bottom: 64px;">
+      {/* Cartes semi-transparentes pour voir l'équipe à travers */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         
-        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(51, 65, 85, 0.8); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(12px);">
+        <div class="bg-slate-950/50 border border-slate-700/40 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
           <div>
-            <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Notre Mission</h2>
-            <p style="color: #cbd5e1; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
+            <h2 class="text-2xl font-bold text-white mb-4">Notre Mission</h2>
+            <p class="text-slate-200 text-sm leading-relaxed mb-6">
               Le Club Finance de l'ENCG Tanger est une association estudiantine dynamique où l'investissement facilite vos développement et testez et des capitaux des capitaux deux-immée tu muanent notre doconnnment un nourantari conation au portefeuille, le marché de les capition d'investissement et financier tlex iomnnairies.
             </p>
           </div>
-          <a href="/contact" style="display: inline-block; background: #10b981; color: #020617; font-weight: 700; font-size: 12px; padding: 12px 24px; border-radius: 12px; text-decoration: none; width: fit-content;">
+          <a href="/contact" class="px-6 py-3 rounded-xl font-bold text-xs bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition inline-block text-center w-fit shadow-lg shadow-emerald-500/20">
             Nous contacter &rarr;
           </a>
         </div>
 
-        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(51, 65, 85, 0.8); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(12px);">
+        <div class="bg-slate-950/50 border border-slate-700/40 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between shadow-2xl">
           <div>
-            <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Nos Activités</h2>
-            <ul style="color: #cbd5e1; font-size: 14px; list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 12px;">
-              <li>- Simulations d'intérêtssementes de investissement</li>
-              <li>- Conférences d'aintegrations</li>
-              <li>- Conférences de capitaux de investissement</li>
-              <li>- Conférences de leaqve et des investissement</li>
-              <li>- Contact a confastigus de investissement</li>
+            <h2 class="text-2xl font-bold text-white mb-4">Nos Activités</h2>
+            <ul class="space-y-3 text-slate-200 text-sm mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Simulations d'intérêtssementes de investissement
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Conférences d'aintegrations
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Conférences de capitaux de investissement
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Conférences de leaqve et des investissement
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Contact a confastigus de investissement
+              </li>
             </ul>
           </div>
-          <a href="/cours" style="display: inline-block; background: #1e293b; color: white; border: 1px solid #334155; font-weight: 700; font-size: 12px; padding: 12px 24px; border-radius: 12px; text-decoration: none; width: fit-content;">
+          <a href="/cours" class="px-6 py-3 rounded-xl font-bold text-xs bg-slate-900/80 border border-slate-700 text-white hover:bg-slate-800 transition inline-block text-center w-fit">
             Voir les activités &rarr;
           </a>
         </div>
