@@ -10,44 +10,24 @@ const { title } = Astro.props;
   </head>
   <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
     
-    {/* Navigation Responsive */}
-    <header class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    {/* Navigation Mobile & Desktop */}
+    <header class="border-b border-slate-800/80 bg-slate-950/95 sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
         
-        {/* Logo */}
-        <a href="/" class="text-base md:text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+        {/* Titre / Logo */}
+        <a href="/" class="text-base font-extrabold text-white tracking-tight text-center sm:text-left">
           Finance Campus <span class="text-emerald-400">Maroc</span>
         </a>
 
-        {/* Bouton Menu Mobile (Burger) */}
-        <button 
-          id="menu-btn" 
-          class="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none cursor-pointer"
-          aria-label="Menu"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-
-        {/* Liens de navigation (Desktop) */}
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-          <a href="/" class="hover:text-emerald-400 transition">Accueil</a>
-          <a href="/cours" class="hover:text-emerald-400 transition">Cours</a>
-          <a href="/investissement" class="hover:text-emerald-400 transition">Investissement</a>
-          <a href="/dictionnaire" class="hover:text-emerald-400 transition">Dictionnaire</a>
-          <a href="/contact" class="hover:text-emerald-400 transition">Contact</a>
+        {/* Barre de Liens toujours visibles et adaptés sur téléphone */}
+        <nav class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs sm:text-sm font-semibold text-slate-300">
+          <a href="/" class="hover:text-emerald-400 transition py-1">Accueil</a>
+          <a href="/cours" class="hover:text-emerald-400 transition py-1">Cours</a>
+          <a href="/investissement" class="hover:text-emerald-400 transition py-1">Investissement</a>
+          <a href="/dictionnaire" class="hover:text-emerald-400 transition py-1">Dictionnaire</a>
+          <a href="/contact" class="hover:text-emerald-400 transition py-1">Contact</a>
         </nav>
 
-      </div>
-
-      {/* Menu Mobile Déroulant (Caché par défaut) */}
-      <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 border-t border-slate-800/80 bg-slate-950/95 space-y-3">
-        <a href="/" class="block text-sm font-medium text-slate-300 hover:text-emerald-400 py-2">Accueil</a>
-        <a href="/cours" class="block text-sm font-medium text-slate-300 hover:text-emerald-400 py-2">Cours</a>
-        <a href="/investissement" class="block text-sm font-medium text-slate-300 hover:text-emerald-400 py-2">Investissement</a>
-        <a href="/dictionnaire" class="block text-sm font-medium text-slate-300 hover:text-emerald-400 py-2">Dictionnaire</a>
-        <a href="/contact" class="block text-sm font-medium text-slate-300 hover:text-emerald-400 py-2">Contact</a>
       </div>
     </header>
 
@@ -56,19 +36,9 @@ const { title } = Astro.props;
     </main>
 
     {/* Footer */}
-    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+    <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
       <p>Finance Campus Maroc • Club Finance ENCG Tanger</p>
     </footer>
 
   </body>
 </html>
-
-<script>
-  // Script pour ouvrir / fermer le menu sur téléphone
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-</script>
