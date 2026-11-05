@@ -27,39 +27,76 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    {/* Grille des piliers de la plateforme */}
+    {/* Grille des cartes (Cours, Actualités, Investissement, Dictionnaire, Académie) */}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
       
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
-          01
+      {/* Carte Cours */}
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
+            01
+          </div>
+          <h2 class="text-xl font-bold text-white mb-3">Cours & Modules</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Accédez directement à l'ensemble des supports pédagogiques et modules dispensés au sein du club.
+          </p>
         </div>
-        <h2 class="text-xl font-bold text-white mb-3">Académie & Formations</h2>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Téléchargez les supports de cours en PDF couvrant la gestion de portefeuille, le marché des capitaux et Excel financier.
-        </p>
+        <a href="/cours" class="text-xs font-semibold text-emerald-400 hover:underline">Accéder aux cours &rarr;</a>
+      </div>
+
+      {/* Carte Actualités */}
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
+            02
+          </div>
+          <h2 class="text-xl font-bold text-white mb-3">Actualités Financières</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Restez informés des dernières actualités économiques, boursières et des événements organisés par le club.
+          </p>
+        </div>
+        <a href="/actualites" class="text-xs font-semibold text-emerald-400 hover:underline">Voir les actualités &rarr;</a>
+      </div>
+
+      {/* Carte Académie & Formations */}
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
+            03
+          </div>
+          <h2 class="text-xl font-bold text-white mb-3">Académie & Formations</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Téléchargez les PDF couvrant la gestion de portefeuille, le marché des capitaux et Excel financier.
+          </p>
+        </div>
         <a href="/cours" class="text-xs font-semibold text-emerald-400 hover:underline">Accéder aux modules &rarr;</a>
       </div>
 
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
-          02
+      {/* Carte Outils d'Investissement */}
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
+            04
+          </div>
+          <h2 class="text-xl font-bold text-white mb-3">Outils d'Investissement</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Simulez vos placements grâce à la calculatrice d'intérêts composés et testez vos connaissances via nos quiz.
+          </p>
         </div>
-        <h2 class="text-xl font-bold text-white mb-3">Outils d'Investissement</h2>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Simulez vos placements grâce à la calculatrice d'intérêts composés et testez vos connaissances via nos quiz interactifs.
-        </p>
         <a href="/investissement" class="text-xs font-semibold text-emerald-400 hover:underline">Découvrir les outils &rarr;</a>
       </div>
 
-      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
-          03
+      {/* Carte Lexique & Dictionnaire */}
+      <div class="bg-slate-800/40 border border-slate-700/60 rounded-3xl p-8 backdrop-blur-sm transition hover:border-emerald-500/50 flex flex-col justify-between md:col-span-2">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg mb-6 border border-emerald-500/20">
+            05
+          </div>
+          <h2 class="text-xl font-bold text-white mb-3">Lexique & Dictionnaire</h2>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Recherchez instantanément n'importe quel terme technique et obtenez sa définition officielle issue des bases de données.
+          </p>
         </div>
-        <h2 class="text-xl font-bold text-white mb-3">Lexique & Dictionnaire</h2>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Recherchez instantanément n'importe quel terme technique et obtenez sa définition officielle issue des bases de données.
-        </p>
         <a href="/dictionnaire" class="text-xs font-semibold text-emerald-400 hover:underline">Ouvrir le lexique &rarr;</a>
       </div>
 
