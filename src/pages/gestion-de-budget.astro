@@ -1,0 +1,14 @@
+---
+// Si tu as un Layout global (pour garder ta navbar et ton footer), décommente la ligne en bas :
+// import Layout from '../layouts/Layout.astro';
+---
+
+<!-- On intègre le simulateur en plein écran grâce à un iframe -->
+<main style="width: 100%; height: 100vh; margin: 0; padding: 0; overflow: hidden;">
+  <iframe 
+    src="/simulateur.html" 
+    title="Simulateur d'inflation et gestion de budget"
+    style="width: 100%; height: 100%; border: 0;"
+    allow="clipboard-write">
+  </iframe>
+</main>
