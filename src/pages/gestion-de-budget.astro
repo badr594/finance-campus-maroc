@@ -3,18 +3,18 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Simulateur de budget - Finance Campus Maroc">
-  <main style="width: 100%; padding: 20px 0; background-color: #f9fafb; min-height: 85vh;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 16px;">
+  <main style="width: 100%; min-height: 90vh; background-color: #f9fafb; padding: 30px 20px;">
+    <div style="max-width: 1280px; margin: 0 auto;">
       <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #111827;">
         Simulateur d'inflation et gestion de budget
       </h1>
       
-      <!-- Conteneur de l'iframe avec une hauteur fixe propre -->
-      <div style="width: 100%; height: 800px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden;">
+      <!-- Conteneur de l'iframe -->
+      <div style="width: 100%; height: 800px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; border: 1px solid #e5e7eb;">
         <iframe 
           src="/simulateur.html" 
           title="Simulateur d'inflation et gestion de budget"
-          style="width: 100%; height: 100%; border: 0;"
+          style="width: 100%; height: 100%; border: none; display: block;"
           allow="clipboard-write">
         </iframe>
       </div>
