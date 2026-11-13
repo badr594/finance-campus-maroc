@@ -2,22 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Simulateur de budget - Finance Campus Maroc">
-  <main style="width: 100%; min-height: 90vh; background-color: #f9fafb; padding: 30px 20px;">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #111827;">
-        Simulateur d'inflation et gestion de budget
-      </h1>
+<Layout title="Simulateur d'inflation et gestion de budget - Finance Campus Maroc">
+  <main class="w-full min-h-screen bg-slate-50 py-8 px-4">
+    <div class="max-w-7xl mx-auto">
       
-      <!-- Conteneur de l'iframe -->
-      <div style="width: 100%; height: 800px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; border: 1px solid #e5e7eb;">
-        <iframe 
-          src="/simulateur.html" 
-          title="Simulateur d'inflation et gestion de budget"
-          style="width: 100%; height: 100%; border: none; display: block;"
-          allow="clipboard-write">
-        </iframe>
+      <!-- Colle tout le contenu de ton simulateur.html ici (entre les balises ou directement) -->
+      <div id="app-container">
+        <!-- Par exemple, le HTML de ton simulateur sans les balises <html>, <head> ou <body> globales -->
       </div>
+
     </div>
   </main>
 </Layout>
