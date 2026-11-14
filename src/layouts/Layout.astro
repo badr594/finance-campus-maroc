@@ -1,13 +1,14 @@
 ---
 const { title } = Astro.props;
+import '../styles/global.css'; // Tailwind المحلي
 ---
 
-<!html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
     
@@ -28,7 +29,7 @@ const { title } = Astro.props;
           Menu
         </button>
 
-        {/* Navigation Desktop (Tous les liens restaurés) */}
+        {/* Navigation Desktop */}
         <nav class="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium text-slate-300">
           <a href="/" class="hover:text-emerald-400 transition">Accueil</a>
           <a href="/cours" class="hover:text-emerald-400 transition">Cours</a>

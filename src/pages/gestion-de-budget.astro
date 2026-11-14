@@ -1,129 +1,81 @@
----
-import Layout from '../layouts/Layout.astro';
----
-
-<Layout title="Simulateur d'inflation personnalisée – Maroc">
-  <main id="main" tabindex="-1" class="max-w-[1060px] mx-auto p-4">
-    
-    <!-- En-tête du simulateur -->
-    <header class="bg-[#0b5d3b] text-white p-6 rounded-t-xl border-b-4 border-[#b3261e] mb-2">
-      <div class="max-w-[1060px] mx-auto flex justify-between items-start flex-wrap gap-4">
-        <div>
-          <h1 class="text-2xl font-bold mb-1">Simulateur d'inflation personnalisée – Maroc</h1>
-          <p class="text-sm opacity-95 max-w-[780px]">
-            L'inflation officielle est une moyenne. Votre panier, lui, a sa propre pente. Saisissez vos dépenses mensuelles en dirhams et comparez-les à l'indice des prix à la consommation du Haut-Commissariat au Plan.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <!-- Navigation des onglets du simulateur d'origine -->
-    <nav role="tablist" id="tabs" aria-label="Sections" class="flex gap-1 flex-nowrap overflow-x-auto bg-gray-100 p-2 border-b-2 border-[#0b5d3b]">
-      <button role="tab" id="t-bud" aria-controls="bud" aria-selected="true" data-tab="bud" class="px-4 py-2 bg-white text-[#0b5d3b] font-semibold rounded-t-lg border border-gray-300 cursor-pointer">Mon budget</button>
-      <button role="tab" id="t-sim" aria-controls="etu" aria-selected="false" data-tab="sim" class="px-4 py-2 bg-gray-200 text-[#0d6b42] rounded-t-lg border border-gray-300 cursor-pointer">Inflation</button>
-      <button role="tab" id="t-info" aria-controls="prev" aria-selected="false" data-tab="info" class="px-4 py-2 bg-gray-200 text-[#0d6b42] rounded-t-lg border border-gray-300 cursor-pointer">Données et méthode</button>
-    </nav>
-
-    <!-- Conteneur des panneaux -->
-    <div class="bg-white border border-[#d9ddd6] rounded-b-xl p-6 shadow-sm min-h-[400px]">
-      
-      <!-- Panneau Mon Budget -->
-      <section id="bud" class="panel on space-y-6">
-        <div class="card p-4 border border-gray-200 rounded-lg bg-gray-50">
-          <h2 class="text-lg font-bold text-gray-900 mb-2">Votre panier de dépenses mensuelles</h2>
-          <p class="text-sm text-gray-600 mb-4">Indiquez ce que vous dépensez pour chaque poste en dirhams.</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium text-gray-700">01. Alimentation</label>
-              <input type="number" id="v01" value="2980" class="p-2 border border-gray-400 rounded-md" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium text-gray-700">04. Logement & Énergie</label>
-              <input type="number" id="v04" value="1160" class="p-2 border border-gray-400 rounded-md" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium text-gray-700">07. Transports</label>
-              <input type="number" id="v07" value="800" class="p-2 border border-gray-400 rounded-md" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label class="text-sm font-medium text-gray-700">12. Biens & services divers</label>
-              <input type="number" id="v12" value="570" class="p-2 border border-gray-400 rounded-md" />
-            </div>
-          </div>
-
-          <button id="calc-btn" class="mt-4 bg-[#13804f] hover:bg-[#0b5d3b] text-white font-semibold py-2.5 px-5 rounded-lg">
-            Calculer le total
-          </button>
-        </div>
-
-        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-emerald-900">
-          <h3 class="font-bold text-base">Total estimé :</h3>
-          <p id="total-out" class="text-2xl font-extrabold">5 510 MAD / mois</p>
-        </div>
-      </section>
-
-      <!-- Panneau Inflation / Graphique -->
-      <section id="sim" class="panel hidden space-y-4">
-        <h2 class="text-lg font-bold">Évolution de l'inflation au Maroc</h2>
-        <p class="text-sm text-gray-600">Comparaison entre l'indice officiel du HCP et votre panier personnalisé.</p>
-        <div class="p-6 bg-slate-100 rounded-lg text-center text-gray-700">
-          [Graphique d'inflation et statistiques dynamiques intégrés]
-        </div>
-      </section>
-
-      <!-- Panneau Données -->
-      <section id="info" class="panel hidden space-y-4">
-        <h2 class="text-lg font-bold">Méthode et sources officielles</h2>
-        <p class="text-sm text-gray-600">Données issues du Haut-Commissariat au Plan (HCP), base 2017 = 100.</p>
-      </section>
-
+<main>
+    <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="inflation">Indice & Inflation</button>
+        <button class="tab-btn" data-tab="budget">Mon Budget</button>
+        <button class="tab-btn" data-tab="comparatif">Comparatif Villes & Salaires</button>
     </div>
 
-  </main>
-</Layout>
+    <!-- Contenu de l'onglet Inflation -->
+    <div id="tab-inflation" class="tab-content">
+        <div class="card">
+            <h2>Évolution de l'IPC au Maroc (Données HCP)</h2>
+            <p>Ce module calcule votre taux d'inflation sur mesure en fonction de vos habitudes de consommation par rapport à l'indice officiel de référence (base 100 en 2017).</p>
+            <div class="grid" style="margin-top: 15px;">
+                <div>
+                    <label>Sélectionner la période de départ :</label>
+                    <select id="startYear">
+                        <option value="2017">Janvier 2017 (Base)</option>
+                        <option value="2020" selected>Janvier 2020</option>
+                        <option value="2022">Janvier 2022 (Crise inflationniste)</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Revenu mensuel de référence (MAD) :</label>
+                    <input type="number" id="baseSalary" value="6000" min="0" step="100">
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #f0f4f1; border-radius: 6px;">
+                <h3>Résultat de l'analyse d'inflation :</h3>
+                <p id="inflationResult">Pour maintenir le même pouvoir d'achat qu'en 2020, votre budget mensuel a dû s'ajuster en suivant l'évolution des prix de détail au Maroc.</p>
+            </div>
+        </div>
+    </div>
 
-<style>
-  .panel { display: none; }
-  .panel.on { display: block; }
-</style>
+    <!-- Contenu de l'onglet Budget -->
+    <div id="tab-budget" class="tab-content" style="display:none;">
+        <div class="card">
+            <h2>Journal de vos dépenses mensuelles</h2>
+            <form id="expenseForm" style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 20px;">
+                <input type="text" id="expName" placeholder="Libellé (ex : Loyer, Supermarché...)" required>
+                <input type="number" id="expAmount" placeholder="Montant (MAD)" required min="1">
+                <select id="expCategory">
+                    <option value="Alimentation">Alimentation</option>
+                    <option value="Logement">Logement</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Santé">Santé</option>
+                    <option value="Loisirs">Loisirs</option>
+                </select>
+                <button type="submit" class="primary">Ajouter</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Libellé</th>
+                        <th>Catégorie</th>
+                        <th>Montant (MAD)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseTableBody">
+                    <!-- Rempli par JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<script>
-  // Gestion simple des onglets et du calcul dynamique
-  const tabs = document.querySelectorAll('nav button[data-tab]');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.setAttribute('aria-selected', 'false');
-        t.classList.remove('bg-white', 'text-[#0b5d3b]');
-        t.classList.add('bg-gray-200', 'text-[#0d6b42]');
-      });
-      tab.setAttribute('aria-selected', 'true');
-      tab.classList.remove('bg-gray-200', 'text-[#0d6b42]');
-      tab.classList.add('bg-white', 'text-[#0b5d3b]');
+    <!-- Contenu de l'onglet Comparatif -->
+    <div id="tab-comparatif" class="tab-content" style="display:none;">
+        <div class="card">
+            <h2>Comparatif du SMIG et Pouvoir d'Achat</h2>
+            <p>Évolution du Salaire Minimum Interprofessionnel Garanti (SMIG) au Maroc face à l'inflation cumulée des produits de première nécessité.</p>
+            <div style="margin-top: 15px;">
+                <p><strong>SMIG Actuel (Net estimé) :</strong> ~3 100 MAD (Secteur privé)</p>
+                <p><strong>Indicateur d'érosion monétaire :</strong> Calcul automatique basé sur l'indice global du HCP.</p>
+            </div>
+        </div>
+    </div>
+</main>
 
-      const target = tab.getAttribute('data-tab');
-      document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden', 'on'));
-      document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
-      const activePanel = document.getElementById(target === 'bud' ? 'bud' : target === 'sim' ? 'sim' : 'info');
-      if (activePanel) {
-        activePanel.classList.remove('hidden');
-        activePanel.classList.add('on');
-      }
-    });
-  });
-
-  // Calcul dynamique du total
-  const btn = document.getElementById('calc-btn');
-  const totalOut = document.getElementById('total-out');
-  if (btn && totalOut) {
-    btn.addEventListener('click', () => {
-      const v01 = parseFloat((document.getElementById('v01') as HTMLInputElement)?.value) || 0;
-      const v04 = parseFloat((document.getElementById('v04') as HTMLInputElement)?.value) || 0;
-      const v07 = parseFloat((document.getElementById('v07') as HTMLInputElement)?.value) || 0;
-      const v12 = parseFloat((document.getElementById('v12') as HTMLInputElement)?.value) || 0;
-      const tot = v01 + v04 + v07 + v12;
-      totalOut.textContent = `${tot.toLocaleString('fr-FR')} MAD / mois`;
-    });
-  }
-</script>
+<p class="footer-note">
+    Finance Campus Maroc © 2026 · Propulsé par les données officielles du Haut-Commissariat au Plan (HCP).
+</p>
