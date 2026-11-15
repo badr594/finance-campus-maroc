@@ -1,81 +1,271 @@
-<main>
-    <div class="tabs" role="tablist">
-        <button class="tab-btn active" data-tab="inflation">Indice & Inflation</button>
-        <button class="tab-btn" data-tab="budget">Mon Budget</button>
-        <button class="tab-btn" data-tab="comparatif">Comparatif Villes & Salaires</button>
-    </div>
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-    <!-- Contenu de l'onglet Inflation -->
-    <div id="tab-inflation" class="tab-content">
-        <div class="card">
-            <h2>Évolution de l'IPC au Maroc (Données HCP)</h2>
-            <p>Ce module calcule votre taux d'inflation sur mesure en fonction de vos habitudes de consommation par rapport à l'indice officiel de référence (base 100 en 2017).</p>
-            <div class="grid" style="margin-top: 15px;">
-                <div>
-                    <label>Sélectionner la période de départ :</label>
-                    <select id="startYear">
-                        <option value="2017">Janvier 2017 (Base)</option>
-                        <option value="2020" selected>Janvier 2020</option>
-                        <option value="2022">Janvier 2022 (Crise inflationniste)</option>
-                    </select>
+<Layout title="Simulateur de Gestion de Budget • Finance Campus Maroc">
+  <section class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-slate-100">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- En-tête de la section -->
+      <div class="text-center mb-10">
+        <span class="inline-block py-1 px-3 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold tracking-wider uppercase mb-3">
+          Outil Interactif • Finance Campus Maroc
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Simulateur de Gestion de Budget
+        </h1>
+        <p class="mt-3 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+          Répartissez efficacement vos revenus mensuels selon la règle financière <strong>50 / 30 / 20</strong> et visualisez votre capacité d'épargne en temps réel.
+        </p>
+      </div>
+
+      <!-- Conteneur Principal du Simulateur -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Colonne Gauche : Saisie des données (5 colonnes) -->
+        <div class="lg:col-span-5 bg-slate-900/90 rounded-2xl shadow-xl border border-slate-800 p-6 sm:p-8 backdrop-blur-sm">
+          <h2 class="text-lg font-bold text-white border-b border-slate-800 pb-4 mb-6 flex items-center gap-2">
+            <span class="w-2 h-6 bg-emerald-500 rounded-full inline-block"></span>
+            Vos Paramètres Mensuels
+          </h2>
+
+          <!-- Revenu Mensuel -->
+          <div class="mb-6">
+            <label for="revenu" class="block text-sm font-semibold text-slate-300 mb-2">
+              Revenu Mensuel Net (MAD)
+            </label>
+            <div class="relative">
+              <input 
+                type="number" 
+                id="revenu" 
+                value="5000" 
+                min="0" 
+                step="100"
+                class="w-full pl-4 pr-16 py-3 bg-slate-950 border border-slate-700 rounded-xl text-lg font-bold text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              />
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">
+                DH
+              </span>
+            </div>
+            <!-- Boutons rapides (Profil Étudiant / Jeune Actif) -->
+            <div class="flex flex-wrap gap-2 mt-3">
+              <button type="button" data-preset="1500" class="preset-btn text-xs bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 font-medium py-1.5 px-3 rounded-lg transition border border-slate-700">
+                Bourse (1 500 DH)
+              </button>
+              <button type="button" data-preset="4000" class="preset-btn text-xs bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 font-medium py-1.5 px-3 rounded-lg transition border border-slate-700">
+                Stage (4 000 DH)
+              </button>
+              <button type="button" data-preset="8000" class="preset-btn text-xs bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 font-medium py-1.5 px-3 rounded-lg transition border border-slate-700">
+                1er Emploi (8 000 DH)
+              </button>
+            </div>
+          </div>
+
+          <!-- Ajustement des pourcentages -->
+          <div class="space-y-5 pt-4 border-t border-slate-800">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Répartition (%)</span>
+              <button id="reset-ratios" type="button" class="text-xs text-emerald-400 hover:text-emerald-300 font-semibold underline cursor-pointer">
+                Rétablir 50/30/20
+              </button>
+            </div>
+
+            <!-- Besoins -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-300">Besoins essentiels</span>
+                <span id="label-besoins" class="font-bold text-blue-400">50%</span>
+              </div>
+              <input type="range" id="range-besoins" min="10" max="80" value="50" class="w-full accent-blue-500 cursor-pointer" />
+            </div>
+
+            <!-- Envies -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-300">Envies & Loisirs</span>
+                <span id="label-envies" class="font-bold text-amber-400">30%</span>
+              </div>
+              <input type="range" id="range-envies" min="5" max="60" value="30" class="w-full accent-amber-500 cursor-pointer" />
+            </div>
+
+            <!-- Épargne -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-300">Épargne & Investissement</span>
+                <span id="label-epargne" class="font-bold text-emerald-400">20%</span>
+              </div>
+              <input type="range" id="range-epargne" min="5" max="70" value="20" class="w-full accent-emerald-500 cursor-pointer" />
+            </div>
+            
+            <p id="ratio-warning" class="hidden text-xs text-red-400 bg-red-950/50 border border-red-800 p-2.5 rounded-lg font-medium">
+              ⚠️ Le total des pourcentages doit être égal à 100% (Actuel : <span id="total-pct">100</span>%).
+            </p>
+          </div>
+        </div>
+
+        <!-- Colonne Droite : Résultats & Visualisation (7 colonnes) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Carte Résumé Sombre -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            
+            <h3 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-6">
+              Allocation Mensuelle Recommandée
+            </h3>
+
+            <!-- Barre de progression segmentée -->
+            <div class="w-full h-4 bg-slate-950 rounded-full overflow-hidden flex mb-8 p-0.5 border border-slate-800">
+              <div id="bar-besoins" class="bg-blue-500 h-full transition-all duration-300 rounded-l-full" style="width: 50%"></div>
+              <div id="bar-envies" class="bg-amber-500 h-full transition-all duration-300" style="width: 30%"></div>
+              <div id="bar-epargne" class="bg-emerald-500 h-full transition-all duration-300 rounded-r-full" style="width: 20%"></div>
+            </div>
+
+            <!-- 3 Cartes Chiffres -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <!-- Carte Besoins -->
+              <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                  <span class="text-xs text-slate-400 font-medium">Besoins (<span id="card-pct-besoins">50</span>%)</span>
                 </div>
-                <div>
-                    <label>Revenu mensuel de référence (MAD) :</label>
-                    <input type="number" id="baseSalary" value="6000" min="0" step="100">
+                <p id="val-besoins" class="text-xl sm:text-2xl font-extrabold text-white">2 500 DH</p>
+                <p class="text-[11px] text-slate-500 mt-1">Loyer, transport, alimentation</p>
+              </div>
+
+              <!-- Carte Envies -->
+              <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span class="text-xs text-slate-400 font-medium">Envies (<span id="card-pct-envies">30</span>%)</span>
                 </div>
-            </div>
-            <div style="margin-top: 20px; padding: 15px; background: #f0f4f1; border-radius: 6px;">
-                <h3>Résultat de l'analyse d'inflation :</h3>
-                <p id="inflationResult">Pour maintenir le même pouvoir d'achat qu'en 2020, votre budget mensuel a dû s'ajuster en suivant l'évolution des prix de détail au Maroc.</p>
-            </div>
-        </div>
-    </div>
+                <p id="val-envies" class="text-xl sm:text-2xl font-extrabold text-amber-400">1 500 DH</p>
+                <p class="text-[11px] text-slate-500 mt-1">Sorties, shopping, abonnements</p>
+              </div>
 
-    <!-- Contenu de l'onglet Budget -->
-    <div id="tab-budget" class="tab-content" style="display:none;">
-        <div class="card">
-            <h2>Journal de vos dépenses mensuelles</h2>
-            <form id="expenseForm" style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 20px;">
-                <input type="text" id="expName" placeholder="Libellé (ex : Loyer, Supermarché...)" required>
-                <input type="number" id="expAmount" placeholder="Montant (MAD)" required min="1">
-                <select id="expCategory">
-                    <option value="Alimentation">Alimentation</option>
-                    <option value="Logement">Logement</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Santé">Santé</option>
-                    <option value="Loisirs">Loisirs</option>
-                </select>
-                <button type="submit" class="primary">Ajouter</button>
-            </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Libellé</th>
-                        <th>Catégorie</th>
-                        <th>Montant (MAD)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="expenseTableBody">
-                    <!-- Rempli par JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Contenu de l'onglet Comparatif -->
-    <div id="tab-comparatif" class="tab-content" style="display:none;">
-        <div class="card">
-            <h2>Comparatif du SMIG et Pouvoir d'Achat</h2>
-            <p>Évolution du Salaire Minimum Interprofessionnel Garanti (SMIG) au Maroc face à l'inflation cumulée des produits de première nécessité.</p>
-            <div style="margin-top: 15px;">
-                <p><strong>SMIG Actuel (Net estimé) :</strong> ~3 100 MAD (Secteur privé)</p>
-                <p><strong>Indicateur d'érosion monétaire :</strong> Calcul automatique basé sur l'indice global du HCP.</p>
+              <!-- Carte Épargne -->
+              <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <span class="text-xs text-slate-400 font-medium">Épargne (<span id="card-pct-epargne">20</span>%)</span>
+                </div>
+                <p id="val-epargne" class="text-xl sm:text-2xl font-extrabold text-emerald-400">1 000 DH</p>
+                <p class="text-[11px] text-slate-500 mt-1">Fonds d'urgence, investissement</p>
+              </div>
             </div>
-        </div>
-    </div>
-</main>
+          </div>
 
-<p class="footer-note">
-    Finance Campus Maroc © 2026 · Propulsé par les données officielles du Haut-Commissariat au Plan (HCP).
-</p>
+          <!-- Projection Annuelle -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-md p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Projection sur 12 mois</span>
+              <h4 class="text-lg font-bold text-white mt-0.5">Votre capital épargné en 1 an</h4>
+              <p class="text-xs text-slate-400 mt-1">En maintenant cette discipline chaque mois.</p>
+            </div>
+            <div class="bg-emerald-950/40 border border-emerald-500/30 px-6 py-4 rounded-xl text-center min-w-[180px]">
+              <span id="val-annuel" class="text-2xl font-extrabold text-emerald-400">12 000 DH</span>
+              <span class="block text-[11px] font-medium text-emerald-500 mt-0.5">/ an épargnés</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const revenuInput = document.getElementById('revenu') as HTMLInputElement;
+  const rangeBesoins = document.getElementById('range-besoins') as HTMLInputElement;
+  const rangeEnvies = document.getElementById('range-envies') as HTMLInputElement;
+  const rangeEpargne = document.getElementById('range-epargne') as HTMLInputElement;
+
+  const labelBesoins = document.getElementById('label-besoins')!;
+  const labelEnvies = document.getElementById('label-envies')!;
+  const labelEpargne = document.getElementById('label-epargne')!;
+
+  const cardPctBesoins = document.getElementById('card-pct-besoins')!;
+  const cardPctEnvies = document.getElementById('card-pct-envies')!;
+  const cardPctEpargne = document.getElementById('card-pct-epargne')!;
+
+  const valBesoins = document.getElementById('val-besoins')!;
+  const valEnvies = document.getElementById('val-envies')!;
+  const valEpargne = document.getElementById('val-epargne')!;
+  const valAnnuel = document.getElementById('val-annuel')!;
+
+  const barBesoins = document.getElementById('bar-besoins')!;
+  const barEnvies = document.getElementById('bar-envies')!;
+  const barEpargne = document.getElementById('bar-epargne')!;
+
+  const ratioWarning = document.getElementById('ratio-warning')!;
+  const totalPctSpan = document.getElementById('total-pct')!;
+  const resetBtn = document.getElementById('reset-ratios')!;
+  const presetBtns = document.querySelectorAll('.preset-btn');
+
+  const formatMAD = (montant: number) => {
+    return Math.round(montant).toLocaleString('fr-FR') + ' DH';
+  };
+
+  function calculerBudget() {
+    const revenu = parseFloat(revenuInput.value) || 0;
+    const pBesoins = parseInt(rangeBesoins.value);
+    const pEnvies = parseInt(rangeEnvies.value);
+    const pEpargne = parseInt(rangeEpargne.value);
+
+    const totalPct = pBesoins + pEnvies + pEpargne;
+
+    labelBesoins.textContent = `${pBesoins}%`;
+    labelEnvies.textContent = `${pEnvies}%`;
+    labelEpargne.textContent = `${pEpargne}%`;
+
+    cardPctBesoins.textContent = `${pBesoins}`;
+    cardPctEnvies.textContent = `${pEnvies}`;
+    cardPctEpargne.textContent = `${pEpargne}`;
+
+    if (totalPct !== 100) {
+      ratioWarning.classList.remove('hidden');
+      totalPctSpan.textContent = `${totalPct}`;
+    } else {
+      ratioWarning.classList.add('hidden');
+    }
+
+    const mBesoins = (revenu * pBesoins) / 100;
+    const mEnvies = (revenu * pEnvies) / 100;
+    const mEpargne = (revenu * pEpargne) / 100;
+    const mAnnuel = mEpargne * 12;
+
+    valBesoins.textContent = formatMAD(mBesoins);
+    valEnvies.textContent = formatMAD(mEnvies);
+    valEpargne.textContent = formatMAD(mEpargne);
+    valAnnuel.textContent = formatMAD(mAnnuel);
+
+    const base = totalPct > 0 ? totalPct : 100;
+    barBesoins.style.width = `${(pBesoins / base) * 100}%`;
+    barEnvies.style.width = `${(pEnvies / base) * 100}%`;
+    barEpargne.style.width = `${(pEpargne / base) * 100}%`;
+  }
+
+  revenuInput.addEventListener('input', calculerBudget);
+  rangeBesoins.addEventListener('input', calculerBudget);
+  rangeEnvies.addEventListener('input', calculerBudget);
+  rangeEpargne.addEventListener('input', calculerBudget);
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = btn.getAttribute('data-preset');
+      if (val) {
+        revenuInput.value = val;
+        calculerBudget();
+      }
+    });
+  });
+
+  resetBtn.addEventListener('click', () => {
+    rangeBesoins.value = '50';
+    rangeEnvies.value = '30';
+    rangeEpargne.value = '20';
+    calculerBudget();
+  });
+
+  calculerBudget();
+</script>
